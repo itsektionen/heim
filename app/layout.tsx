@@ -38,7 +38,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="dark"
           enableSystem
-          storageKey="kth.it-theme"
+          storageKey="theme-kthit"
           disableTransitionOnChange
         >
           <Navbar />

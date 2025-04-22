@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
-import { ItBolt } from "./it-bolt";
+import { ItChip } from "./it-chip";
+import { ThemeToggle } from "./theme-toggle";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,11 +17,10 @@ const Navbar = () => {
     <header className="sticky z-50 top-0 border-b bg-background/90 backdrop-blur">
       <div className="container mx-auto px-6 h-16 border-x flex items-center gap-4">
         <Link
-          className="flex text-sm text-foreground items-center gap-2 font-medium mr-8 -ml-1.5"
+          className="flex text-sm text-foreground items-center gap-2 font-medium mr-8"
           href="/"
         >
-          <ItBolt primary="var(--primary)" />
-          The IT Chapter
+          <ItChip primary="var(--primary)" />
         </Link>
         <NavigationMenu>
           <NavigationMenuList>
@@ -62,6 +62,9 @@ const Navbar = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+        <div className="ml-auto">
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );
