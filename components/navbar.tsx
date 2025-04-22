@@ -1,8 +1,5 @@
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import React from "react";
-import { ItChip } from "./it-chip";
-import { ThemeToggle } from "./theme-toggle";
+import { ItChip } from "@/components/it-chip";
+import { ThemeToggle } from "@/components/theme-toggle";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,7 +7,10 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "./ui/navigation-menu";
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import React from "react";
 
 const Navbar = () => {
   return (
@@ -27,17 +27,21 @@ const Navbar = () => {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Education</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                  <ListItem title={"Committees"} href={"/committees"}>
-                    The committees are the backbone of the IT Chapter.
+                <ul className="w-[400px] flex flex-col gap-3 p-4">
+                  <ListItem title={"Programmes"} href={"/education"}>
+                    The programs at KTH Kista include a Master of Science in
+                    Information Technology (civilingenjör), Bachelor of Science
+                    programs in Computer Science and Electronics and Computer
+                    Science (högskoleingenjör), an international Bachelor of
+                    Science in Information and Communication Technology, and
+                    several mapped master's programs.
                   </ListItem>
-                  <ListItem title={"Trustees"} href={"/trustees"}>
-                    The trustees are people who have been elected by the members
-                    of the IT Chapter.
-                  </ListItem>
-                  <ListItem title={"Documents"} href={"/documents"}>
-                    The trustees are people who have been elected by the members
-                    of the IT Chapter.
+                  <ListItem
+                    title={"Course Browser"}
+                    href={"/education/programmes"}
+                  >
+                    Are you curious about what courses you will study? Use the
+                    course browser to find out!
                   </ListItem>
                 </ul>
               </NavigationMenuContent>
@@ -47,15 +51,17 @@ const Navbar = () => {
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                   <ListItem title={"Committees"} href={"/committees"}>
-                    The committees are the backbone of the IT Chapter.
+                    The committees are the backbone of the IT Chapter. They
+                    organize events, ensure a high study quality, and provide
+                    valuable resources to the members.
                   </ListItem>
                   <ListItem title={"Trustees"} href={"/trustees"}>
                     The trustees are people who have been elected by the members
-                    of the IT Chapter.
+                    of the IT Chapter to oversee its daily operations.
                   </ListItem>
                   <ListItem title={"Documents"} href={"/documents"}>
-                    The trustees are people who have been elected by the members
-                    of the IT Chapter.
+                    View meeting protocols, statutes, promemoria among other
+                    documents.
                   </ListItem>
                 </ul>
               </NavigationMenuContent>

@@ -17,6 +17,12 @@ const ConditionIcons = {
   "Conditionally Elective": <CircleDotIcon className="text-green-400" />,
 };
 
+const conditionColors = {
+  Mandatory: "var(--color-red-500)",
+  Recommended: "var(--color-amber-500)",
+  "Conditionally Elective": "var(--color-green-500)",
+};
+
 const ProgrammesPage = async ({
   searchParams,
 }: {
@@ -49,22 +55,34 @@ const ProgrammesPage = async ({
         {programmeInfo.programmeCode}
       </h2>
       <p className="text-muted-foreground mb-6">{programmeInfo.title}</p>
-      <div className="flex flex-wrap gap-3">
+      <div className="grid grid-cols-2 gap-2">
         {programmeDetails.courses.map((course) => (
           <div
-            className="bg-muted/50 border rounded-md py-3 px-6"
+            className={cn(
+              "bg-muted/50 border overflow-hidden relative rounded-md py-3 px-6 flex flex-col pl-6",
+              "before:content-[''] before:absolute before:top-2 before:bottom-2 before:left-2 before:w-1.5 before:bg-muted before:rounded-full",
+              course.condition.en == "Mandatory" && "before:bg-red-500",
+              course.condition.en == "Recommended" && "before:bg-amber-400",
+              course.condition.en == "Conditionally Elective" &&
+                "before:bg-green-400",
+            )}
             key={course.code}
           >
-            <div className="mb-1 flex items-center gap-8">
+            <div className="flex items-start gap-8">
               <p>{course.name.en}</p>
-              <Button className="!pr-0 !mr-0" size="sm" asChild variant="link">
+              <Button
+                className="!pr-0 !mr-0 ml-auto"
+                size="sm"
+                asChild
+                variant="link"
+              >
                 <Link href={course.url.en}>
                   Read more <ExternalLinkIcon />
                 </Link>
               </Button>
             </div>
             <div
-              className={cn("flex [&>svg]:size-4 items-center gap-1.5 mb-1")}
+              className={cn("flex [&>svg]:size-4 items-center gap-1.5 mb-4")}
             >
               {
                 ConditionIcons[
@@ -75,7 +93,7 @@ const ProgrammesPage = async ({
                 {course.condition.en}
               </p>
             </div>
-            <p className="text-muted-foreground">{`${course.credits} ${course.creditUnitAbbr.en}`}</p>
+            <p className="text-muted-foreground mt-auto">{`${course.credits} ${course.creditUnitAbbr.en}`}</p>
           </div>
         ))}
       </div>
