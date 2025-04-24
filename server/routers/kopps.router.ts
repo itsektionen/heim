@@ -16,7 +16,7 @@ export const koppsRouter = router({
       }),
     )
     .query(async ({ input }) => {
-      const kopps = new KoppsClient();
+      const kopps = new KoppsClient("en");
       return kopps
         .programme(input.programmeCode)
         .specializations(input.admissionYear)
@@ -32,7 +32,7 @@ export const koppsRouter = router({
       }),
     )
     .query(async ({ input }) => {
-      const kopps = new KoppsClient();
+      const kopps = new KoppsClient("en");
 
       if (input.studyYear) {
       }

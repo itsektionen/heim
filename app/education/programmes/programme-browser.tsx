@@ -12,6 +12,7 @@ import {
   KoppsProgramme,
   KoppsProgrammeSpecialization,
   KoppsStudyYear,
+  SpecializationsResponse,
 } from "@/types/kopps";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -27,6 +28,7 @@ export type ProgrammeSelectorValues = {
   programme: string;
   studyYear: KoppsStudyYear;
   admissionYear: number;
+  specialization: string;
 };
 
 type Programme = {
@@ -39,7 +41,7 @@ interface ProgrammeSelectorContext {
   setValues: (
     newValues:
       | ProgrammeSelectorValues
-      | ((prev: ProgrammeSelectorValues) => ProgrammeSelectorValues)
+      | ((prev: ProgrammeSelectorValues) => ProgrammeSelectorValues),
   ) => void;
   onValuesChange: (values: ProgrammeSelectorValues) => void;
   programme?: Programme;
@@ -54,7 +56,7 @@ const useProgrammeSelector = () => {
   const context = useContext(programmeSelectorContext);
   if (!context) {
     throw new Error(
-      "useProgrammeSelector must be used within a ProgrammeSelectorContext"
+      "useProgrammeSelector must be used within a ProgrammeSelectorContext",
     );
   }
 
@@ -83,6 +85,36 @@ export const ProgrammeBrowserHeader = ({
     <div className=" bg-accent/30 -mt-6 -ml-6 -mr-6 p-6 border-b mb-6">
       {children}
     </div>
+  );
+};
+
+export const SpecializationsSelector = ({
+  defaultSpecialization = "COMMON",
+  specializations,
+}: {
+  defaultSpecialization?: string;
+  specializations: Omit<SpecializationsResponse, "description">;
+}) => {
+  const { values, setValues } = useProgrammeSelector();
+  return (
+    <Select
+      onValueChange={(value) =>
+        setValues((prev) => ({ ...prev, specialization: value }))
+      }
+      value={values.specialization}
+      defaultValue={defaultSpecialization}
+    >
+      <SelectTrigger defaultValue={defaultSpecialization} className="w-[260px]">
+        <SelectValue placeholder="Select a masters programme" />
+      </SelectTrigger>
+      <SelectContent>
+        {Object.keys(specializations).map((spec) => (
+          <SelectItem key={spec} value={spec}>
+            {specializations[spec].en}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   );
 };
 
@@ -161,7 +193,8 @@ const ProgrammeBrowser = ({
       programme: "",
       studyYear: 1,
       admissionYear: new Date().getFullYear(),
-    }
+      specialization: "COMMON",
+    },
   );
   const [programme, setProgramme] = useState<Programme>();
 

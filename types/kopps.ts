@@ -4,7 +4,7 @@ export type SpecializationsResponse = {
   [key: string]: {
     sv: string;
     en: string;
-  }[];
+  };
 };
 
 export type KoppsProgramme = {
