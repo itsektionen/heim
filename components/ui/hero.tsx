@@ -9,7 +9,12 @@ export const Hero = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("-ml-6 -mr-6 -mt-6 mb-6 relative h-[365px]", className)}>
+    <div
+      className={cn(
+        "-ml-6 -mr-6 -mt-6 mb-6 relative h-[365px] border-b",
+        className,
+      )}
+    >
       {children}
     </div>
   );

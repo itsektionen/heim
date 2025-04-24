@@ -17,7 +17,7 @@ const Navbar = () => {
     <header className="sticky z-50 top-0 border-b bg-background/90 backdrop-blur">
       <div className="container mx-auto px-6 h-16 border-x flex items-center gap-4">
         <Link
-          className="flex text-sm text-foreground items-center gap-2 font-medium mr-8"
+          className="flex text-sm text-foreground items-center gap-2 font-medium mr-2"
           href="/"
         >
           <ItChip primary="var(--primary)" />
@@ -34,7 +34,7 @@ const Navbar = () => {
                     programs in Computer Science and Electronics and Computer
                     Science (högskoleingenjör), an international Bachelor of
                     Science in Information and Communication Technology, and
-                    several mapped master's programs.
+                    several mapped master&apos;s programs.
                   </ListItem>
                   <ListItem
                     title={"Course Browser"}
@@ -102,3 +102,5 @@ const ListItem = React.forwardRef<
     </li>
   );
 });
+
+ListItem.displayName = "ListItem";
