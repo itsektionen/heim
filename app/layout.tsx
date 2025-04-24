@@ -1,6 +1,7 @@
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { TRPCProvider } from "@/components/providers/trpc-provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
@@ -34,17 +35,21 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          storageKey="theme-kthit"
-          disableTransitionOnChange
-        >
-          <Navbar />
-          <main className="container mx-auto p-6 sm:border-x">{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <TRPCProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            storageKey="theme-kthit"
+            disableTransitionOnChange
+          >
+            <Navbar />
+            <main className="container mx-auto p-6 sm:border-x">
+              {children}
+            </main>
+            <Footer />
+          </ThemeProvider>
+        </TRPCProvider>
       </body>
     </html>
   );

@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Hero, HeroContent, HeroImage } from "@/components/ui/hero";
-import { FacebookScraper } from "@/lib/scrapers/facebook";
+import { trpc } from "@/lib/trpc";
 import {
   ArrowRightIcon,
   ExternalLinkIcon,
@@ -18,10 +20,10 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-export const revalidate = 86400;
+// export const revalidate = 86400;
 
-export default async function Home() {
-  const scraper = new FacebookScraper();
+export default function Home() {
+  // const scraper = new FacebookScraper();
   // const chapterEvents = await scraper.listEvents("itsektionenkth");
 
   return (
