@@ -198,7 +198,7 @@ const ProgrammesPage = () => {
             ))
           ) : (
             <>
-              {Array.from({ length: 16 }).map((_, i) => (
+              {Array.from({ length: 14 }).map((_, i) => (
                 <Skeleton className="h-29" key={`course-skeleton.${i}`} />
               ))}
             </>
