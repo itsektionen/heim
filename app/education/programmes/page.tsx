@@ -51,7 +51,7 @@ const ProgrammesPage = () => {
   const studyYear: KoppsStudyYear = y ? (Number(y) as KoppsStudyYear) : 1;
   const admissionYear = a ? Number(a) : new Date().getFullYear();
   const programme = p || "CINTE";
-  const specialization = s || "COMMON";
+  const specialization = studyYear <= 3 ? "COMMON" : s || "COMMON";
 
   const [programmeSelectorValues, setProgrammeSelectorValues] =
     useState<ProgrammeSelectorValues>({
