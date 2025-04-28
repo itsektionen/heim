@@ -27,19 +27,15 @@ export const koppsRouter = router({
       z.object({
         programmeCode: z.string(),
         admissionYear: z.number(),
-        specializationCode: z.string(),
         studyYear: z.number().min(1).max(5).default(1),
       }),
     )
     .query(async ({ input }) => {
       const kopps = new KoppsClient("en");
 
-      if (input.studyYear) {
-      }
-
       return kopps
         .programme(input.programmeCode)
         .specializations(input.admissionYear)
-        .get(input.specializationCode, input.studyYear as KoppsStudyYear);
+        .get("COMMON", input.studyYear as KoppsStudyYear);
     }),
 });

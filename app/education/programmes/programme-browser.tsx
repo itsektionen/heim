@@ -12,7 +12,6 @@ import {
   KoppsProgramme,
   KoppsProgrammeSpecialization,
   KoppsStudyYear,
-  SpecializationsResponse,
 } from "@/types/kopps";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -28,7 +27,6 @@ export type ProgrammeSelectorValues = {
   programme: string;
   studyYear: KoppsStudyYear;
   admissionYear: number;
-  specialization: string;
 };
 
 type Programme = {
@@ -88,36 +86,6 @@ export const ProgrammeBrowserHeader = ({
   );
 };
 
-export const SpecializationsSelector = ({
-  defaultSpecialization = "COMMON",
-  specializations,
-}: {
-  defaultSpecialization?: string;
-  specializations: Omit<SpecializationsResponse, "description">;
-}) => {
-  const { values, setValues } = useProgrammeSelector();
-  return (
-    <Select
-      onValueChange={(value) =>
-        setValues((prev) => ({ ...prev, specialization: value }))
-      }
-      value={values.specialization}
-      defaultValue={defaultSpecialization}
-    >
-      <SelectTrigger defaultValue={defaultSpecialization} className="w-[260px]">
-        <SelectValue placeholder="Select a masters programme" />
-      </SelectTrigger>
-      <SelectContent>
-        {Object.keys(specializations).map((spec) => (
-          <SelectItem key={spec} value={spec}>
-            {specializations[spec].en}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
-  );
-};
-
 export const ProgrammeSelector = ({
   defaultProgramme,
   defaultStudyYear = 1,
@@ -133,6 +101,9 @@ export const ProgrammeSelector = ({
   const { setValues } = useProgrammeSelector();
 
   useEffect(() => {
+    if (programme !== "CINTE" && studyYear > 3) {
+      setStudyYear(3);
+    }
     setValues((prev) => ({
       ...prev,
       programme,
@@ -171,8 +142,12 @@ export const ProgrammeSelector = ({
           <SelectItem value="1">Year 1</SelectItem>
           <SelectItem value="2">Year 2</SelectItem>
           <SelectItem value="3">Year 3</SelectItem>
-          <SelectItem value="4">Year 4</SelectItem>
-          <SelectItem value="5">Year 5</SelectItem>
+          {programme === "CINTE" && (
+            <>
+              <SelectItem value="4">Year 4</SelectItem>
+              <SelectItem value="5">Year 5</SelectItem>
+            </>
+          )}
         </SelectContent>
       </Select>
     </div>
@@ -193,7 +168,6 @@ const ProgrammeBrowser = ({
       programme: "",
       studyYear: 1,
       admissionYear: new Date().getFullYear(),
-      specialization: "COMMON",
     },
   );
   const [programme, setProgramme] = useState<Programme>();
