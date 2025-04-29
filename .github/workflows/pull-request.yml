@@ -1,7 +1,7 @@
 name: Deploy (dev)
 
 on:
-  push:
+  pull_request:
     branches:
       - dev
 
@@ -35,6 +35,6 @@ jobs:
       - name: Build
         run: vercel build --token=${{ secrets.VERCEL_ACCOUNT_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }}
 
-      # Since we can not create custom Vercel environments we use production as dev deployment until site is finished.
+      # Create preview deployment
       - name: Deploy
-        run: vercel deploy --prod --prebuilt --token=${{ secrets.VERCEL_ACCOUNT_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }}
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_ACCOUNT_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }}
