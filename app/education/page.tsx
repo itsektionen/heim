@@ -22,7 +22,7 @@ const EducationPage = () => {
           Technology (civilingenjör), Bachelor of Science programs in Computer
           Science and Electronics and Computer Science (högskoleingenjör), an
           international Bachelor of Science in Information and Communication
-          Technology, and several mapped master's programs.
+          Technology, and several mapped master&apos;s programs.
         </p>
         <h3 className="text-2xl font-medium mb-2">
           Master of Science in Information Technology
@@ -33,12 +33,12 @@ const EducationPage = () => {
           credits.
         </p>
         <p className="mb-3">
-          It starts with a three-year Bachelor's program in Information
+          It starts with a three-year Bachelor&apos;s program in Information
           Technology (180 Swedish hp credits) with mandatory core courses and
-          some free-choice courses, followed by a two-year Master's program (120
-          Swedish hp credits) within one of the eligible Master's programs
-          mapped to the Master of Science in Information Technology Engineering
-          programme.
+          some free-choice courses, followed by a two-year Master&apos;s program
+          (120 Swedish hp credits) within one of the eligible Master&apos;s
+          programs mapped to the Master of Science in Information Technology
+          Engineering programme.
         </p>
         <p className="mb-3">
           The program is designed for those who want to work with the future
@@ -92,9 +92,9 @@ const EducationPage = () => {
         </h3>
         <p className="mb-3">
           The Bachelor of Science in Information and Nanotechnology (TCOMK) is a
-          three-year bachelor's program consisting of 180 Swedish hp credits,
-          entirely taught in English, and equivalent to an international
-          Bachelor's degree.
+          three-year bachelor&apos;s program consisting of 180 Swedish hp
+          credits, entirely taught in English, and equivalent to an
+          international Bachelor&apos;s degree.
         </p>
         <p className="mb-3">
           It starts with mandatory core courses in the first year, followed by a

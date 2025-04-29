@@ -1,5 +1,7 @@
 export interface EventScraper {
-  listEvents(...args: any[]): Promise<CalendarEvent[]>;
+  listEvents(
+    ...args: (string | number | boolean | object)[]
+  ): Promise<CalendarEvent[]>;
 }
 
 export type CalendarEvent = {

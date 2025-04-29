@@ -51,7 +51,6 @@ const ProgrammesPage = () => {
   const p = searchParams.get("p");
   const a = searchParams.get("a");
   const y = searchParams.get("y");
-  const s = searchParams.get("s");
   const studyYear: KoppsStudyYear = y ? (Number(y) as KoppsStudyYear) : 1;
   const admissionYear = a ? Number(a) : new Date().getFullYear();
   const programme = p || "CINTE";
@@ -92,14 +91,6 @@ const ProgrammesPage = () => {
       admissionYear: programmeSelectorValues.admissionYear,
       studyYear: programmeSelectorValues.studyYear,
     });
-  const { data: specializations, isLoading: specializationsIsLoading } =
-    trpc.kopps.listSpecializations.useQuery({
-      programmeCode: programmeSelectorValues.programme,
-      admissionYear: programmeSelectorValues.admissionYear,
-    });
-
-  const shouldShowSpecializationsSelector =
-    specializations && programmeSelectorValues.studyYear > 3;
 
   return (
     <div>
