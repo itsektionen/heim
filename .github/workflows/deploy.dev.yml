@@ -1,0 +1,36 @@
+name: Deploy (dev)
+
+on:
+  push:
+    branches: ["dev"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 10
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install Vercel
+        run: pnpm install -g vercel@latest
+
+      - name: Build
+        run: vercel build --token=${{ secrets.VERCEL_ACCOUNT_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }}
+
+      - name: Deploy
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_ACCOUNT_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }}
