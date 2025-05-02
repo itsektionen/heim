@@ -10,11 +10,13 @@ const ItBolt = ({
   secondary = primary,
   size = 36,
   className,
+  style,
 }: {
   primary?: string;
   secondary?: string;
   className?: string;
   size?: number;
+  style?: React.CSSProperties;
 }) => {
   return (
     <svg
@@ -27,6 +29,7 @@ const ItBolt = ({
       width={size}
       viewBox="0 0 339.9 564.1"
       className={className}
+      style={style}
     >
       <path
         id="I"

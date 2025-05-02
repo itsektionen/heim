@@ -10,14 +10,18 @@ const ItChip = ({
   primary = "var(--foreground)",
   secondary = primary,
   tertiary = primary,
+  quaternary = "transparent",
   size = 36,
   className,
+  style,
 }: {
   primary?: string;
   secondary?: string;
   tertiary?: string;
+  quaternary?: string;
   className?: string;
   size?: number;
+  style?: React.CSSProperties;
 }) => {
   return (
     <svg
@@ -28,6 +32,7 @@ const ItChip = ({
       width={size}
       className={className}
       viewBox="0 0 566.93 566.93"
+      style={style}
     >
       <g id="Outer_Square" data-name="Outer Square">
         <g id="Bottom_Right" data-name="Bottom Right">
@@ -182,6 +187,13 @@ const ItChip = ({
             fill={tertiary}
           />
         </g>
+      </g>
+      <g id="Inner_Square" data-name="Inner Square">
+        <path
+          id="Core"
+          d="M283.47,481.27c-2.23,0-4.46-.85-6.17-2.55l-189.09-189.09c-3.4-3.4-3.4-8.93,0-12.33l170.55-170.55h49.4l170.55,170.55c3.4,3.4,3.4,8.93,0,12.33l-189.08,189.09c-1.7,1.7-3.93,2.55-6.17,2.55"
+          fill={quaternary}
+        />
       </g>
       <g>
         <path
