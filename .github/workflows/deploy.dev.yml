@@ -32,6 +32,8 @@ jobs:
 
       - run: vercel pull --yes --token=${{ secrets.VERCEL_ACCOUNT_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }}
 
+      - run: cp .vercel/.env.development.local .env
+
       - name: Build
         run: vercel build --prod --token=${{ secrets.VERCEL_ACCOUNT_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }}
 
