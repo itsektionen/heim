@@ -1,0 +1,24 @@
+@reference '../../globals.css';
+
+.md {
+    * {
+        @apply text-sm;
+        scroll-margin-top: 70px;
+    }
+
+    h1 {
+        @apply text-2xl font-medium text-primary mb-4;
+    }
+
+    h2 {
+        @apply text-xl font-medium text-primary mt-4;
+    }
+
+    h3 {
+        @apply text-lg font-medium text-primary mt-4;
+    }
+
+    p {
+        @apply mt-2;
+    }
+}

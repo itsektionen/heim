@@ -59,9 +59,28 @@ const Navbar = () => {
                     The trustees are people who have been elected by the members
                     of the IT Chapter to oversee its daily operations.
                   </ListItem>
-                  <ListItem title={"Documents"} href={"/documents"}>
-                    View meeting protocols, statutes, promemoria among other
-                    documents.
+                  <ListItem title={"Events"} href={"/events"}>
+                    The events are organized by the committees and are a great
+                    way to meet new people and learn new things.
+                  </ListItem>
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Documents</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="w-[400px] flex flex-col gap-3 p-4">
+                  <ListItem title={"Protocols"} href={"/documents/protocols"}>
+                    Read meeting minutes and protocols from chapter meetings
+                    (SM) and board meetings (StyM).
+                  </ListItem>
+                  <ListItem
+                    title={"Statutes & Bylaws"}
+                    href={"/documents/statutes"}
+                  >
+                    Read the statutes and bylaws of the IT Chapter. They are
+                    important documents that govern the operations of the
+                    chapter.
                   </ListItem>
                 </ul>
               </NavigationMenuContent>
