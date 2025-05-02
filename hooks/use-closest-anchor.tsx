@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-
 /**
  * Gets the closest anchor to the current scroll position
+ * FIXME: The offset is weird when scrolling over long paragraphs.
  * @returns string | null
  */
 const useClosestAnchor = (): [string | null, string | null] => {
