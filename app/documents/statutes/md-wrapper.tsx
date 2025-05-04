@@ -1,10 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import useClosestAnchor from "@/hooks/use-closest-anchor";
 import { getHeadings } from "@/lib/md";
 import { cn } from "@/lib/utils";
-import { ExternalLinkIcon, ScrollIcon } from "lucide-react";
+import { ScrollIcon } from "lucide-react";
 import Link from "next/link";
 
 const MdWrapper = ({
@@ -22,15 +21,6 @@ const MdWrapper = ({
         <div className="flex items-center gap-2 mb-1">
           <ScrollIcon className="size-4 text-primary" />
           <p className="font-medium">Statutes</p>
-          <Button className="ml-auto" size="sm" asChild variant="link">
-            <Link
-              href={"https://github.com/itsektionen/styrdokument"}
-              target="_blank"
-            >
-              Source
-              <ExternalLinkIcon />
-            </Link>
-          </Button>
         </div>
         <p className="text-muted-foreground text-sm max-w-prose">
           These are the chapter&apos;s statutes. They are our regulatory

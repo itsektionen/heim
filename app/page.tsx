@@ -28,7 +28,7 @@ export default async function Home() {
   return (
     <>
       <Hero className="grid grid-cols-2">
-        <HeroContent className="text-white p-4">
+        <HeroContent className="text-white p-6 sm:p-4">
           <div className="max-w-[32ch]">
             <p className="text-2xl font-medium mb-1 text-primary">Welcome!</p>
             <span>

@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Hero, HeroContent, HeroImage } from "@/components/ui/hero";
+import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import {
   boardTrustees,
   committeeTrustees,
@@ -29,7 +29,7 @@ const TrusteesPage = () => {
     <div>
       <Hero>
         <HeroContent>
-          <h2 className="text-6xl font-medium text-white mb-4">Trustees</h2>
+          <HeroTitle className="mb-4">Trustees</HeroTitle>
           <p className="max-w-prose text-balance text-white text-center text-sm">
             The trustees are people who have been elected by the members of the
             IT Chapter.

@@ -4,7 +4,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t">
+    <footer className="border-t mb-15 sm:mb-0">
       <div className="container mx-auto p-6 border-x">
         <div className="mb-8">
           <ul className="text-sm space-y-2">
@@ -42,14 +42,14 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center flex-col sm:flex-row gap-4">
           <p className="text-muted-foreground text-xs">
             {`Copyright © ${currentYear} Sektionen för Informationsteknik`}
           </p>
           <p className="text-muted-foreground text-xs text-right">
             The source code for this site is available on{" "}
             <Link
-              className="hover:underline underline-offset-4"
+              className="underline sm:no-underline hover:underline underline-offset-4"
               href="https://www.github.com/itsektionen"
             >
               GitHub

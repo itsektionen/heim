@@ -14,7 +14,7 @@ export const revalidate = 604800;
 
 const YearHeader = ({ year }: { year: string }) => {
   return (
-    <div className="border-y bg-muted/90 backdrop-blur z-0 flex sticky top-[calc(4rem)] px-6 py-3">
+    <div className="border-y bg-muted/90 backdrop-blur z-0 flex sticky top-0 sm:top-16 px-6 py-3">
       <p className="text-sm font-medium">{year}</p>
     </div>
   );

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Hero, HeroContent, HeroImage } from "@/components/ui/hero";
+import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import { ExternalLinkIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -8,7 +8,7 @@ const EducationPage = () => {
     <>
       <Hero>
         <HeroContent>
-          <h2 className="text-6xl font-medium text-white">Education</h2>
+          <HeroTitle className="mb-4">Education</HeroTitle>
         </HeroContent>
         <HeroImage
           className="brightness-50"

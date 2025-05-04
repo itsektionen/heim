@@ -20,6 +20,22 @@ export const Hero = ({
   );
 };
 
+export const HeroTitle = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <h2
+      className={cn("text-4xl sm:text-6xl font-medium text-white", className)}
+    >
+      {children}
+    </h2>
+  );
+};
+
 export const HeroContent = ({
   children,
   className,

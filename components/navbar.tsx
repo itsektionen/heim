@@ -1,5 +1,15 @@
+"use client";
+
+import { ItBolt } from "@/components/it-bolt";
 import { ItChip } from "@/components/it-chip";
 import { ThemeToggle } from "@/components/theme-toggle";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,12 +19,104 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import {
+  CalendarIcon,
+  GraduationCapIcon,
+  HouseIcon,
+  MenuIcon,
+  ScrollIcon,
+} from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
-const Navbar = () => {
+type NavigationItem = {
+  title: string;
+  href: string;
+  icon?: React.ReactNode;
+  description?: string;
+  children?: NavigationItem[];
+};
+
+type NavigationGroup = {
+  title: string;
+  icon?: React.ReactNode;
+  items: NavigationItem[];
+};
+
+const educationItems: NavigationItem[] = [
+  {
+    title: "Programmes",
+    href: "/education",
+    icon: <MenuIcon className="w-4 h-4" />,
+    description:
+      "The programs at KTH Kista include a Master of Science in Information Technology (civilingenjör), Bachelor of Science programs in Computer Science and Electronics and Computer Science (högskoleingenjör), an international Bachelor of Science in Information and Communication Technology, and several mapped master's programs.",
+  },
+  {
+    title: "Courses",
+    href: "/education/courses",
+    icon: <MenuIcon className="w-4 h-4" />,
+    description:
+      "Are you curious about what courses you will study? Use the course browser to find out!",
+  },
+];
+
+const chapterItems: NavigationItem[] = [
+  {
+    title: "Committees",
+    href: "/committees",
+    description:
+      "The committees are the backbone of the IT Chapter. They organize events, ensure a high study quality, and provide valuable resources to the members.",
+  },
+  {
+    title: "Trustees",
+    href: "/trustees",
+    description:
+      "The trustees are people who have been elected by the members of the IT Chapter to oversee its daily operations.",
+  },
+  {
+    title: "Events",
+    href: "/events",
+    description:
+      "The events are organized by the committees and are a great way to meet new people and learn new things.",
+  },
+];
+
+const documentItems: NavigationItem[] = [
+  {
+    title: "Protocols",
+    href: "/documents/protocols",
+    icon: <MenuIcon className="w-4 h-4" />,
+    description:
+      "Read meeting minutes and protocols from chapter meetings (SM) and board meetings (StyM).",
+  },
+  {
+    title: "Statutes & Bylaws",
+    href: "/documents/statutes",
+    icon: <MenuIcon className="w-4 h-4" />,
+    description:
+      "Read the statutes and bylaws of the IT Chapter. They are important documents that govern the operations of the chapter.",
+  },
+];
+
+const navigationGroups: NavigationGroup[] = [
+  {
+    title: "Education",
+    items: educationItems,
+  },
+  {
+    title: "Chapter",
+    items: chapterItems,
+  },
+  {
+    title: "Documents",
+    items: documentItems,
+  },
+];
+
+const DesktopNavbar = () => {
   return (
-    <header className="sticky z-50 top-0 border-b bg-background/90 backdrop-blur">
+    <header className="hidden sm:block sticky z-50 top-0 border-b bg-background/90 backdrop-blur">
       <div className="container mx-auto px-6 h-16 border-x flex items-center gap-4">
         <Link
           className="flex text-sm text-foreground items-center gap-2 font-medium mr-2"
@@ -28,21 +130,15 @@ const Navbar = () => {
               <NavigationMenuTrigger>Education</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="w-[400px] flex flex-col gap-3 p-4">
-                  <ListItem title={"Programmes"} href={"/education"}>
-                    The programs at KTH Kista include a Master of Science in
-                    Information Technology (civilingenjör), Bachelor of Science
-                    programs in Computer Science and Electronics and Computer
-                    Science (högskoleingenjör), an international Bachelor of
-                    Science in Information and Communication Technology, and
-                    several mapped master&apos;s programs.
-                  </ListItem>
-                  <ListItem
-                    title={"Course Browser"}
-                    href={"/education/programmes"}
-                  >
-                    Are you curious about what courses you will study? Use the
-                    course browser to find out!
-                  </ListItem>
+                  {educationItems.map((item, index) => (
+                    <ListItem
+                      key={`nav.education.${index}`}
+                      title={item.title}
+                      href={item.href}
+                    >
+                      {item.description}
+                    </ListItem>
+                  ))}
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
@@ -50,19 +146,15 @@ const Navbar = () => {
               <NavigationMenuTrigger>Chapter</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                  <ListItem title={"Committees"} href={"/committees"}>
-                    The committees are the backbone of the IT Chapter. They
-                    organize events, ensure a high study quality, and provide
-                    valuable resources to the members.
-                  </ListItem>
-                  <ListItem title={"Trustees"} href={"/trustees"}>
-                    The trustees are people who have been elected by the members
-                    of the IT Chapter to oversee its daily operations.
-                  </ListItem>
-                  <ListItem title={"Events"} href={"/events"}>
-                    The events are organized by the committees and are a great
-                    way to meet new people and learn new things.
-                  </ListItem>
+                  {chapterItems.map((item, index) => (
+                    <ListItem
+                      key={`nav.chapter.${index}`}
+                      title={item.title}
+                      href={item.href}
+                    >
+                      {item.description}
+                    </ListItem>
+                  ))}
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
@@ -70,18 +162,15 @@ const Navbar = () => {
               <NavigationMenuTrigger>Documents</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="w-[400px] flex flex-col gap-3 p-4">
-                  <ListItem title={"Protocols"} href={"/documents/protocols"}>
-                    Read meeting minutes and protocols from chapter meetings
-                    (SM) and board meetings (StyM).
-                  </ListItem>
-                  <ListItem
-                    title={"Statutes & Bylaws"}
-                    href={"/documents/statutes"}
-                  >
-                    Read the statutes and bylaws of the IT Chapter. They are
-                    important documents that govern the operations of the
-                    chapter.
-                  </ListItem>
+                  {documentItems.map((item, index) => (
+                    <ListItem
+                      key={`nav.document.${index}`}
+                      title={item.title}
+                      href={item.href}
+                    >
+                      {item.description}
+                    </ListItem>
+                  ))}
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
@@ -92,6 +181,77 @@ const Navbar = () => {
         </div>
       </div>
     </header>
+  );
+};
+
+const MobileNavbar = () => {
+  const pathname = usePathname();
+  const [open, setOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  return (
+    <nav className="fixed flex sm:hidden items-center justify-between bottom-0 left-0 bg-card/90 backdrop-blur z-50 right-0 px-6 py-4 h-15 border-t">
+      <Link href="/">
+        <HouseIcon className="size-5 text-muted-foreground active:scale-80 transition-transform duration-100" />
+      </Link>
+      <Link href="/events">
+        <CalendarIcon className="size-5 text-muted-foreground active:scale-80 transition-transform duration-100" />
+      </Link>
+      <Drawer open={open} onOpenChange={setOpen}>
+        <DrawerTrigger className="active:scale-90 p-3 transition-transform h-10 w-10 bg-primary rounded-full text-primary-foreground flex items-center justify-center">
+          <ItBolt primary="var(--primary-foreground)" />
+        </DrawerTrigger>
+        <DrawerContent className="pb-10">
+          <DrawerHeader className="flex items-center gap-2">
+            <ItChip primary="var(--primary)" />
+            <DrawerTitle>The IT Chapter</DrawerTitle>
+          </DrawerHeader>
+          <div className="px-6">
+            <Link href={"/"} className="font-medium mb-4 block w-fit">
+              Home
+            </Link>
+            {navigationGroups.map((group, index) => (
+              <div className="mb-4" key={`mobile.nav.${index}`}>
+                <h2 className="text-sm font-medium mb-1 text-muted-foreground">
+                  {group.title}
+                </h2>
+                <ul className="space-y-1">
+                  {group.items.map((item, index) => (
+                    <li key={`mobile.nav.${item.title}.${index}`}>
+                      <Link href={item.href} className="font-medium">
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            <ThemeToggle />
+          </div>
+        </DrawerContent>
+      </Drawer>
+      <Link href="/education/programmes">
+        <GraduationCapIcon
+          strokeWidth={1.8}
+          className="size-6 text-muted-foreground active:scale-80 transition-transform duration-100"
+        />
+      </Link>
+      <Link href="/documents/protocols">
+        <ScrollIcon className="size-5 text-muted-foreground active:scale-80 transition-transform duration-100" />
+      </Link>
+    </nav>
+  );
+};
+
+const Navbar = () => {
+  return (
+    <>
+      <DesktopNavbar />
+      <MobileNavbar />
+    </>
   );
 };
 

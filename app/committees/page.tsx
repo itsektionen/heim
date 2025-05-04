@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Hero, HeroContent, HeroImage } from "@/components/ui/hero";
+import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import committees, { type Committee } from "@/data/committees";
 import { cn, getContrastingColor } from "@/lib/utils";
 import Image from "next/image";
@@ -69,7 +69,7 @@ const CommitteesPage = () => {
     <>
       <Hero>
         <HeroContent>
-          <h2 className="text-6xl font-medium text-white mb-4">Committees</h2>
+          <HeroTitle className="mb-4">Committees</HeroTitle>
           <p className="max-w-prose text-balance text-white text-center text-sm">
             The committees are the backbone of the IT Chapter. They organize
             events, ensure a high study quality, and provide valuable resources

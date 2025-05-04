@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Hero, HeroContent, HeroImage } from "@/components/ui/hero";
+import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import Link from "next/link";
 
 const NotFoundPage = () => {
@@ -7,7 +7,7 @@ const NotFoundPage = () => {
     <div>
       <Hero className="-mb-6 h-[800px]">
         <HeroContent className="text-white">
-          <h2 className="text-6xl font-medium mb-2">404!</h2>
+          <HeroTitle className="mb-2">404!</HeroTitle>
           <p className="text-lg mb-4">
             This is not the page you are looking for...
           </p>
