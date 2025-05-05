@@ -21,10 +21,10 @@ import {
 import { cn } from "@/lib/utils";
 import {
   CalendarIcon,
+  FileTextIcon,
   GraduationCapIcon,
   HouseIcon,
   MenuIcon,
-  ScrollIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -194,15 +194,15 @@ const MobileNavbar = () => {
 
   return (
     <nav className="fixed flex sm:hidden items-center justify-between bottom-0 left-0 bg-card/90 backdrop-blur z-50 right-0 px-6 py-4 h-15 border-t">
-      <Link href="/">
-        <HouseIcon className="size-5 text-muted-foreground active:scale-80 transition-transform duration-100" />
-      </Link>
-      <Link href="/events">
-        <CalendarIcon className="size-5 text-muted-foreground active:scale-80 transition-transform duration-100" />
-      </Link>
+      <MobileNavItem href="/">
+        <HouseIcon />
+      </MobileNavItem>
+      <MobileNavItem href="/events">
+        <CalendarIcon />
+      </MobileNavItem>
       <Drawer open={open} onOpenChange={setOpen}>
-        <DrawerTrigger className="active:scale-90 p-3 transition-transform h-10 w-10 bg-primary rounded-full text-primary-foreground flex items-center justify-center">
-          <ItBolt primary="var(--primary-foreground)" />
+        <DrawerTrigger className="active:scale-90 p-3 transition-transform h-10 w-10 bg-primary rounded-full drop-shadow text-primary-foreground flex items-center justify-center">
+          <ItBolt primary="var(--card)" />
         </DrawerTrigger>
         <DrawerContent className="pb-10">
           <DrawerHeader className="flex items-center gap-2">
@@ -233,16 +233,38 @@ const MobileNavbar = () => {
           </div>
         </DrawerContent>
       </Drawer>
-      <Link href="/education/programmes">
-        <GraduationCapIcon
-          strokeWidth={1.8}
-          className="size-6 text-muted-foreground active:scale-80 transition-transform duration-100"
-        />
-      </Link>
-      <Link href="/documents/protocols">
-        <ScrollIcon className="size-5 text-muted-foreground active:scale-80 transition-transform duration-100" />
-      </Link>
+      <MobileNavItem href="/education/courses">
+        <GraduationCapIcon strokeWidth={1.8} className="size-6" />
+      </MobileNavItem>
+      <MobileNavItem href="/documents/protocols">
+        <FileTextIcon />
+      </MobileNavItem>
     </nav>
+  );
+};
+
+const MobileNavItem = ({
+  href,
+  children,
+  className,
+}: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+  return (
+    <Link
+      className={cn(
+        "[&_svg:not([class*='size-'])]:size-5 [&_svg]:active:scale-80 [&_svg]:transition-all",
+        isActive ? "[&_svg]:text-primary" : "[&_svg]:text-muted-foreground",
+        className,
+      )}
+      href={href}
+    >
+      {children}
+    </Link>
   );
 };
 

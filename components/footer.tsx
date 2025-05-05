@@ -4,8 +4,8 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t mb-15 sm:mb-0">
-      <div className="container mx-auto p-6 sm:border-x">
+    <footer className="border-t mb-15 sm:mb-0 h-50">
+      <div className="container mx-auto h-full p-6 sm:border-x">
         <div className="mb-8">
           <ul className="text-sm space-y-2">
             <li>

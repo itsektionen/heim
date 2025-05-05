@@ -14,7 +14,7 @@ export const revalidate = 604800;
 
 const YearHeader = ({ year }: { year: string }) => {
   return (
-    <div className="border-y bg-muted/90 backdrop-blur z-0 flex sticky top-0 sm:top-16 px-6 py-3">
+    <div className="border-b sm:border-y bg-muted/90 backdrop-blur z-0 flex sticky top-0 sm:top-16 px-6 py-3">
       <p className="text-sm font-medium">{year}</p>
     </div>
   );
@@ -80,11 +80,6 @@ const ProtocolsPage = async () => {
           </div>
         ))}
       </section>
-      {/* <div className="border-r h-full grow w-[260px]">
-        {protocols.map((file) => (
-          <FileListItem key={file.id} file={file} />
-        ))}
-      </div> */}
     </div>
   );
 };
