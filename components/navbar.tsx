@@ -200,7 +200,7 @@ const MobileNavbar = () => {
       <MobileNavItem href="/events">
         <CalendarIcon />
       </MobileNavItem>
-      <Drawer open={open} onOpenChange={setOpen}>
+      <Drawer preventScrollRestoration open={open} onOpenChange={setOpen}>
         <DrawerTrigger className="active:scale-90 p-3 transition-transform h-10 w-10 bg-primary rounded-full drop-shadow text-primary-foreground flex items-center justify-center">
           <ItBolt primary="var(--card)" />
         </DrawerTrigger>
