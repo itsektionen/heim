@@ -43,6 +43,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
@@ -111,30 +112,9 @@ const DesktopNavbar = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="ml-auto" asChild>
-            <Button size="icon" variant="ghost">
-              <Settings2Icon />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>hey</DropdownMenuItem>
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger>Theme</DropdownMenuSubTrigger>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>
-                  <SunIcon /> Light
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <MoonIcon /> Dark
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Laptop2Icon /> System
-                </DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuSub>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="ml-auto">
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

@@ -12,6 +12,13 @@ const VimNavigation = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       const key = e.key;
+      const isSearching = keyBufferRef.current.startsWith("/");
+      console.log(key);
+
+      if (e.key == "Escape") {
+        keyBufferRef.current = "";
+        setDisplayBuffer("");
+      }
 
       // Scroll to bottom with Shift+G
       if (e.shiftKey && key === "G") {
@@ -74,14 +81,18 @@ const VimNavigation = () => {
   }, []);
 
   return (
-    <div
-      data-keybuf={displayBuffer}
-      className={cn(
-        "fixed bottom-5 right-5 w-32 bg-background border hidden origin-bottom-right rounded-md px-2 py-1 font-mono text-xs",
-        displayBuffer.length > 0 && "animate-in zoom-in-80 block",
-      )}
-    >
-      {displayBuffer}
+    <div className="fixed bottom-6 left-0 right-0">
+      <div className="container mx-auto px-6 h-full flex items-center font-mono">
+        <div
+          data-keybuf={displayBuffer}
+          className={cn(
+            "ml-auto bg-background shadow border hidden origin-bottom-right rounded-md px-2 py-1 font-mono text-xs",
+            displayBuffer.length > 0 && "animate-in zoom-in-80 block",
+          )}
+        >
+          {displayBuffer}
+        </div>
+      </div>
     </div>
   );
 };
