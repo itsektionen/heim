@@ -2,7 +2,6 @@
 
 import { ItBolt } from "@/components/it-bolt";
 import { ItChip } from "@/components/it-chip";
-import { ThemeToggle } from "@/components/theme-toggle";
 import {
   Drawer,
   DrawerContent,
@@ -24,16 +23,31 @@ import {
   FileTextIcon,
   GraduationCapIcon,
   HouseIcon,
+  Laptop2Icon,
+  MoonIcon,
+  Settings2Icon,
+  SunIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import {
-  educationItems,
   chapterItems,
   documentItems,
+  educationItems,
   navigationGroups,
 } from "./nav-items";
+import { ThemeToggle } from "./theme-toggle";
+import { Button } from "./ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 const DesktopNavbar = () => {
   return (
@@ -97,9 +111,30 @@ const DesktopNavbar = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <div className="ml-auto">
-          <ThemeToggle />
-        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger className="ml-auto" asChild>
+            <Button size="icon" variant="ghost">
+              <Settings2Icon />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem>hey</DropdownMenuItem>
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>Theme</DropdownMenuSubTrigger>
+              <DropdownMenuSubContent>
+                <DropdownMenuItem>
+                  <SunIcon /> Light
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <MoonIcon /> Dark
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Laptop2Icon /> System
+                </DropdownMenuItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuSub>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </header>
   );
