@@ -3,6 +3,13 @@
 import { ItBolt } from "@/components/it-bolt";
 import { ItChip } from "@/components/it-chip";
 import {
+  chapterItems,
+  documentItems,
+  educationItems,
+  navigationGroups,
+} from "@/components/nav-items";
+import { ThemeToggle } from "@/components/theme-toggle";
+import {
   Drawer,
   DrawerContent,
   DrawerHeader,
@@ -23,32 +30,10 @@ import {
   FileTextIcon,
   GraduationCapIcon,
   HouseIcon,
-  Laptop2Icon,
-  MoonIcon,
-  Settings2Icon,
-  SunIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import {
-  chapterItems,
-  documentItems,
-  educationItems,
-  navigationGroups,
-} from "./nav-items";
-import { ThemeToggle } from "./theme-toggle";
-import { Button } from "./ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
 
 const DesktopNavbar = () => {
   return (
@@ -112,9 +97,7 @@ const DesktopNavbar = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <div className="ml-auto">
-          <ThemeToggle />
-        </div>
+        <ThemeToggle className="ml-auto" />
       </div>
     </header>
   );

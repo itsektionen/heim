@@ -1,3 +1,4 @@
+import { CommandMenu } from "@/components/cmd-menu";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/providers/theme-provider";
@@ -45,6 +46,7 @@ export default function RootLayout({
               {children}
             </main>
             <Footer />
+            <CommandMenu />
             <VimNavigation />
           </ThemeProvider>
         </TRPCProvider>

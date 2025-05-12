@@ -12,8 +12,16 @@ const VimNavigation = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       const key = e.key;
-      const isSearching = keyBufferRef.current.startsWith("/");
-      console.log(key);
+
+      const activeElement = document.activeElement;
+      const isInputFocused =
+        activeElement &&
+        (activeElement.tagName === "INPUT" ||
+          activeElement.tagName === "TEXTAREA");
+
+      if (e.metaKey || isInputFocused) {
+        return;
+      }
 
       if (e.key == "Escape") {
         keyBufferRef.current = "";
