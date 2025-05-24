@@ -126,7 +126,7 @@ const DesktopNavbar = () => {
         <Button
           onClick={triggerCmdK}
           variant={"outline"}
-          className="ml-auto cursor-pointer hidden md:flex lg:w-[260px] !pr-2 text-muted-foreground justify-start hover:!bg-muted group !bg-transparent shadow-none"
+          className="ml-auto cursor-pointer hidden md:flex lg:w-[260px] !pr-2 text-muted-foreground justify-start hover:!bg-muted dark:hover:!bg-card group !bg-transparent shadow-none"
         >
           <SearchIcon />
           Search...

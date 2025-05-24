@@ -180,3 +180,7 @@
         scrollbar-gutter: stable both-edges;
     }
 }
+
+body::selection {
+    @apply bg-primary text-foreground;
+}
