@@ -17,6 +17,7 @@ import {
   SchoolIcon,
   ZapIcon,
 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
 export const revalidate = 86400;
@@ -24,18 +25,18 @@ export const revalidate = 86400;
 export default async function Home() {
   // const scraper = new FacebookScraper();
   // const chapterEvents = await scraper.listEvents("itsektionenkth");
+  const t = await getTranslations("HomePage");
+  const commonT = await getTranslations("Common");
 
   return (
     <>
       <Hero className="grid grid-cols-2">
         <HeroContent className="text-white p-6 sm:p-4">
           <div className="max-w-[32ch]">
-            <p className="text-2xl font-medium mb-1 text-primary">Welcome!</p>
-            <span>
-              As one of the largest chapters within the Tekniska Högskolans
-              Studentkår (THS Student Union) at KTH in Stockholm, we are
-              thrilled to have you here!
-            </span>
+            <p className="text-2xl font-medium mb-1 text-primary">
+              {t("title")}
+            </p>
+            <span>{t("tagline")}</span>
           </div>
         </HeroContent>
         <HeroImage src="/assets/img/header.avif" alt="Header Image" />
@@ -46,19 +47,20 @@ export default async function Home() {
           <CardHeader>
             <CardTitle>
               <GraduationCapIcon />
-              New student
+              {t("Cards.NewStudent.title")}
             </CardTitle>
             <CardDescription>
-              Are you a newly admitted student?{" "}
-              <Link
-                className="hover:underline underline-offset-2 text-primary"
-                href="https://mottagningen.nu"
-                target="_blank"
-              >
-                mottagningen.nu
-              </Link>{" "}
-              has all the information you need to find your way around KTH and
-              the IT Chapter.
+              {t.rich("Cards.NewStudent.content", {
+                link: (chunks) => (
+                  <Link
+                    className="hover:underline underline-offset-2 text-primary"
+                    href="https://mottagningen.nu"
+                    target="_blank"
+                  >
+                    {chunks}
+                  </Link>
+                ),
+              })}
             </CardDescription>
           </CardHeader>
           <CardFooter>
@@ -75,19 +77,15 @@ export default async function Home() {
           <CardHeader>
             <CardTitle>
               <SchoolIcon />
-              The Education
+              {t("Cards.Education.title")}
             </CardTitle>
-            <CardDescription>
-              There are 3 programmes mapped to the IT Chapter: CINTE, TIDAB and
-              TCOMK. The Chapter exists to ensure that our members get the best
-              education possible.
-            </CardDescription>
+            <CardDescription>{t("Cards.Education.content")}</CardDescription>
           </CardHeader>
           <CardFooter>
             <CardAction>
               <Button asChild variant="ghost">
                 <Link href="/education">
-                  Read more <ArrowRightIcon />
+                  {commonT("read-more")} <ArrowRightIcon />
                 </Link>
               </Button>
             </CardAction>
@@ -97,18 +95,14 @@ export default async function Home() {
           <CardHeader>
             <CardTitle>
               <ZapIcon />
-              The Chapter
+              {t("Cards.Chapter.title")}
             </CardTitle>
-            <CardDescription>
-              Aside from study quality assurance, the chapter provides a
-              plethora of extracurricular activities such as pubs, board game
-              nights, sports events and LAN parties.
-            </CardDescription>
+            <CardDescription>{t("Cards.Chapter.content")}</CardDescription>
           </CardHeader>
           <CardFooter>
             <CardAction>
               <Button variant="ghost">
-                Read more <ArrowRightIcon />
+                {commonT("read-more")} <ArrowRightIcon />
               </Button>
             </CardAction>
           </CardFooter>

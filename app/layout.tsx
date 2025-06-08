@@ -5,7 +5,10 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { TRPCProvider } from "@/components/providers/trpc-provider";
 import { VimNavigation } from "@/components/vim-navigation";
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale } from "next-intl/server";
 import { Geist_Mono, Poppins } from "next/font/google";
+
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -25,13 +28,15 @@ export const metadata: Metadata = {
     "The Chapter for Information Technology at the Royal Institute of Technology (KTH) in Stockholm, Sweden.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={`${poppins.variable} ${geistMono.variable} antialiased`}>
         <TRPCProvider>
           <ThemeProvider
@@ -41,13 +46,15 @@ export default function RootLayout({
             storageKey="theme-kthit"
             disableTransitionOnChange
           >
-            <Navbar />
-            <main className="container mx-auto p-6 sm:border-x pb-42">
-              {children}
-            </main>
-            <Footer />
-            <CommandMenu />
-            <VimNavigation />
+            <NextIntlClientProvider>
+              <Navbar />
+              <main className="container mx-auto p-6 sm:border-x pb-42">
+                {children}
+              </main>
+              <Footer />
+              <CommandMenu />
+              <VimNavigation />
+            </NextIntlClientProvider>
           </ThemeProvider>
         </TRPCProvider>
       </body>

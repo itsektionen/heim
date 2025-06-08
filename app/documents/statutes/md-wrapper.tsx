@@ -11,6 +11,7 @@ import useClosestAnchor from "@/hooks/use-closest-anchor";
 import { getHeadings } from "@/lib/md";
 import { cn } from "@/lib/utils";
 import { ScrollIcon, TableOfContentsIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 const MdWrapper = ({
@@ -20,6 +21,7 @@ const MdWrapper = ({
   children: React.ReactNode;
   markdown: string;
 }) => {
+  const t = useTranslations("Statutes");
   const [anchor] = useClosestAnchor();
   const headings = getHeadings(markdown);
   return (
@@ -27,11 +29,10 @@ const MdWrapper = ({
       <div className="border-b px-6 py-3 text-sm">
         <div className="flex items-center gap-2 mb-1">
           <ScrollIcon className="size-4 text-primary" />
-          <p className="font-medium">Statutes</p>
+          <p className="font-medium">{t("title")}</p>
         </div>
         <p className="text-muted-foreground text-sm max-w-prose">
-          These are the chapter&apos;s statutes. They are our regulatory
-          documents.
+          {t("subtitle")}
         </p>
       </div>
       <Sheet>
@@ -40,7 +41,7 @@ const MdWrapper = ({
         </SheetTrigger>
         <SheetContent>
           <SheetHeader className="mb-0">
-            <SheetTitle>Table of Contents</SheetTitle>
+            <SheetTitle>{t("toc")}</SheetTitle>
           </SheetHeader>
           <div className="px-6 overflow-y-auto -mt-6 pb-18">
             <ul>
@@ -70,7 +71,7 @@ const MdWrapper = ({
             <div className="relative h-[calc(100vh-4rem-1px)]">
               <nav className="absolute top-0 bottom-0 p-6 border-r overflow-y-auto">
                 <p className="text-muted-foreground font-medium text-sm mb-2">
-                  Table of Contents
+                  {t("toc")}
                 </p>
                 <ul>
                   {headings?.slice(1).map((heading) => (
