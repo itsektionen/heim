@@ -1,7 +1,7 @@
 import { KoppsClient } from "@/lib/kopps";
+import { procedure, router } from "@/server/trpc";
 import { KoppsStudyYear } from "@/types/kopps";
 import { z } from "zod";
-import { procedure, router } from "../trpc";
 
 export const koppsRouter = router({
   getProgramme: procedure.input(z.string()).query(async ({ input }) => {

@@ -1,5 +1,15 @@
 "use client";
 
+import { ItBolt } from "@/components/it-bolt";
+import { ItChip } from "@/components/it-chip";
+import { navigationGroups } from "@/components/nav-items";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import { cn } from "@/lib/utils";
 import {
   CalendarIcon,
@@ -11,16 +21,6 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ItBolt } from "../it-bolt";
-import { ItChip } from "../it-chip";
-import { navigationGroups } from "../nav-items";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "../ui/drawer";
 
 const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();

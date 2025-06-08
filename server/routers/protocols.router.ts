@@ -1,7 +1,7 @@
+import { procedure, router } from "@/server/trpc";
 import { google } from "googleapis";
 import { env } from "process";
 import { z } from "zod";
-import { procedure, router } from "../trpc";
 
 const scopes = [
   "https://www.googleapis.com/auth/drive.metadata.readonly",
