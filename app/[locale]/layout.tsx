@@ -5,11 +5,10 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { TRPCProvider } from "@/components/providers/trpc-provider";
 import { VimNavigation } from "@/components/vim-navigation";
 import type { Metadata } from "next";
-import { NextIntlClientProvider } from "next-intl";
-import { getLocale } from "next-intl/server";
 import { Geist_Mono, Poppins } from "next/font/google";
+import { I18nProviderClient } from "../../locales/client";
 
-import "./globals.css";
+import "@/app/globals.css";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -29,11 +28,13 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({
+  params,
   children,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
-  const locale = await getLocale();
+  const { locale } = await params;
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -46,7 +47,7 @@ export default async function RootLayout({
             storageKey="theme-kthit"
             disableTransitionOnChange
           >
-            <NextIntlClientProvider>
+            <I18nProviderClient locale={locale}>
               <Navbar />
               <main className="container mx-auto p-6 sm:border-x pb-42">
                 {children}
@@ -54,7 +55,7 @@ export default async function RootLayout({
               <Footer />
               <CommandMenu />
               <VimNavigation />
-            </NextIntlClientProvider>
+            </I18nProviderClient>
           </ThemeProvider>
         </TRPCProvider>
       </body>

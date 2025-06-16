@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
+import { getI18n } from "@/locales/server";
 import { ExternalLinkIcon } from "lucide-react";
-import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
 const EducationPage = async () => {
-  const commonT = await getTranslations("Common");
+  const commonT = await getI18n();
   return (
     <>
       <Hero>
@@ -50,7 +50,7 @@ const EducationPage = async () => {
         <div className="flex gap-2">
           <Button asChild>
             <Link href="/education/programmes?p=CINTE">
-              {commonT("read-more")}
+              {commonT("Common.read-more")}
             </Link>
           </Button>
           <Button variant="secondary" asChild>
@@ -81,7 +81,7 @@ const EducationPage = async () => {
         <div className="flex gap-2">
           <Button asChild>
             <Link href="/education/programmes?p=TIDAB">
-              {commonT("read-more")}
+              {commonT("Common.read-more")}
             </Link>
           </Button>
           <Button variant="secondary" asChild>
@@ -113,7 +113,7 @@ const EducationPage = async () => {
         <div className="flex gap-2">
           <Button asChild>
             <Link href="/education/programmes?p=TCOMK">
-              {commonT("read-more")}
+              {commonT("Common.read-more")}
             </Link>
           </Button>
           <Button variant="secondary" asChild>

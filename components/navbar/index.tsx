@@ -17,14 +17,14 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 
-import { getTranslations } from "next-intl/server";
+import { getScopedI18n } from "@/locales/server";
 import Link from "next/link";
 import React from "react";
 import { MobileNavbar } from "./mobile";
 import { Search } from "./search";
 
 const DesktopNavbar = async () => {
-  const t = await getTranslations("NavBar");
+  const t = await getScopedI18n("NavBar");
 
   return (
     <header className="hidden sm:block sticky z-50 top-0 border-b bg-background/90 backdrop-blur">

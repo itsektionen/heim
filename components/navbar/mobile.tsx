@@ -11,13 +11,13 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/locales/client";
 import {
   CalendarIcon,
   FileTextIcon,
   GraduationCapIcon,
   HouseIcon,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -26,7 +26,7 @@ const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   const [open, setOpen] = useState<boolean>(false);
 
-  const t = useTranslations("NavBar");
+  const t = useI18n();
 
   useEffect(() => {
     setOpen(false);
@@ -70,7 +70,7 @@ const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
               </div>
             ))}
             <Link href={"/contact"} className="font-medium mb-4 block w-fit">
-              {t("Contact")}
+              {t("NavBar.Contact")}
             </Link>
             {children}
           </div>

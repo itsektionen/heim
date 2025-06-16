@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Hero, HeroContent, HeroImage } from "@/components/ui/hero";
+import { getScopedI18n, getStaticParams } from "@/locales/server";
 // import { FacebookScraper } from "@/lib/scrapers/facebook";
 import {
   ArrowRightIcon,
@@ -17,16 +18,22 @@ import {
   SchoolIcon,
   ZapIcon,
 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { setStaticParamsLocale } from "next-international/server";
 import Link from "next/link";
 
 export const revalidate = 86400;
 
-export default async function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setStaticParamsLocale(locale);
   // const scraper = new FacebookScraper();
   // const chapterEvents = await scraper.listEvents("itsektionenkth");
-  const t = await getTranslations("HomePage");
-  const commonT = await getTranslations("Common");
+  const t = await getScopedI18n("HomePage");
+  const commonT = await getScopedI18n("Common");
 
   return (
     <>
@@ -50,14 +57,13 @@ export default async function Home() {
               {t("Cards.NewStudent.title")}
             </CardTitle>
             <CardDescription>
-              {t.rich("Cards.NewStudent.content", {
-                link: (chunks) => (
+              {t("Cards.NewStudent.content", {
+                link: (
                   <Link
-                    className="hover:underline underline-offset-2 text-primary"
+                    className="text-primary hover:underline underline-offset-4"
                     href="https://mottagningen.nu"
-                    target="_blank"
                   >
-                    {chunks}
+                    mottagningen.nu
                   </Link>
                 ),
               })}
@@ -119,4 +125,8 @@ export default async function Home() {
       </section>
     </>
   );
+}
+
+export function generateStaticParams() {
+  return getStaticParams();
 }

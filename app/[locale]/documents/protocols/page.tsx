@@ -1,12 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { listAllMeetings } from "@/lib/drive";
+import { getStaticParams } from "@/locales/server";
 import {
   ExternalLinkIcon,
   FileQuestionIcon,
   FileTextIcon,
   FolderIcon,
 } from "lucide-react";
+import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,7 +22,14 @@ const YearHeader = ({ year }: { year: string }) => {
   );
 };
 
-const ProtocolsPage = async () => {
+const ProtocolsPage = async ({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) => {
+  const { locale } = await params;
+  setStaticParamsLocale(locale);
+
   const allMeetings = await listAllMeetings();
   const earliestMeeting = allMeetings.find(
     (m) =>
@@ -83,5 +92,9 @@ const ProtocolsPage = async () => {
     </div>
   );
 };
+
+export function generateStaticParams() {
+  return getStaticParams();
+}
 
 export default ProtocolsPage;
