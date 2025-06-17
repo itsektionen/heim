@@ -6,35 +6,24 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
 import { env } from "@/env";
-import { getStaticParams } from "@/locales/server";
+import { generateOgImages } from "@/lib/seo";
+import { getI18n, getStaticParams } from "@/locales/server";
 import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import "./style.css";
 
 export const revalidate = 2592000;
 
-const title = "IT-Sektionen";
-const description = "Stadgar";
-
-export const metadata: Metadata = {
-  openGraph: {
-    images: [
-      {
-        url: `/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    images: [
-      {
-        url: `/og?title=${encodeURIComponent(
-          title,
-        )}&description=${encodeURIComponent(description)}`,
-      },
-    ],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getI18n();
+  const og = generateOgImages({
+    description: t("NavBar.Documents"),
+  });
+  return {
+    title: `${t("NavBar.Documents")} - ${t("Common.chapter")}`,
+    ...og,
+  };
+}
 
 export default async function StatutesPage({
   params,

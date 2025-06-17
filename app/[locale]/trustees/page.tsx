@@ -5,6 +5,8 @@ import {
   committeeTrustees,
   type Trustee,
 } from "@/data/trustees";
+import { generateOgImages } from "@/lib/seo";
+import { getI18n } from "@/locales/server";
 import { Metadata } from "next";
 
 const TrusteeCard = ({ trustee }: { trustee: Trustee }) => {
@@ -25,28 +27,16 @@ const TrusteeCard = ({ trustee }: { trustee: Trustee }) => {
   );
 };
 
-const title = "IT-Sektionen";
-const description = "Förtroendevalda";
-
-export const metadata: Metadata = {
-  openGraph: {
-    images: [
-      {
-        url: `/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    images: [
-      {
-        url: `/og?title=${encodeURIComponent(
-          title,
-        )}&description=${encodeURIComponent(description)}`,
-      },
-    ],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getI18n();
+  const og = generateOgImages({
+    description: t("NavBar.Trustees"),
+  });
+  return {
+    title: `${t("NavBar.Trustees")} - ${t("Common.chapter")}`,
+    ...og,
+  };
+}
 
 const TrusteesPage = () => {
   return (

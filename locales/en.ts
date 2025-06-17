@@ -38,6 +38,8 @@ export default {
     Documents: "Documents",
     Contact: "Contact",
     Search: "Search",
+    Committees: "Committees",
+    Trustees: "Trustees",
   },
   LocaleSwitcher: {
     en: "English",
@@ -46,6 +48,7 @@ export default {
   Common: {
     "read-more": "Read more",
     chapter: "The IT Chapter",
+    tagline: "The Chapter for everyone",
   },
   NotFound: {
     cta: "Take me back!",

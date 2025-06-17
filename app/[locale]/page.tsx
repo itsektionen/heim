@@ -19,34 +19,10 @@ import {
   SchoolIcon,
   ZapIcon,
 } from "lucide-react";
-import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import Link from "next/link";
 
 export const revalidate = 86400;
-
-const title = "IT-Sektionen";
-const description = "Sektionen för alla";
-
-export const metadata: Metadata = {
-  openGraph: {
-    images: [
-      {
-        url: `/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    images: [
-      {
-        url: `/og?title=${encodeURIComponent(
-          title,
-        )}&description=${encodeURIComponent(description)}`,
-      },
-    ],
-  },
-};
 
 export default async function Home({
   params,

@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: t("Common.chapter"),
-    description: "Sektionen för alla",
+    description: t("Common.tagline"),
   };
 }
 

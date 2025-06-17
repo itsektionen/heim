@@ -37,6 +37,8 @@ export default {
     Documents: "Dokument",
     Contact: "Kontakt",
     Search: "Sök",
+    Committees: "Nämnder",
+    Trustees: "Förtroendevalda",
   },
   LocaleSwitcher: {
     en: "English",
@@ -45,6 +47,7 @@ export default {
   Common: {
     "read-more": "Läs mer",
     chapter: "IT-Sektionen",
+    tagline: "Sektionen för alla",
   },
   NotFound: {
     cta: "Ta mig tillbaka!",

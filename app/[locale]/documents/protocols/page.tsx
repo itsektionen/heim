@@ -6,7 +6,8 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { listAllMeetings } from "@/lib/drive";
-import { getStaticParams } from "@/locales/server";
+import { generateOgImages } from "@/lib/seo";
+import { getI18n, getStaticParams } from "@/locales/server";
 import {
   ChevronDownIcon,
   ExternalLinkIcon,
@@ -30,28 +31,16 @@ const YearHeader = ({ year }: { year: string }) => {
   );
 };
 
-const title = "IT-Sektionen";
-const description = "Protokoll";
-
-export const metadata: Metadata = {
-  openGraph: {
-    images: [
-      {
-        url: `/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    images: [
-      {
-        url: `/og?title=${encodeURIComponent(
-          title,
-        )}&description=${encodeURIComponent(description)}`,
-      },
-    ],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getI18n();
+  const og = generateOgImages({
+    description: t("NavBar.Documents"),
+  });
+  return {
+    title: `${t("NavBar.Documents")} - ${t("Common.chapter")}`,
+    ...og,
+  };
+}
 
 const ProtocolsPage = async ({
   params,

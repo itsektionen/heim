@@ -9,7 +9,9 @@ import {
 } from "@/components/ui/card";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import committees, { type Committee } from "@/data/committees";
+import { generateOgImages } from "@/lib/seo";
 import { cn, getContrastingColor } from "@/lib/utils";
+import { getI18n } from "@/locales/server";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -65,28 +67,16 @@ const CommitteeCard = ({ committee }: { committee: Committee }) => {
   );
 };
 
-const title = "IT-Sektionen";
-const description = "Nämnder";
-
-export const metadata: Metadata = {
-  openGraph: {
-    images: [
-      {
-        url: `/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    images: [
-      {
-        url: `/og?title=${encodeURIComponent(
-          title,
-        )}&description=${encodeURIComponent(description)}`,
-      },
-    ],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getI18n();
+  const og = generateOgImages({
+    description: t("NavBar.Committees"),
+  });
+  return {
+    title: `${t("NavBar.Committees")} - ${t("Common.chapter")}`,
+    ...og,
+  };
+}
 
 const CommitteesPage = () => {
   return (
