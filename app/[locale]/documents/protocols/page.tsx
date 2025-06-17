@@ -14,6 +14,7 @@ import {
   FileTextIcon,
   FolderIcon,
 } from "lucide-react";
+import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,6 +28,29 @@ const YearHeader = ({ year }: { year: string }) => {
       <ChevronDownIcon className="size-4 text-muted-foreground transition-transform" />
     </div>
   );
+};
+
+const title = "IT-Sektionen";
+const description = "Protokoll";
+
+export const metadata: Metadata = {
+  openGraph: {
+    images: [
+      {
+        url: `/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title,
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
 };
 
 const ProtocolsPage = async ({

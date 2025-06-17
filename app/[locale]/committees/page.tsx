@@ -10,6 +10,7 @@ import {
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import committees, { type Committee } from "@/data/committees";
 import { cn, getContrastingColor } from "@/lib/utils";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -62,6 +63,29 @@ const CommitteeCard = ({ committee }: { committee: Committee }) => {
       </CardContent>
     </Card>
   );
+};
+
+const title = "IT-Sektionen";
+const description = "Nämnder";
+
+export const metadata: Metadata = {
+  openGraph: {
+    images: [
+      {
+        url: `/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title,
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
 };
 
 const CommitteesPage = () => {

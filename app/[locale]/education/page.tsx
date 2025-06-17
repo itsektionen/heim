@@ -2,7 +2,31 @@ import { Button } from "@/components/ui/button";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import { getI18n } from "@/locales/server";
 import { ExternalLinkIcon } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
+
+const title = "IT-Sektionen";
+const description = "Utbildning";
+
+export const metadata: Metadata = {
+  openGraph: {
+    images: [
+      {
+        url: `/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title,
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+};
 
 const EducationPage = async () => {
   const commonT = await getI18n();

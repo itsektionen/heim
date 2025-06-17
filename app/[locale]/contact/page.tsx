@@ -7,7 +7,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
-import { getI18n } from "@/locales/server";
 import { MailIcon, PiggyBankIcon, UserIcon } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -42,6 +41,29 @@ const contactCards: {
     },
   },
 ];
+
+const title = "IT-Sektionen";
+const description = "Kontakt";
+
+export const metadata: Metadata = {
+  openGraph: {
+    images: [
+      {
+        url: `/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title,
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+};
 
 const ContactPage = () => {
   return (
@@ -173,13 +195,5 @@ const ContactPage = () => {
     </>
   );
 };
-
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getI18n();
-
-  return {
-    title: `${t("NavBar.Contact")} - ${t("Common.chapter")}`,
-  };
-}
 
 export default ContactPage;

@@ -5,6 +5,7 @@ import {
   committeeTrustees,
   type Trustee,
 } from "@/data/trustees";
+import { Metadata } from "next";
 
 const TrusteeCard = ({ trustee }: { trustee: Trustee }) => {
   return (
@@ -22,6 +23,29 @@ const TrusteeCard = ({ trustee }: { trustee: Trustee }) => {
       )}
     </div>
   );
+};
+
+const title = "IT-Sektionen";
+const description = "Förtroendevalda";
+
+export const metadata: Metadata = {
+  openGraph: {
+    images: [
+      {
+        url: `/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title,
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
 };
 
 const TrusteesPage = () => {

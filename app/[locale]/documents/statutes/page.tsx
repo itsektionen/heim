@@ -7,10 +7,34 @@ import remarkGfm from "remark-gfm";
 
 import { env } from "@/env";
 import { getStaticParams } from "@/locales/server";
+import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import "./style.css";
 
 export const revalidate = 2592000;
+
+const title = "IT-Sektionen";
+const description = "Stadgar";
+
+export const metadata: Metadata = {
+  openGraph: {
+    images: [
+      {
+        url: `/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title,
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+};
 
 export default async function StatutesPage({
   params,
