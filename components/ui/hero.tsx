@@ -38,13 +38,16 @@ export const HeroTitle = ({
 
 export const HeroContent = ({
   children,
+  style,
   className,
 }: {
   children: React.ReactNode;
+  style?: React.CSSProperties;
   className?: string;
 }) => {
   return (
     <div
+      style={style}
       className={cn(
         "flex items-center h-full justify-center flex-col p-4",
         className,

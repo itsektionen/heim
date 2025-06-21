@@ -2,12 +2,13 @@ export type Committee = {
   name: string;
   slug: string;
   color?: string;
+  textColor?: string;
   description: string;
   website?: string;
   img?: string;
 };
 
-const committees = [
+const committees: Committee[] = [
   {
     name: "Qmisk",
     slug: "qmisk",
@@ -19,10 +20,11 @@ const committees = [
   {
     name: "ITK",
     slug: "itk",
-    color: "#ABFF5B",
+    color: "#131413",
     description: "Description of Committee 2",
     website: "https://example.com/committee2",
     img: "/assets/img/committees/itk.webp",
+    textColor: "#ADFF5B",
   },
   {
     name: "TMEIT",

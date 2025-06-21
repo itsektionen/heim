@@ -8,8 +8,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
-import committees, { type Committee } from "@/data/committees";
-import { cn, getContrastingColor } from "@/lib/utils";
+import { type Committee } from "@/data/committees";
+import { listCommittees } from "@/lib/committees";
+import { cn } from "@/lib/utils";
 import { getI18n, getStaticParams } from "@/locales/server";
 import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
@@ -57,8 +58,8 @@ const CommitteeCard = async ({ committee }: { committee: Committee }) => {
         <Button
           asChild
           style={{
-            backgroundColor: committee.color || "#cc99ff",
-            color: getContrastingColor(committee.color ?? "#cc99ff"),
+            backgroundColor: committee.color,
+            color: committee.textColor,
           }}
         >
           <Link href={`/committees/${committee.slug}`}>
@@ -77,6 +78,8 @@ const CommitteesPage = async ({
 }) => {
   const { locale } = await params;
   setStaticParamsLocale(locale);
+
+  const committees = listCommittees();
 
   const t = await getI18n();
 
