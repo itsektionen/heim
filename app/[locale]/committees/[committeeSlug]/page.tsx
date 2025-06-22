@@ -1,20 +1,44 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Hero, HeroContent } from "@/components/ui/hero";
-import { getCommittee } from "@/lib/committees";
+import {
+  defaultCommitteeColor,
+  getCommittee,
+  listCommittees,
+} from "@/lib/committees";
 import { getContrastingColor } from "@/lib/utils";
+import { getI18n, getStaticParams } from "@/locales/server";
 import { ArrowLeftIcon, ExternalLinkIcon, MailIcon } from "lucide-react";
+import { Metadata } from "next";
+import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-const CommitteePage = async ({
+export const generateMetadata = async ({
   params,
 }: {
   params: Promise<{ committeeSlug: string }>;
-}) => {
+}): Promise<Metadata> => {
+  const t = await getI18n();
   const { committeeSlug } = await params;
+  const {
+    data: { committee },
+  } = getCommittee(committeeSlug)!;
+
+  return {
+    title: committee.name + " - " + t("Common.chapter"),
+  };
+};
+
+const CommitteePage = async ({
+  params,
+}: {
+  params: Promise<{ committeeSlug: string; locale: string }>;
+}) => {
+  const { committeeSlug, locale } = await params;
   const response = getCommittee(committeeSlug);
+  setStaticParamsLocale(locale);
 
   if (!response) {
     return notFound();
@@ -27,7 +51,10 @@ const CommitteePage = async ({
       <Hero>
         <HeroContent
           style={{
-            backgroundColor: committee.color,
+            backgroundColor:
+              committee.img && committee.color === defaultCommitteeColor
+                ? committee.color + "66"
+                : committee.color,
             color: committee.textColor,
           }}
         >
@@ -112,5 +139,14 @@ const CommitteePage = async ({
     </>
   );
 };
+
+export function generateStaticParams() {
+  return getStaticParams().map((locale) => {
+    return listCommittees().map((committtee) => ({
+      locale: locale,
+      committeeSlug: committtee.slug,
+    }));
+  });
+}
 
 export default CommitteePage;

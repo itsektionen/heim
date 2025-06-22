@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import { type Committee } from "@/data/committees";
-import { listCommittees } from "@/lib/committees";
+import { backgroundColor, listCommittees } from "@/lib/committees";
 import { cn } from "@/lib/utils";
 import { getI18n, getStaticParams } from "@/locales/server";
 import { setStaticParamsLocale } from "next-international/server";
@@ -23,9 +23,7 @@ const CommitteeCard = async ({ committee }: { committee: Committee }) => {
     <Card className="flex flex-col overflow-hidden pt-0">
       <div
         style={{
-          backgroundColor: committee.img
-            ? committee.color
-            : (committee.color || "#cc99ff") + "66",
+          backgroundColor: backgroundColor(committee),
         }}
         className={cn(
           "overflow-hidden h-[180px] flex",
@@ -37,15 +35,15 @@ const CommitteeCard = async ({ committee }: { committee: Committee }) => {
         {committee.img ? (
           <Image
             alt={`${committee.name} logo`}
-            className="w-50"
+            className="w-40"
             src={committee.img}
             width={1280}
             height={720}
           />
         ) : (
           <ItBolt
-            primary={(committee.color || "#cc99ff") + "66"}
-            secondary={(committee.color || "#cc99ff") + "99"}
+            primary={committee.color + "66"}
+            secondary={committee.color + "99"}
             size={240}
           />
         )}

@@ -2,7 +2,17 @@ import committees, { Committee, CommitteeSlug } from "@/data/committees";
 import { boardTrustees, committeeTrustees, Trustee } from "@/data/trustees";
 import { getContrastingColor } from "./utils";
 
-const defaultColor = "#cc99ff";
+export const defaultCommitteeColor = "#cc99ff";
+
+export const backgroundColor = (committee: Committee) => {
+  if (committee.img) {
+    if (committee.color == defaultCommitteeColor) {
+      return committee.color + "66";
+    }
+    return committee.color;
+  }
+  return committee.color + "66";
+};
 
 const getCommittee = (
   slug: string,
@@ -22,8 +32,9 @@ const listCommittees = (): Committee[] => {
 
 const fixColors = (c: Committee): Committee => ({
   ...c,
-  color: c.color || defaultColor,
-  textColor: c.textColor || getContrastingColor(c.color || defaultColor),
+  color: c.color || defaultCommitteeColor,
+  textColor:
+    c.textColor || getContrastingColor(c.color || defaultCommitteeColor),
 });
 
 export { getCommittee, listCommittees };
