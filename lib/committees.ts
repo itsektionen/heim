@@ -1,11 +1,19 @@
-import committees, { Committee } from "@/data/committees";
+import committees, { Committee, CommitteeSlug } from "@/data/committees";
+import { boardTrustees, committeeTrustees, Trustee } from "@/data/trustees";
 import { getContrastingColor } from "./utils";
 
 const defaultColor = "#cc99ff";
 
-const getCommittee = (slug: string) => {
+const getCommittee = (
+  slug: string,
+): { data: { committee: Committee; trustees: Trustee[] } } | undefined => {
   const committee = committees.find((c) => c.slug === slug);
-  return committee ? fixColors(committee) : undefined;
+  const trustees = [...boardTrustees, ...committeeTrustees].filter((t) =>
+    t.committeeIds?.includes(slug as CommitteeSlug),
+  );
+  return committee
+    ? { data: { committee: fixColors(committee), trustees: trustees } }
+    : undefined;
 };
 
 const listCommittees = (): Committee[] => {

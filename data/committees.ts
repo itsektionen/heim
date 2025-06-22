@@ -8,13 +8,43 @@ export type Committee = {
   img?: string;
 };
 
-const committees: Committee[] = [
+const committees = [
+  {
+    name: "Board",
+    slug: "board",
+    description: "The board",
+  },
+  {
+    name: "Study Committee",
+    slug: "study-committee",
+    description: "The Study Committee",
+  },
+  {
+    name: "Study Environment Committee",
+    slug: "smn",
+    description: "We fix things!",
+  },
+  {
+    name: "Business Relations Committee",
+    slug: "brc",
+    description: "We make money",
+  },
+  {
+    name: "Council of Safety",
+    slug: "sso",
+    description: "Keepin y'all safe",
+  },
+  {
+    name: "Election Committee",
+    slug: "val",
+    description: "*whale noises*",
+  },
   {
     name: "Qmisk",
     slug: "qmisk",
     color: "#800000",
     description: "Description of Committee 1",
-    website: "https://example.com/committee1",
+    website: "https://qmisk.com",
     img: "/assets/img/committees/qmisk.png",
   },
   {
@@ -22,7 +52,7 @@ const committees: Committee[] = [
     slug: "itk",
     color: "#131413",
     description: "Description of Committee 2",
-    website: "https://example.com/committee2",
+    website: "https://itk.gg",
     img: "/assets/img/committees/itk.webp",
     textColor: "#ADFF5B",
   },
@@ -31,7 +61,7 @@ const committees: Committee[] = [
     slug: "tmeit",
     color: "#8BD4FF",
     description: "Description of Committee 3",
-    website: "https://example.com/committee3",
+    website: "https://tmeit.se",
     img: "/assets/img/committees/tmeit.svg",
   },
   {
@@ -54,6 +84,8 @@ const committees: Committee[] = [
     slug: "reception",
     description: "We do receive",
   },
-];
+] as const;
+
+export type CommitteeSlug = (typeof committees)[number]["slug"];
 
 export default committees;

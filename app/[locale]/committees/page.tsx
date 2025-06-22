@@ -50,7 +50,7 @@ const CommitteeCard = async ({ committee }: { committee: Committee }) => {
           />
         )}
       </div>
-      <CardHeader>
+      <CardHeader className="pt-2">
         <CardTitle className="font-poppins">{committee.name}</CardTitle>
         <CardDescription>{committee.description}</CardDescription>
       </CardHeader>
