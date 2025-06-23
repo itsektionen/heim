@@ -27,7 +27,9 @@ const getCommittee = (
 };
 
 const listCommittees = (): Committee[] => {
-  return committees.map((c) => fixColors(c));
+  return committees
+    .map((c) => fixColors(c))
+    .sort((a, b) => a.name.localeCompare(b.name));
 };
 
 const fixColors = (c: Committee): Committee => ({

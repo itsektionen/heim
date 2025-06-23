@@ -8,7 +8,12 @@ import {
 } from "@/lib/committees";
 import { getContrastingColor } from "@/lib/utils";
 import { getI18n, getStaticParams } from "@/locales/server";
-import { ArrowLeftIcon, ExternalLinkIcon, MailIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  CircleAlertIcon,
+  ExternalLinkIcon,
+  MailIcon,
+} from "lucide-react";
 import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
@@ -105,20 +110,27 @@ const CommitteePage = async ({
         </div>
         <div className="space-y-3 shrink-0 min-w-[300px]">
           <p className="text-muted-foreground text-sm font-medium">Trustees</p>
-          {trustees.map((t, i) => (
-            <div key={`trustee.${i}`} className="flex gap-3 items-center">
-              <Avatar className="size-12">
-                <AvatarFallback className="font-medium">{`${t.name.split(" ")[0][0]}${t.name.split(" ")[1][0]}`}</AvatarFallback>
-              </Avatar>
-              <div className="mr-8">
-                <p>{t.name}</p>
-                <p className="text-sm text-muted-foreground">{t.role}</p>
+          {trustees.length > 0 ? (
+            trustees.map((t, i) => (
+              <div key={`trustee.${i}`} className="flex gap-3 items-center">
+                <Avatar className="size-12">
+                  <AvatarFallback className="font-medium">{`${t.name.split(" ")[0][0]}${t.name.split(" ")[1][0]}`}</AvatarFallback>
+                </Avatar>
+                <div className="mr-8">
+                  <p>{t.name}</p>
+                  <p className="text-sm text-muted-foreground">{t.role}</p>
+                </div>
+                <Button className="ml-auto" variant="ghost" size="icon">
+                  <MailIcon className="text-muted-foreground" />
+                </Button>
               </div>
-              <Button className="ml-auto" variant="ghost" size="icon">
-                <MailIcon className="text-muted-foreground" />
-              </Button>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="bg-muted px-3 py-2 rounded-md border text-muted-foreground flex items-center gap-2">
+              <CircleAlertIcon className="size-4" />
+              No trustees found
+            </p>
+          )}
           {committee.website && (
             <>
               <p className="text-muted-foreground text-sm font-medium mt-8">

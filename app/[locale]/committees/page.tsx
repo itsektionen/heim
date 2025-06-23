@@ -44,7 +44,7 @@ const CommitteeCard = async ({ committee }: { committee: Committee }) => {
           <ItBolt
             primary={committee.color + "66"}
             secondary={committee.color + "99"}
-            size={240}
+            size={260}
           />
         )}
       </div>

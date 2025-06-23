@@ -43,7 +43,7 @@ export const boardTrustees: Trustee[] = [
     name: "Simon Hedström",
     role: "President of the Study Social Committee",
     mail: "studiesocialt@kth.it",
-    committeeIds: ["board"],
+    committeeIds: ["board", "study-social"],
   },
   {
     name: "Elina Wang",
