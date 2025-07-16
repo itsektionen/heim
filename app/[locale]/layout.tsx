@@ -30,14 +30,19 @@ export default async function PublicLayout({
     </I18nProviderClient>
   );
 }
-
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getI18n();
   const title = t("Common.chapter");
   const subtitle = "Sektionen för alla";
 
+  const metadataBase = new URL(
+    process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000",
+  );
+
   return {
-    title,
+    title: title,
     description: subtitle,
     openGraph: {
       images: [getOgImageUrl(title, subtitle)],
@@ -45,5 +50,6 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       images: [getOgImageUrl(title, subtitle)],
     },
+    metadataBase,
   };
 }

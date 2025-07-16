@@ -152,6 +152,12 @@ export const generateMetadata = async ({
   const subtitle = committee.name;
   const description = committee.description;
 
+  const metadataBase = new URL(
+    process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000",
+  );
+
   return {
     title: `${subtitle} – ${title}`,
     description,
@@ -161,6 +167,7 @@ export const generateMetadata = async ({
     twitter: {
       images: [getOgImageUrl(title, subtitle)],
     },
+    metadataBase,
   };
 };
 

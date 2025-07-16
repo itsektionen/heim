@@ -30,6 +30,12 @@ export const generateMetadata = async (): Promise<Metadata> => {
   const subtitle = t("NavBar.Chapter.About");
   const description = t("NavBar.Chapter.About.description");
 
+  const metadataBase = new URL(
+    process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000",
+  );
+
   return {
     title: `${subtitle} – ${title}`,
     description,
@@ -39,5 +45,6 @@ export const generateMetadata = async (): Promise<Metadata> => {
     twitter: {
       images: [getOgImageUrl(title, subtitle)],
     },
+    metadataBase,
   };
 };

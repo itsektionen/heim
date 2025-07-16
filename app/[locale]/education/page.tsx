@@ -149,6 +149,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = t("Common.chapter");
   const subtitle = t("NavBar.Education");
 
+  const metadataBase = new URL(
+    process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000",
+  );
+
   return {
     title: `${subtitle} – ${title}`,
     description: subtitle,
@@ -158,6 +164,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       images: [getOgImageUrl(title, subtitle)],
     },
+    metadataBase,
   };
 }
 
