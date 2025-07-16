@@ -62,11 +62,7 @@ export const HeroImage = ({
   src,
   alt,
   className,
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-}) => {
+}: React.ComponentProps<typeof Image>) => {
   return (
     <Image
       className={cn(
