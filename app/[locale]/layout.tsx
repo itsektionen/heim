@@ -6,16 +6,8 @@ import type { Metadata } from "next";
 import { I18nProviderClient } from "../../locales/client";
 
 import "@/app/globals.css";
+import { getOgImageUrl } from "@/lib/og";
 import { getI18n } from "@/locales/server";
-
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getI18n();
-
-  return {
-    title: t("Common.chapter"),
-    description: "Sektionen för alla",
-  };
-}
 
 export default async function PublicLayout({
   params,
@@ -37,4 +29,21 @@ export default async function PublicLayout({
       <VimNavigation />
     </I18nProviderClient>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getI18n();
+  const title = t("Common.chapter");
+  const subtitle = "Sektionen för alla";
+
+  return {
+    title,
+    description: subtitle,
+    openGraph: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+    twitter: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+  };
 }

@@ -6,6 +6,7 @@ import {
   getCommittee,
   listCommittees,
 } from "@/lib/committees";
+import { getOgImageUrl } from "@/lib/og";
 import { getContrastingColor } from "@/lib/utils";
 import { getI18n, getStaticParams } from "@/locales/server";
 import {
@@ -19,22 +20,6 @@ import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
-export const generateMetadata = async ({
-  params,
-}: {
-  params: Promise<{ committeeSlug: string }>;
-}): Promise<Metadata> => {
-  const t = await getI18n();
-  const { committeeSlug } = await params;
-  const {
-    data: { committee },
-  } = getCommittee(committeeSlug)!;
-
-  return {
-    title: committee.name + " - " + t("Common.chapter"),
-  };
-};
 
 const CommitteePage = async ({
   params,
@@ -151,5 +136,32 @@ export function generateStaticParams() {
     }));
   });
 }
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ committeeSlug: string }>;
+}): Promise<Metadata> => {
+  const t = await getI18n();
+  const { committeeSlug } = await params;
+  const {
+    data: { committee },
+  } = getCommittee(committeeSlug)!;
+
+  const title = t("Common.chapter");
+  const subtitle = committee.name;
+  const description = committee.description;
+
+  return {
+    title: `${subtitle} – ${title}`,
+    description,
+    openGraph: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+    twitter: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+  };
+};
 
 export default CommitteePage;

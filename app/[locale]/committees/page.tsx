@@ -10,8 +10,10 @@ import {
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import { type Committee } from "@/data/committees";
 import { backgroundColor, listCommittees } from "@/lib/committees";
+import { getOgImageUrl } from "@/lib/og";
 import { cn } from "@/lib/utils";
 import { getI18n, getStaticParams } from "@/locales/server";
+import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
 import Link from "next/link";
@@ -105,6 +107,24 @@ const CommitteesPage = async ({
 
 export function generateStaticParams() {
   return getStaticParams();
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getI18n();
+  const title = t("Common.chapter");
+  const subtitle = t("NavBar.Chapter.Committees");
+  const description = t("NavBar.Chapter.Committees.description");
+
+  return {
+    title: `${subtitle} – ${title}`,
+    description,
+    openGraph: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+    twitter: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+  };
 }
 
 export default CommitteesPage;

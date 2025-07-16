@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
+import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getStaticParams } from "@/locales/server";
 import { MailIcon, PiggyBankIcon, UserIcon } from "lucide-react";
 import { Metadata } from "next";
@@ -188,9 +189,19 @@ export function generateStaticParams() {
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getI18n();
+  const title = t("Common.chapter");
+  const subtitle = t("NavBar.Contact");
+  const description = t("NavBar.Contact");
 
   return {
-    title: `${t("NavBar.Contact")} - ${t("Common.chapter")}`,
+    title: `${subtitle} – ${title}`,
+    description,
+    openGraph: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+    twitter: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
   };
 }
 

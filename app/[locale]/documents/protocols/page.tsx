@@ -6,6 +6,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { listAllMeetings } from "@/lib/drive";
+import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getStaticParams } from "@/locales/server";
 import {
   ChevronDownIcon,
@@ -14,6 +15,7 @@ import {
   FileTextIcon,
   FolderIcon,
 } from "lucide-react";
+import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
 import Link from "next/link";
@@ -115,6 +117,24 @@ const ProtocolsPage = async ({
 
 export function generateStaticParams() {
   return getStaticParams();
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getI18n();
+  const title = t("Common.chapter");
+  const subtitle = t("NavBar.Documents.Protocols");
+  const description = t("NavBar.Documents.Protocols.description");
+
+  return {
+    title: `${subtitle} – ${title}`,
+    description,
+    openGraph: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+    twitter: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+  };
 }
 
 export default ProtocolsPage;

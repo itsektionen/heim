@@ -6,7 +6,9 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
 import { env } from "@/env";
-import { getStaticParams } from "@/locales/server";
+import { getOgImageUrl } from "@/lib/og";
+import { getI18n, getStaticParams } from "@/locales/server";
+import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import "./style.css";
 
@@ -44,4 +46,22 @@ export default async function StatutesPage({
 
 export function generateStaticParams() {
   return getStaticParams();
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getI18n();
+  const title = t("Common.chapter");
+  const subtitle = t("NavBar.Documents.StatutesBylaws");
+  const description = t("NavBar.Documents.StatutesBylaws.description");
+
+  return {
+    title: `${subtitle} – ${title}`,
+    description,
+    openGraph: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+    twitter: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+  };
 }
