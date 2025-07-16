@@ -24,11 +24,7 @@ export function generateStaticParams() {
   return getStaticParams();
 }
 
-export const generateMetadata = async ({
-  params,
-}: {
-  params: Promise<{ committeeSlug: string }>;
-}): Promise<Metadata> => {
+export const generateMetadata = async (): Promise<Metadata> => {
   const t = await getI18n();
   const title = t("Common.chapter");
   const subtitle = t("NavBar.Chapter.About");
