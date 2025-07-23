@@ -68,9 +68,9 @@ export default async function Home({
                 link: (
                   <Link
                     className="text-primary hover:underline underline-offset-4"
-                    href="https://mottagningen.nu"
+                    href="https://mottagningen.se"
                   >
-                    mottagningen.nu
+                    mottagningen.se
                   </Link>
                 ),
               })}
@@ -79,8 +79,8 @@ export default async function Home({
           <CardFooter>
             <CardAction>
               <Button asChild variant="ghost">
-                <Link target="_blank" href="https://mottagningen.nu">
-                  mottagningen.nu <ExternalLinkIcon />
+                <Link target="_blank" href="https://mottagningen.se">
+                  mottagningen.se <ExternalLinkIcon />
                 </Link>
               </Button>
             </CardAction>
