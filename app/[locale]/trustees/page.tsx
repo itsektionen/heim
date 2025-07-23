@@ -9,6 +9,7 @@ import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getStaticParams } from "@/locales/server";
 import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
+import Link from "next/link";
 
 const TrusteeCard = ({ trustee }: { trustee: Trustee }) => {
   return (
@@ -22,7 +23,12 @@ const TrusteeCard = ({ trustee }: { trustee: Trustee }) => {
       <p className="text-lg font-medium -mb-0.5">{trustee.name}</p>
       <p className="mb-1 text-sm">{trustee.role}</p>
       {trustee.mail && (
-        <p className="text-muted-foreground text-sm">{`${trustee.mail}`}</p>
+        <Link
+          className="hover:underline underline-offset-4 text-muted-foreground text-sm"
+          href={`mailto:${trustee.mail}`}
+          >
+          {`${trustee.mail}`}
+        </Link>
       )}
     </div>
   );
