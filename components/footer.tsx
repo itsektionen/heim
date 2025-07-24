@@ -66,6 +66,14 @@ const Footer = async () => {
               <li>
                 <Link
                   className="hover:underline underline-offset-4"
+                  href="https://www.instagram.com/itsektionenkth"
+                >
+                  Instagram
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="hover:underline underline-offset-4"
                   href="https://www.facebook.com/itsektionenkth"
                 >
                   Facebook
@@ -74,17 +82,17 @@ const Footer = async () => {
               <li>
                 <Link
                   className="hover:underline underline-offset-4"
-                  href="https://www.instagram.com/itsektionenkth/"
+                  href="https://www.linkedin.com/company/itsektionen"
                 >
-                  Instagram
+                  LinkedIn
                 </Link>
               </li>
               <li>
                 <Link
                   className="hover:underline underline-offset-4"
-                  href="https://www.linkedin.com/company/itsektionen/"
+                  href="https://www.discord.gg/TcddkaByD8"
                 >
-                  LinkedIn
+                  Discord
                 </Link>
               </li>
               <li>
