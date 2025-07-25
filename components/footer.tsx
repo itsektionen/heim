@@ -28,7 +28,13 @@ const Footer = async () => {
               </li>
               <li className="flex items-center gap-1.5 [&>svg]:size-4 [&>svg]:text-muted-foreground">
                 <MapPinIcon />
-                Electrum, Kistagången 16, 164 40 Kista
+                <Link
+                  className="hover:underline underline-offset-4"
+                  href="https://maps.app.goo.gl/fHfRpEEeaTpBJy1f8"
+				  target="_blank"
+                >
+                  Electrum, Kistagången 16, 164 40 Kista
+                </Link>
               </li>
               <li className="flex items-center gap-1.5 [&>svg]:size-4 [&>svg]:text-muted-foreground">
                 <BriefcaseBusinessIcon /> 802431-2442
