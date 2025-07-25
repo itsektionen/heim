@@ -125,6 +125,7 @@ export const committeeTrustees: Trustee[] = [
     name: "Simon Hedström",
     role: "History Responsible",
     mail: "historia@kth.it",
+    committeeIds: ["komma"],
     image: "/assets/img/trustees/simonh.avif",
   },
   {
@@ -149,8 +150,9 @@ export const committeeTrustees: Trustee[] = [
     image: "/assets/img/trustees/rozhanh.avif",
   },
   {
-    name: "Vakant Vakantsson",
+    name: "Vakant",
     role: "KAM Responsile",
+    committeeIds: ["brc"],
     mail: "kam@kth.it",
   },
   {
@@ -219,6 +221,7 @@ export const committeeTrustees: Trustee[] = [
     name: "Nils Granqvist",
     role: "International Coordinator",
     mail: "international@kth.it",
+    committeeIds: ["jml"],
   },
   {
     name: "Marcus Söderlund",

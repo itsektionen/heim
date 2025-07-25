@@ -71,12 +71,12 @@ const committees = [
       "Organizes activities around all forms of gaming as well as activities related to computers, programming, hardware, and networking. They host ITK Mys every Wednesday with board games, snacks etc., as well as large LAN events after each exam period.",
     website: "https://itk.gg",
     img: "/assets/img/committees/itk.png",
-    textColor: "#ADFF5B",
+    textColor: "#ADFF5C",
   },
   {
     name: "TMEIT",
     slug: "tmeit",
-    color: "#8BD4FF",
+    color: "#6AA7EE",
     description:
       "TMEIT is one of the Chapter's masteries, with roots in the IT and ME Chapters. TMEIT hosts Friday pubs in Kistan as well as Exam Gasques in connection with each exam period.",
     website: "https://tmeit.se",
@@ -108,6 +108,7 @@ const committees = [
     slug: "reception",
     description:
       "Responsible for welcoming new students each year during the three-week-long Reception. INGEN, NÅGON, MUX, and many Fadders plan numerous events to make the starting period at KTH as enjoyable as possible.",
+    website: "https://mottagningen.se",
     img: "/assets/img/committees/reception.svg",
   },
 ] as const;
