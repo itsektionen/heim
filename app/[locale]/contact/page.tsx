@@ -9,7 +9,7 @@ import {
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getStaticParams } from "@/locales/server";
-import { MailIcon, PiggyBankIcon, UserIcon } from "lucide-react";
+import { MailIcon, MapPin, PiggyBankIcon, UserIcon } from "lucide-react";
 import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import Link from "next/link";
@@ -41,6 +41,18 @@ const contactCards: {
       Bankgiro: "5120-7280",
       "IBAN-number": "SE65 5000 0000 0528 7100 3300",
       "SWIFT/BIC-code": "ESSE SESS",
+    },
+  },
+  {
+    title: "Addresses",
+    icon: <MapPin />,
+    info: {
+      "Visting Address": "Electrum, Kistagången 16, 164 40 Kista",
+      "Delivery Address":
+        "KTH Service Center Electrum, Kistagången 16, 164 40 Kista",
+      "Billing Address":
+        "Sektionen för Informationsteknik, Electrum 210, 164 40 Kista",
+      "Chapter Locale": "Kistan 2.0, Kistagången 14, 164 40 Kista",
     },
   },
 ];
@@ -80,8 +92,7 @@ const ContactPage = async ({
                 <MailIcon className="size-4 text-muted-foreground" />
                 <Link
                   className="hover:underline underline-offset-4 text-primary"
-                  href="mailto:ordf@kth.it"
-                >
+                  href="mailto:ordf@kth.it">
                   ordf@kth.it
                 </Link>
               </div>
@@ -100,8 +111,7 @@ const ContactPage = async ({
                 <MailIcon className="size-4 text-muted-foreground" />
                 <Link
                   className="hover:underline underline-offset-4 text-primary"
-                  href="mailto:naringsliv@kth.it"
-                >
+                  href="mailto:naringsliv@kth.it">
                   naringsliv@kth.it
                 </Link>
               </div>
@@ -120,8 +130,7 @@ const ContactPage = async ({
                 <MailIcon className="size-4 text-muted-foreground" />
                 <Link
                   className="hover:underline underline-offset-4 text-primary"
-                  href="mailto:komma@kth.it"
-                >
+                  href="mailto:komma@kth.it">
                   komma@kth.it
                 </Link>
               </div>
@@ -140,8 +149,7 @@ const ContactPage = async ({
                 <MailIcon className="size-4 text-muted-foreground" />
                 <Link
                   className="hover:underline underline-offset-4 text-primary"
-                  href="mailto:sso@kth.it"
-                >
+                  href="mailto:sso@kth.it">
                   sso@kth.it
                 </Link>
               </div>
