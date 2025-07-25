@@ -25,7 +25,7 @@ const contactCards: {
     title: "The Chapter",
     icon: <ItChip primary="var(--primary)" />,
     info: {
-      Name: "Chapter for Information- and Nanotechnology",
+      Name: "Chapter for Information Technology",
       Students: "~2000",
       "Organization number": " 802431-2442",
       "Legal form": "Non-profit organization",
