@@ -44,30 +44,30 @@ export default {
     Education: "Education",
     "Education.Programmes": "Programmes",
     "Education.Programmes.description":
-      "The programs at KTH Kista include a Master of Science in Information Technology (civilingenjör), Bachelor of Science programs in Computer Science and Electronics and Computer Science (högskoleingenjör), an international Bachelor of Science in Information and Communication Technology, and several mapped master's programs.",
+      "Our programmes include Master's and Bachelor's in IT and Computer Science.",
     "Education.Courses": "Courses",
     "Education.Courses.description":
       "Are you curious about what courses you will study? Use the course browser to find out!",
     Chapter: "Chapter",
     "Chapter.About": "About",
     "Chapter.About.description":
-      "We are the Chapter for Information technology, one of the largest chapters under the THS Student Union at KTH in Stockholm.",
+      "We are one of the largest chapters at the THS Student Union at KTH.",
     "Chapter.Committees": "Committees",
     "Chapter.Committees.description":
-      "The committees are the backbone of the IT Chapter. They organize events, ensure a high study quality, and provide valuable resources to the members.",
+      "The backbone of the chapter. For the students by the students.",
     "Chapter.Trustees": "Trustees",
     "Chapter.Trustees.description":
-      "The trustees are people who have been elected by the members of the IT Chapter to oversee its daily operations.",
+      "Elected members to oversee the chapters daily operations.",
     "Chapter.Events": "Events",
     "Chapter.Events.description":
-      "The events are organized by the committees and are a great way to meet new people and learn new things.",
+      "Organized by the committees. Meet new people and learn new things.",
     Documents: "Documents",
     "Documents.Protocols": "Protocols",
     "Documents.Protocols.description":
-      "Read meeting minutes and protocols from chapter meetings (SM) and board meetings (StyM).",
+      "Read meeting protocols from chapter meetings (SM) and board meetings (StyM).",
     "Documents.StatutesBylaws": "Statutes & Bylaws",
     "Documents.StatutesBylaws.description":
-      "Read the statutes and bylaws of the IT Chapter. They are important documents that govern the operations of the chapter.",
+      "Read the important documents that govern the operations of the chapter.",
     Contact: "Contact",
     Search: "Search",
   },
