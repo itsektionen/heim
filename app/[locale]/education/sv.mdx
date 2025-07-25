@@ -1,0 +1,85 @@
+import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
+import { Button } from "@/components/ui/button";
+import { ExternalLinkIcon } from "lucide-react";
+import Link from "next/link";
+
+<Hero>
+  <HeroContent className="text-white p-6 sm:p-4">
+    <HeroTitle className="mb-4">Utbildning</HeroTitle>
+  </HeroContent>
+  <HeroImage
+    className="brightness-50"
+    src="/assets/img/electrum-lab.png"
+    alt="Header Image"
+  />
+</Hero>
+
+<div className="mx-auto max-w-prose">
+Våra utbildningar inkluderar civilingenjörsutbildning i Informationsteknik, högskoleingenjörsutbildningar i Datateknik, en internationellt kandidatutbildning i Informations- och kommunikationsteknik samt flera mappade masterprogram.
+
+## Civilingenjör i Informationsteknik
+
+Civilingenjörsutbildning i Informationsteknik (CINTE) är en femårig utbildning på 300 högskolepoäng.
+
+Den börjar först med en treårig Kandidatutbildning i Informationsteknik (180hp) med obligatoriska baskurser och en del valbara kurser, följt av en tvåårig Mastersutbildning (120hp) inom ett av de valbara Mastersprogrammen som är mappade till Civilingenjörsprogrammet.
+
+Programmet är för dig som vill jobba med framtidens utmaningar inom IT i såväl internationella företag som startupföretag.
+
+<div className="flex gap-2">
+  <Button asChild>
+    <Link href="/education/courses?p=CINTE">Läs mer</Link>
+  </Button>
+  <Button variant="secondary" asChild>
+    <Link
+      href="https://www.kth.se/student/kurser/program/CINTE?l=sv"
+      target="_blank">
+      kth.se <ExternalLinkIcon />
+    </Link>
+  </Button>
+</div>
+
+## Högskoleingenjör i Datateknik
+
+Högskoleingenjörsutbildningen i Datateknik (TIDAB) är en treårig utbildning på 180 högskolepoäng.
+
+Det börjar med obligatoriska baskurser under det första året följt av en blandning av obligatoriska och valbara kurser under de två sista åren.
+
+Programmet är för dig som vill utveckla framtidens uppkopplade produkter och programvaror.
+
+<div className="flex gap-2">
+  <Button asChild>
+    <Link href="/education/courses?p=TIDAB">Läs mer</Link>
+  </Button>
+  <Button variant="secondary" asChild>
+    <Link
+      href="https://www.kth.se/student/kurser/program/TIDAB?l=sv"
+      target="_blank">
+      kth.se <ExternalLinkIcon />
+    </Link>
+  </Button>
+</div>
+
+## Kandidat i Informations- och Kommunikationsteknik
+
+Kandidatutbildningen i Informations- och kommunikationsteknik (TCOMK) är en treårig kandidatutbildning på 180 högskolepoäng som är helt på engelska och motsvarar en internationell Bachelor.
+
+Det börjar med obligatoriska baskurser under det första året följt av en blandning av obligatoriska och valbara kurser under de två sista åren. Flera av kurserna läses tillsammans med CINTE.
+
+Eftersom programmet är på ett internationellt program på engelska så kommer de studerande på programmet från flera delar av världen.
+
+<div className="flex gap-2">
+  <Button asChild>
+  <Link href="/education/courses?p=TCOMK">
+    Läs mer
+  </Link>
+  </Button>
+  <Button variant="secondary" asChild>
+  <Link
+    href="https://www.kth.se/student/kurser/program/TCOMK?l=sv"
+    target="_blank"
+  >
+    kth.se <ExternalLinkIcon />
+  </Link>
+  </Button>
+</div>
+</div>
