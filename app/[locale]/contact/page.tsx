@@ -148,7 +148,7 @@ const ContactPage = async ({
             </CardContent>
           </Card>
         </div>
-        <p className="text-sm max-w-prose text-center mx-auto text-muted-foreground">
+        <p className="text-sm max-w-prose text-center mx-auto text-foreground">
           If you need to contact someone else or a specific committee, you can
           find all the trustee elected and responsible members along with their
           contact information on the page{" "}
@@ -168,7 +168,7 @@ const ContactPage = async ({
                 </CardTitle>
                 <CardDescription>
                   {Object.keys(card.info).map((key, j) => (
-                    <p key={`contact.card.${i}.${key}.${j}`}>
+                    <p className="text-muted-foreground" key={`contact.card.${i}.${key}.${j}`}>
                       {`${key}: `}
                       <span className="text-foreground">{card.info[key]}</span>
                     </p>

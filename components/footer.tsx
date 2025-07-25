@@ -13,7 +13,7 @@ const Footer = async () => {
       <div className="container mx-auto h-full p-6 sm:border-x">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           <div>
-            <p className="text-sm mb-2 text-muted-foreground">
+            <p className="text-sm mb-2 text-foreground font-semibold">
               {navbarT("Contact")}
             </p>
             <ul className="text-sm space-y-2">
@@ -42,7 +42,7 @@ const Footer = async () => {
             </ul>
           </div>
           <div>
-            <p className="text-sm mb-2 text-muted-foreground">
+            <p className="text-sm mb-2 text-foreground font-semibold">
               {navbarT("Documents")}
             </p>
             <ul className="text-sm space-y-2">
@@ -59,7 +59,7 @@ const Footer = async () => {
             </ul>
           </div>
           <div>
-            <p className="text-sm mb-2 text-muted-foreground">
+            <p className="text-sm mb-2 text-foreground font-semibold">
               {t("follow-us")}
             </p>
             <ul className="text-sm space-y-2">
