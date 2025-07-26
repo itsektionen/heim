@@ -115,7 +115,9 @@ export default async function Home({
           <CardFooter>
             <CardAction>
               <Button variant="ghost">
-                {commonT("read-more")} <ArrowRightIcon />
+                <Link href="/chapter">
+                  {commonT("read-more")} <ArrowRightIcon />
+                </Link>
               </Button>
             </CardAction>
           </CardFooter>
