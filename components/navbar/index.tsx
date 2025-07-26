@@ -56,7 +56,7 @@ const DesktopNavbar = async () => {
             <NavigationMenuItem>
               <NavigationMenuTrigger>{t("Chapter")}</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                   {chapterItems.map((item, index) => (
                     <ListItem
                       key={`nav.chapter.${index}`}
@@ -72,7 +72,7 @@ const DesktopNavbar = async () => {
             <NavigationMenuItem>
               <NavigationMenuTrigger>{t("Documents")}</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="w-[400px] flex flex-col gap-3 p-4">
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                   {documentItems.map((item, index) => (
                     <ListItem
                       key={`nav.document.${index}`}

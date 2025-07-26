@@ -68,6 +68,9 @@ export default {
     "Documents.StatutesBylaws": "Statutes & Bylaws",
     "Documents.StatutesBylaws.description":
       "Read the statutes and bylaws of the IT Chapter. They are important documents that govern the operations of the chapter.",
+    "Documents.Committees": "Committees",
+    "Documents.Committees.description":
+      "Read the statutes and meeting protocols from the committees.",
     Contact: "Contact",
     Search: "Search",
   },

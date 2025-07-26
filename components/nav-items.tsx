@@ -79,6 +79,12 @@ export const documentItems: NavigationItem[] = [
     icon: <ScrollIcon />,
     description: "Documents.StatutesBylaws.description",
   },
+  {
+    title: "Documents.Committees",
+    href: "/documents/committees",
+    icon: <PartyPopperIcon />,
+    description: "Documents.Committees.description",
+  },
 ];
 
 export const navigationGroups = [
