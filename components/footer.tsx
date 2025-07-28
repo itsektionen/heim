@@ -31,7 +31,7 @@ const Footer = async () => {
                 <Link
                   className="hover:underline underline-offset-4"
                   href="https://maps.app.goo.gl/fHfRpEEeaTpBJy1f8"
-				  target="_blank"
+                  target="_blank"
                 >
                   Electrum, Kistagången 16, 164 40 Kista
                 </Link>
@@ -117,6 +117,12 @@ const Footer = async () => {
           <p className="text-muted-foreground text-xs">
             {`Copyright © ${currentYear} Sektionen för Informationsteknik`}
           </p>
+          <Link
+            href="/privacy"
+            className="text-muted-foreground text-xs hover:underline underline-offset-4"
+          >
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </footer>
