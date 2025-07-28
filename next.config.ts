@@ -11,6 +11,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  redirects: async () => [
+    {
+      source: "/privacypolicy",
+      destination: "/privacy",
+      permanent: true,
+    },
+  ],
   pageExtensions: ["mdx", "md", "tsx", "ts", "jsx", "js"],
 };
 
