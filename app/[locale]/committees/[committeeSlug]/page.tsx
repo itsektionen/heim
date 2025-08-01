@@ -46,16 +46,14 @@ const CommitteePage = async ({
                 ? committee.color + "66"
                 : committee.color,
             color: committee.textColor,
-          }}
-        >
+          }}>
           <Button
             className="absolute top-2 left-1 opacity-50"
             style={{
               color: getContrastingColor(committee.color!),
             }}
             asChild
-            variant="link"
-          >
+            variant="link">
             <Link href="/committees">
               <ArrowLeftIcon /> Go back
             </Link>
@@ -85,7 +83,9 @@ const CommitteePage = async ({
                 <Avatar className="size-12">
                   <AvatarFallback>
                     {trustee.name.split(" ")[0][0] +
-                      trustee.name.split(" ")[1][0]}
+                      (trustee.name.split(" ").length > 1
+                        ? trustee.name.split(" ")[1][0]
+                        : "")}
                   </AvatarFallback>
                   <AvatarImage className="object-cover" src={trustee.image} />
                 </Avatar>
@@ -96,8 +96,10 @@ const CommitteePage = async ({
                     {trustee.role}
                   </p>
                 </div>
-                <Button className="ml-auto" variant="ghost" size="icon">
-                  <MailIcon className="text-muted-foreground" />
+                <Button className="ml-auto" variant="ghost" size="icon" asChild>
+                  <Link target="_blank" href={`mailto:${trustee.mail}`}>
+                    <MailIcon className="text-muted-foreground" />
+                  </Link>
                 </Button>
               </div>
             ))
@@ -115,8 +117,7 @@ const CommitteePage = async ({
               <Link
                 className="text-sm text-primary hover:underline underline-offset-4 flex [&>svg]:size-4 gap-2"
                 href={committee.website}
-                target="_blank"
-              >
+                target="_blank">
                 {committee.website}
                 <ExternalLinkIcon />
               </Link>

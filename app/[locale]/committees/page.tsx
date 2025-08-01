@@ -31,9 +31,8 @@ const CommitteeCard = async ({ committee }: { committee: Committee }) => {
           "overflow-hidden h-[180px] flex",
           committee.img
             ? "items-center justify-center"
-            : "items-center justify-start -ml-2",
-        )}
-      >
+            : "items-center justify-start -ml-2"
+        )}>
         {committee.img ? (
           <Image
             alt={`${committee.name} logo`}
@@ -52,7 +51,11 @@ const CommitteeCard = async ({ committee }: { committee: Committee }) => {
       </div>
       <CardHeader className="pt-2">
         <CardTitle className="font-poppins">{committee.name}</CardTitle>
-        <CardDescription>{committee.description}</CardDescription>
+        <CardDescription>
+          {committee.description.length > 100
+            ? committee.description.slice(0, 100).trim() + "..."
+            : committee.description}
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex-grow flex flex-col justify-end hover:opacity-80 transition-opacity">
         <Button
@@ -60,8 +63,7 @@ const CommitteeCard = async ({ committee }: { committee: Committee }) => {
           style={{
             backgroundColor: committee.color,
             color: committee.textColor,
-          }}
-        >
+          }}>
           <Link href={`/committees/${committee.slug}`}>
             {t("Common.read-more")}
           </Link>
