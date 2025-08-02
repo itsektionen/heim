@@ -68,8 +68,7 @@ export default async function Home({
                 link: (
                   <Link
                     className="text-primary hover:underline underline-offset-4"
-                    href="https://mottagningen.se"
-                  >
+                    href="https://mottagningen.se">
                     mottagningen.se
                   </Link>
                 ),
@@ -114,7 +113,7 @@ export default async function Home({
           </CardHeader>
           <CardFooter>
             <CardAction>
-              <Button variant="ghost">
+              <Button asChild variant="ghost">
                 <Link href="/chapter">
                   {commonT("read-more")} <ArrowRightIcon />
                 </Link>
