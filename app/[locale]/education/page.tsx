@@ -7,11 +7,11 @@ import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import Link from "next/link";
 
-const EducationPage = async ({
+export default async function EducationPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
-}) => {
+}) {
   const { locale } = await params;
   setStaticParamsLocale(locale);
 
@@ -87,7 +87,7 @@ const EducationPage = async ({
       </section>
     </>
   );
-};
+}
 
 export function generateStaticParams() {
   return getStaticParams();
@@ -97,10 +97,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getI18n();
   const title = t("Common.chapter");
   const subtitle = t("NavBar.Education");
+  const description = t("NavBar.Education.Programmes.description");
 
   return {
     title: `${subtitle} – ${title}`,
-    description: subtitle,
+    description: description,
     openGraph: {
       images: [getOgImageUrl(title, subtitle)],
     },
@@ -109,5 +110,3 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 }
-
-export default EducationPage;
