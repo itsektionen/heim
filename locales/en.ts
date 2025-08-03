@@ -25,6 +25,41 @@ export default {
       "no-news": "There are no news.",
     },
   },
+  EducationPage: {
+    title: "Education",
+    "hero-image-alt":
+      "The Electrum lab in Kista seen from the outside on a cloudy autumn day.",
+    "browse-courses": "Browse courses",
+    intro:
+      "Our programs include a MSE Degree Programme in Information Technology (civilingenjör), Bachelor of Science in Computer Science (högskoleingenjör), an international Bachelor of Science in Information and Communication Technology, and several mapped Master's programs.",
+    program: {
+      CINTE: {
+        title: "Degree Programme in Information Technology",
+        content: [
+          "The Degree Programme in Information Technology (CINTE) is a five-year program consisting of 300 Swedish hp credits. It is a Swedish civilingenjör education which is closest described by a Master of Science in Engineering (MSE) education.",
+          "It starts with a three-year Bachelor's program in Information Technology (180 Swedish hp credits) with mandatory core courses and some free-choice courses, followed by a two-year Master's program (120 Swedish hp credits) within one of the eligible Master's programs mapped to the Degree Programme in Information Technology.",
+          "The program is designed for those who want to work with the future challenges in IT, both in international companies and startup businesses.",
+        ],
+      },
+      TIDAB: {
+        title: "Degree Programme in Computer Engineering",
+        content: [
+          "The Degree Programme in Computer Engineering (TIDAB) is a three-year program consisting of 180 Swedish hp credits. It is a Swedish högskoleingenjör education which is closest described by a Bachelor of Science in Engineering (BSE) education.",
+          "It starts with mandatory core courses in the first year, followed by a mix of mandatory and free-choice courses during the last two years.",
+          "The program is designed for those who want to develop future connected products and software.",
+        ],
+      },
+      TCOMK: {
+        title:
+          "Bachelor's Programme in Information and Communication Technology",
+        content: [
+          "The Bachelor's Programme in Information and Communication Technology (TCOMK) is a three-year Bachelor's program consisting of 180 Swedish hp credits, entirely taught in English, and equivalent to an international Bachelor's degree.",
+          "It starts with mandatory core courses in the first year, followed by a mix of mandatory and free-choice courses during the last two years.",
+          "As the program is on an international track in English, students come from various parts of the world.",
+        ],
+      },
+    },
+  },
   Statutes: {
     title: "Statutes",
     subtitle:

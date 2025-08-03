@@ -25,6 +25,40 @@ export default {
       "no-news": "Det finns inga nyheter.",
     },
   },
+  EducationPage: {
+    title: "Utbildning",
+    "hero-image-alt":
+      "Electrum laboratoriet i Kista från utsidan en molning höstdag.",
+    "browse-courses": "Se kurser",
+    intro:
+      "Våra utbildningar inkluderar civilingenjörsutbildning i Informationsteknik, högskoleingenjörsutbildningar i Datateknik, en internationellt kandidatutbildning i Informations- och kommunikationsteknik samt flera mappade masterprogram.",
+    program: {
+      CINTE: {
+        title: "Civilingenjör i Informationsteknik",
+        content: [
+          "Civilingenjörsutbildning i Informationsteknik (CINTE) är en femårig utbildning på 300 högskolepoäng.",
+          "Den börjar först med en treårig Kandidatutbildning i Informationsteknik (180hp) med obligatoriska baskurser och en del valbara kurser, följt av en tvåårig Mastersutbildning (120hp) inom ett av de valbara Mastersprogrammen som är mappade till Civilingenjörsprogrammet.",
+          "Programmet är för dig som vill jobba med framtidens utmaningar inom IT i såväl internationella företag som startupföretag.",
+        ],
+      },
+      TIDAB: {
+        title: "Högskoleingenjör i Datateknik",
+        content: [
+          "Högskoleingenjörsutbildningen i Datateknik (TIDAB) är en treårig utbildning på 180 högskolepoäng.",
+          "Den börjar med obligatoriska baskurser under det första året följt av en blandning av obligatoriska och valbara kurser under de två sista åren.",
+          "Programmet är för dig som vill utveckla framtidens uppkopplade produkter och programvaror.",
+        ],
+      },
+      TCOMK: {
+        title: "Kandidat i Informations- och Kommunikationsteknik",
+        content: [
+          "Kandidatutbildningen i Informations- och kommunikationsteknik (TCOMK) är en treårig kandidatutbildning på 180 högskolepoäng som är helt på engelska och motsvarar en internationell Bachelor.",
+          "Den börjar med obligatoriska baskurser under det första året följt av en blandning av obligatoriska och valbara kurser under de två sista åren. Flera av kurserna läses tillsammans med CINTE.",
+          "Eftersom programmet är på ett internationellt program på engelska så kommer de studerande på programmet från flera delar av världen.",
+        ],
+      },
+    },
+  },
   Statutes: {
     title: "Stadgar",
     subtitle: "Detta är sektionens stadgar. De är våra styrdokument.",
