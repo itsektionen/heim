@@ -15,89 +15,52 @@ export default async function ChapterPage({
 
   const t = await getScopedI18n("ChapterPage");
   const commonT = await getScopedI18n("Common");
+
   const thsLink = (
-    <Link
-      className="text-primary hover:underline underline-offset-4"
-      href="https://thskth.se"
-      target="_blank"
-      rel="noopener">
+    <EnhancedLink href="https://thskth.se" external>
       {commonT("ths")}
-    </Link>
+    </EnhancedLink>
   );
   const thsMemberLink = (
-    <Link
-      className="text-primary hover:underline underline-offset-4"
-      href={t("member.link")}
-      target="_blank"
-      rel="noopener">
+    <EnhancedLink href={t("member.link")} external>
       {commonT("ths")}
-    </Link>
+    </EnhancedLink>
   );
   const kthLink = (
-    <Link
-      className="text-primary hover:underline underline-offset-4"
-      href="https://kth.se"
-      target="_blank"
-      rel="noopener">
+    <EnhancedLink href="https://kth.se" external>
       {commonT("kth")}
-    </Link>
+    </EnhancedLink>
   );
   const receptionLink = (
-    <Link
-      className="text-primary hover:underline underline-offset-4"
-      href="https://mottagningen.se"
-      target="_blank"
-      rel="noopener">
+    <EnhancedLink href="https://mottagningen.se" external>
       {t("intro.reception")}
-    </Link>
+    </EnhancedLink>
   );
   const songbookLink = (
-    <Link
-      className="text-primary hover:underline underline-offset-4"
-      href="https://sangbok.kth.it"
-      target="_blank"
-      rel="noopener">
+    <EnhancedLink href="https://sangbok.kth.it" external>
       sangbok.kth.it
-    </Link>
+    </EnhancedLink>
   );
   const songlistRepoLink = (
-    <Link
-      className="text-primary hover:underline underline-offset-4"
-      href="https://github.com/itsektionen/songlist"
-      target="_blank"
-      rel="noopener">
+    <EnhancedLink href="https://github.com/itsektionen/songlist" external>
       songlist repository
-    </Link>
+    </EnhancedLink>
   );
   const songbookRepoLink = (
-    <Link
-      className="text-primary hover:underline underline-offset-4"
-      href="https://github.com/itsektionen/songbook-2.0"
-      target="_blank"
-      rel="noopener">
+    <EnhancedLink href="https://github.com/itsektionen/songbook-2.0" external>
       songbook-2.0 repository
-    </Link>
+    </EnhancedLink>
   );
   const educationLink = (
-    <Link
-      className="text-primary hover:underline underline-offset-4"
-      href="/education">
-      {t("intro.education-page")}
-    </Link>
+    <EnhancedLink href="/education">{t("intro.education-page")}</EnhancedLink>
   );
   const committeesLink = (
-    <Link
-      className="text-primary hover:underline underline-offset-4"
-      href="/committees">
+    <EnhancedLink href="/committees">
       {t("structure.committees-page")}
-    </Link>
+    </EnhancedLink>
   );
   const trusteesLink = (
-    <Link
-      className="text-primary hover:underline underline-offset-4"
-      href="/trustees">
-      {t("structure.trustees-page")}
-    </Link>
+    <EnhancedLink href="/trustees">{t("structure.trustees-page")}</EnhancedLink>
   );
 
   return (
@@ -154,6 +117,32 @@ export default async function ChapterPage({
         </section>
       </article>
     </>
+  );
+}
+
+function EnhancedLink({
+  href,
+  children,
+  external = false,
+  primary = true,
+}: {
+  href: string;
+  children: React.ReactNode;
+  external?: boolean;
+  primary?: boolean;
+}) {
+  return (
+    <Link
+      className={
+        primary
+          ? "text-primary"
+          : undefined + " hover:underline underline-offset-4"
+      }
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener" : undefined}>
+      {children}
+    </Link>
   );
 }
 
