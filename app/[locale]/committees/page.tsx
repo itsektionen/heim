@@ -12,11 +12,12 @@ import { type Committee } from "@/data/committees";
 import { backgroundColor, listCommittees } from "@/lib/committees";
 import { getOgImageUrl } from "@/lib/og";
 import { cn } from "@/lib/utils";
-import { getI18n, getStaticParams } from "@/locales/server";
+import { getI18n, getScopedI18n, getStaticParams } from "@/locales/server";
 import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
 import Link from "next/link";
+import ChapterPage from "../chapter/page";
 
 const CommitteeCard = async ({ committee }: { committee: Committee }) => {
   const t = await getI18n();
@@ -83,20 +84,18 @@ const CommitteesPage = async ({
 
   const committees = listCommittees();
 
-  const t = await getI18n();
+  const t = await getScopedI18n("CommitteesPage");
 
   return (
     <>
       <Hero>
         <HeroContent>
-          <HeroTitle className="mb-4">
-            {t("NavBar.Chapter.Committees")}
-          </HeroTitle>
-          <p className="max-w-prose text-balance text-white text-center text-sm">
-            {t("NavBar.Chapter.Committees.description")}
-          </p>
+          <HeroTitle className="mb-4">{t("title")}</HeroTitle>
         </HeroContent>
-        <HeroImage src="/assets/img/kistan-bar.avif" alt="Header Image" />
+        <HeroImage
+          src="/assets/img/kistan-bar.avif"
+          alt={t("hero-image-alt")}
+        />
       </Hero>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {committees.map((committee) => (

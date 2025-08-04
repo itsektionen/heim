@@ -83,6 +83,18 @@ export default {
       ],
     },
   },
+  CommitteesPage: {
+    title: "Sektionsorgan",
+    "hero-image-alt":
+      "Baren i Kistan 2.0 med många flaskor och kylar i bakgrunden.",
+    single: {
+      back: "Gå tillbaka",
+      about: "Om",
+      trustees: "Förtroendevalda",
+      "no-trustees": "Inga förtroendevalda hittades",
+      website: "Hemsida",
+    },
+  },
   EducationPage: {
     title: "Utbildning",
     "hero-image-alt":

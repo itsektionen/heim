@@ -84,6 +84,18 @@ export default {
       ],
     },
   },
+  CommitteesPage: {
+    title: "Committees",
+    "hero-image-alt":
+      "The bar in Kistan 2.0 with loads of bottles and refrigerators in the background.",
+    single: {
+      back: "Go back",
+      about: "About",
+      trustees: "Trustees",
+      "no-trustees": "No trustees found",
+      website: "Website",
+    },
+  },
   EducationPage: {
     title: "Education",
     "hero-image-alt":
