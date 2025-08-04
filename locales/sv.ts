@@ -25,6 +25,64 @@ export default {
       "no-news": "Det finns inga nyheter.",
     },
   },
+  ChapterPage: {
+    title: "Sektionen",
+    "hero-image-alt": "Electrums glasentré från västra bouleplansområdet.",
+    intro: {
+      reception: "mottagningen",
+      "education-page": "våra utbildningar",
+      content: [
+        "Vi är Sektionen för Informationsteknik, en av de största sektionerna under {thsLink} (THS) vid {kthLink} (KTH) i Stockholm.",
+        "Som en allmännyttig ideell förening och registrerad arbetsgivare hos Skatteverket, arbetar vi för att gynna våra medlemmar och göra deras tid på KTH till den bästa möjliga. Vi engagerar oss i en mängd olika aktiviteter som sträcker sig från kärnverksamheten med studiebevakning till studiesociala evenemang som främjar starkt socialt engagemang och gemenskap inom sektionen.",
+        "Dessutom främjar vi näringslivskontakter som ger våra medlemmar möjligheter att etablera sig i näringslivet.",
+        "Sektionens nämnder arrangerar en rad evenemang för våra studenter och för student Stockholm. Det inkluderar bland annat den tre veckor långa  {receptionLink} för nya studenter, arbetsmarknadsmässan Kista ArbetsMarknadsdag samt regelbundna pubar och fester.",
+        "Våra medlemmar är studenter inom civilingenjörs-, master-, kandidat- och högskoleingenjörsprogrammen. Det finns möjlighet att studera civilingenjörsutbildning i Informationsteknik, högskoleingenjörsutbildning i Datateknik, en internationell kandidatutbildning i Informations- och kommunikationsteknik på engelska och flera mappade Mastersprogram. Läs mer om {educationLink}.",
+      ],
+    },
+    structure: {
+      title: "Uppbyggnad",
+      "committees-page": "sektionsnämnder",
+      "trustees-page": "förtroendevalda medlemmar",
+      content: [
+        "Sektionen består av en styrelse och flertalet nämnder som ansvarar för olika aspekter av sektionens verksamhet. Dessutom har sektionen en stark representation både i skolledningen och hos THS centralt. En lista över alla nämnder inom sektionen finns tillgänglig under {committeesLink}. Du kan även hitta en lista över alla {trusteesLink}.",
+      ],
+    },
+    meetings: {
+      title: "Möten",
+      content: [
+        "Sektionens högsta beslutande organ är Sektionsmötet (SM). Dessa möten hålls i regel en gång per kvartal eller oftare. På SM har alla medlemmar i sektionen rätt att rösta och det är i regel där alla större beslut angående sektionen fattas. Vi uppmanar alla sektionsmedlemmar att delta och göra sin röst hörd. Kallelse till SM skickas ut i god tid enligt stadgarna till alla sektionsmedlemmar via e-post och publiceras även i våra sociala mediekanaler.",
+        "Utöver sektionsmötena hålls även Styrelsemöten (StyM) med högre frekvens. Alla sektionsmedlemmar är välkomna att närvara på styrelsemötena, men det förväntas inte att de närvarar om det inte finns något specifikt ärende som berör dem eller deras nämnd. Vid dessa möten har sektionsmedlemmarna rätt att begära yttranderätt, men endast styrelsen har automatisk yttranderätt, rösträtt och befogenhet att fatta beslut.",
+      ],
+    },
+    member: {
+      title: "Bli Medlem",
+      link: "https://thskth.se/sv/medlemskap",
+      content: [
+        "Du blir medlem i sektionen genom att gå med i {thsMemberLink} (THS). Som medlem har du lättare att ta del av alla våra aktiviteter och förmåner som billigare priser i Kistan 2.0, billigare mat i Nymbles restaurant och rabatter i Kårbokhandeln. Dessutom får du även ködagar hos Stockholms Studentbostäder.",
+      ],
+    },
+    kistan: {
+      title: "Kistan 2.0 - där allt händer",
+      content: [
+        "Kistan 2.0 är vår sektionslokal och den hittar du i Electrum i Kista på plan 3. Sektionslokalen är den största på KTH och under dagen är Kistan 2.0 den naturliga samlingsplatsen för både studier och lunch. Det är också här som vi håller nästa alla våra evenemang, däribland pubar, gasquer och företagsevent. Vanligtvis så är det något som händer i Kistan nästan varje dag i veckan. Det är återkommande event med ITK-mys på onsdagar, pubar på torsdagar med QMISK och fredagar med TMEIT.",
+        "Lokalen är utrustad med en scen, ljus, ljud och en fullständig bar med öl-tappar, ismaskin och ett stort kök - och viktigast för alla studenter, en mikrovågsvägg!",
+      ],
+    },
+    ovve: {
+      title: "Ovvar",
+      content: [
+        'Sektionens overall (även kallad "ovve") har en karakteristisk Laserviolett färg och kan köpas under lunchtid eller vid våra evenemang i Kistan 2.0. Förutom sektionens Laservioletta ovve kan du också hitta den äldre Kiselblå ovven som var sektionsfärgen mellan 2009-2025. Även ockraröda ovven från gamla Ingenjörsektionen Kista kan hittas och bärs av de som är aktiva i vårt klubbmästeri QMISK.',
+        "Om du har riktigt tur kan du till och med stöta på en riktigt gammal student som bär de gamla limegröna ovvarna. Den limegröna ovven kommer från den gamla Mikroelektroniksektionen. Denna sektion slogs senare samman med IT-sektionen och bildade vår nuvarande sektion. Om du är intresserad kan du läsa mer om detta i sektionens historia.",
+      ],
+    },
+    songbook: {
+      title: "Sångbok",
+      content: [
+        "Sektionen har en helt egen digital sångbok som används av många studenter på både KTH och andra universitet. Grunden till sångboken gjordes ursprungligen av sektionens klubb Strängteoretiquerna, år 2015 och har sedan dess digitaliserats till både hemsida och app. Den digitala sångboken hittar du på {songbookLink}.",
+        "Vill du bidra till låtarna i sångboken så kan du göra en Pull Request med ändringarna på sektionens GitHub {songlistRepoLink}. Vill du hjälpa till att utveckla webappen så hittar du även den koden i {songbookRepoLink} som också finns på sektionens GitHub. Håll även utkik för en ny fysisk utgåva är på gång, för första gången på över 10 år!",
+      ],
+    },
+  },
   EducationPage: {
     title: "Utbildning",
     "hero-image-alt":
@@ -112,8 +170,10 @@ export default {
     sv: "Svenska",
   },
   Common: {
-    "read-more": "Läs mer",
     chapter: "IT-Sektionen",
+    ths: "Tekniska Höskolans Studentkår",
+    kth: "Kungliga Tekniska Högskolan",
+    "read-more": "Läs mer",
     view: "Visa",
   },
   NotFound: {
