@@ -59,7 +59,7 @@ const committees = [
     slug: "qmisk",
     color: "#800000",
     description:
-      "Qlubbmästeriet IN-Sektionen Kista (QMISK) is one of the Chapter's masteries, with its roots in the old Ingenjörsektionen Kista (IsK) from the 1990s, a long-standing institution. QMISK organizes pub nights in Kistan every Thursday and hosts gasques, the most famous being the annual Midvinterblot during the late winter.",
+      "Qlubbmästeriet IT-Sektionen Kista (QMISK) is one of the Chapter's masteries, with its roots in the old Ingenjörsektionen Kista (IsK) from the 1990s, a long-standing institution. QMISK organizes pub nights in Kistan every Thursday and hosts gasques, the most famous being the annual Midvinterblot during the late winter.",
     website: "https://qmisk.com",
     img: "/assets/img/committees/qmisk.png",
   },
