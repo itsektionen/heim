@@ -22,11 +22,11 @@ const committees = [
       "The Study Social Committee are responsible for the Chapter's study-related social activities and for ensuring that our premises, Kistan 2.0, are in exceptional condition. Their responsibilities include managing bookings for our chapter locale, Kistan 2.0, promoting internal cohesion among the Chapter's study-related social bodies, and developing student life within the chapter in the long term.",
   },
   {
-    name: "Education Committee",
-    slug: "education",
+    name: "Study Committee",
+    slug: "study",
     description:
-      "The Education Committee is a core part of the chapter. Historically, this has been the sole activity of all student unions and is naturally very important for the Chapter. Their main responsiblity are coordinating academic monitoring and educational impact, as well as representing the Chapter in academic matters. Improving the education quality and helping students with issues in courses, forwarding your opinions to teachers and responsible at EECS.",
-    img: "/assets/img/committees/education.svg",
+      "The Study Committee is a core part of the chapter. Historically, this has been the sole activity of all student unions and is naturally very important for the Chapter. Their main responsiblity are coordinating academic monitoring and educational impact, as well as representing the Chapter in academic matters. Improving the education quality and helping students with issues in courses, forwarding your opinions to teachers and responsible at EECS.",
+    img: "/assets/img/committees/study.svg",
   },
   {
     name: "Study Environment Committee",
