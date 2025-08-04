@@ -16,7 +16,10 @@ const TrusteeCard = ({ trustee }: { trustee: Trustee }) => {
     <div className="text-center flex flex-col items-center">
       <Avatar className="size-52 border mb-4 text-6xl">
         <AvatarFallback>
-          {trustee.name.split(" ")[0][0] + trustee.name.split(" ")[1][0]}
+          {trustee.name.split(" ")[0][0] +
+            (trustee.name.split(" ").length > 1
+              ? trustee.name.split(" ")[1][0]
+              : "")}
         </AvatarFallback>
         <AvatarImage className="object-cover" src={trustee.image} />
       </Avatar>
