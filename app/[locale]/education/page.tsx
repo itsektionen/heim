@@ -43,7 +43,8 @@ export default async function EducationPage({
           <Button variant="secondary" asChild>
             <Link
               href="https://www.kth.se/student/kurser/program/CINTE?l=en"
-              target="_blank">
+              target="_blank"
+              rel="noopener">
               kth.se <ExternalLinkIcon />
             </Link>
           </Button>
@@ -61,7 +62,8 @@ export default async function EducationPage({
           <Button variant="secondary" asChild>
             <Link
               href="https://www.kth.se/student/kurser/program/TIDAB?l=en"
-              target="_blank">
+              target="_blank"
+              rel="noopener">
               kth.se <ExternalLinkIcon />
             </Link>
           </Button>
@@ -79,7 +81,8 @@ export default async function EducationPage({
           <Button variant="secondary" asChild>
             <Link
               href="https://www.kth.se/student/kurser/program/TCOMK?l=en"
-              target="_blank">
+              target="_blank"
+              rel="noopener">
               kth.se <ExternalLinkIcon />
             </Link>
           </Button>
