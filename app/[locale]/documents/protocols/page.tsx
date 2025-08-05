@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/collapsible";
 import { listAllMeetings } from "@/lib/drive";
 import { getOgImageUrl } from "@/lib/og";
-import { getI18n, getStaticParams } from "@/locales/server";
+import { getI18n, getScopedI18n, getStaticParams } from "@/locales/server";
 import {
   ChevronDownIcon,
   ExternalLinkIcon,
@@ -39,24 +39,25 @@ const ProtocolsPage = async ({
   const { locale } = await params;
   setStaticParamsLocale(locale);
 
-  const t = await getI18n();
+  const t = await getScopedI18n("DocumentsPage.protocols");
+  const commonT = await getI18n();
 
   const allMeetings = await listAllMeetings();
   const earliestMeeting = allMeetings.find(
     (m) =>
-      Number(m.year!) === Math.min(...allMeetings.map((m) => Number(m.year!))),
+      Number(m.year!) === Math.min(...allMeetings.map((m) => Number(m.year!)))
   );
+  const year = earliestMeeting?.year;
 
   return (
     <div className="-ml-6 -mt-6 -mr-6 -mb-42 flex flex-col min-h-[700px]">
       <div className="px-6 py-3 text-sm">
         <div className="flex items-center gap-2 mb-1">
           <FileTextIcon className="size-4 text-primary" />
-          <p className="font-medium">{t("NavBar.Documents.Protocols")}</p>
+          <p className="font-medium">{t("title")}</p>
         </div>
         <p className="text-muted-foreground text-sm max-w-prose">
-          Here you can find all protocols from our chapter meetings (SM) and
-          board meetings (StyM) since {earliestMeeting?.year}.
+          {t("description", { year })}
         </p>
       </div>
       <section>
@@ -64,8 +65,7 @@ const ProtocolsPage = async ({
           <Collapsible
             className="data-[state='open']:[&>*>svg]:rotate-180"
             defaultOpen={i === 0}
-            key={meeting.id}
-          >
+            key={meeting.id}>
             <CollapsibleTrigger asChild>
               <YearHeader key={meeting.id} year={meeting.year!} />
             </CollapsibleTrigger>
@@ -74,8 +74,7 @@ const ProtocolsPage = async ({
                 {meeting.files?.map((file) => (
                   <Card
                     key={file.id}
-                    className="flex select-none flex-row overflow-hidden"
-                  >
+                    className="flex select-none flex-row overflow-hidden">
                     {file.hasThumbnail ? (
                       <Image
                         height={138}
@@ -100,7 +99,7 @@ const ProtocolsPage = async ({
                       </CardTitle>
                       <Button variant="secondary" className="mt-auto" asChild>
                         <Link href={file.webViewLink!} target="_blank">
-                          {t("Common.view")} <ExternalLinkIcon />
+                          {commonT("Common.view")} <ExternalLinkIcon />
                         </Link>
                       </Button>
                     </CardHeader>
@@ -122,7 +121,7 @@ export function generateStaticParams() {
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getI18n();
   const title = t("Common.chapter");
-  const subtitle = t("NavBar.Documents.Protocols");
+  const subtitle = t("DocumentsPage.protocols.title");
   const description = t("NavBar.Documents.Protocols.description");
 
   return {

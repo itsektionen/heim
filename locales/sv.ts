@@ -114,6 +114,13 @@ export default {
     "select-year": "Välj ett studieår",
     year: "Årskurs",
   },
+  DocumentsPage: {
+    protocols: {
+      title: "Protokoll",
+      description:
+        "Här kan du hitta alla protokoll från våra sektionsmöten (SM) och styrelsemöten (StyM) sedan {year}.",
+    },
+  },
   EducationPage: {
     title: "Utbildning",
     "hero-image-alt":

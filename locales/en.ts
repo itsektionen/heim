@@ -115,6 +115,13 @@ export default {
     "select-year": "Select a study year",
     year: "Year",
   },
+  DocumentsPage: {
+    protocols: {
+      title: "Protocols",
+      description:
+        "Here you can find all protocols from our chapter meetings (SM) and board meetings (StyM) since {year}.",
+    },
+  },
   EducationPage: {
     title: "Education",
     "hero-image-alt":
