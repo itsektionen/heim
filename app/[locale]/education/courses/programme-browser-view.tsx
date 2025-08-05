@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { trpc } from "@/lib/trpc";
 import { cn } from "@/lib/utils";
-import { useCurrentLocale, useI18n } from "@/locales/client";
+import { useCurrentLocale, useI18n, useScopedI18n } from "@/locales/client";
 import { KoppsStudyYear } from "@/types/kopps";
 import {
   AlertCircleIcon,
@@ -48,7 +48,8 @@ const ProgrammeBrowserView = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const t = useI18n();
+  const t = useScopedI18n("CoursesPage");
+  const commonT = useI18n();
   const locale = useCurrentLocale();
 
   const p = searchParams.get("p");
@@ -74,7 +75,7 @@ const ProgrammeBrowserView = () => {
 
       return params.toString();
     },
-    [searchParams],
+    [searchParams]
   );
 
   useEffect(() => {
@@ -105,16 +106,14 @@ const ProgrammeBrowserView = () => {
         onValuesChange={(values) => {
           setProgrammeSelectorValues(values);
         }}
-        defaultValues={programmeSelectorValues}
-      >
+        defaultValues={programmeSelectorValues}>
         <ProgrammeBrowserHeader>
           <div className="flex items-center mb-1 gap-2">
-            <h1 className="text-lg font-medium">Course Browser</h1>
+            <h1 className="text-lg font-medium">{t("title")}</h1>
             <Badge>Beta</Badge>
           </div>
           <p className="text-muted-foreground mb-6 max-w-prose">
-            Browse through the programmes and courses that students at the IT
-            Chapter study.
+            {t("description")}
           </p>
           <ProgrammeSelector
             programmes={["CINTE", "TIDAB", "TCOMK"]}
@@ -159,28 +158,25 @@ const ProgrammeBrowserView = () => {
                     course.condition.en == "Recommended" &&
                       "before:bg-amber-400",
                     course.condition.en == "Conditionally Elective" &&
-                      "before:bg-green-400",
+                      "before:bg-green-400"
                   )}
-                  key={course.code}
-                >
+                  key={course.code}>
                   <div className="flex items-start gap-8">
                     <p>{course.name[locale]}</p>
                     <Button
                       className="!pr-0 !mr-0 ml-auto"
                       size="sm"
                       asChild
-                      variant="link"
-                    >
+                      variant="link">
                       <Link href={course.url[locale]}>
-                        {t("Common.read-more")} <ExternalLinkIcon />
+                        {commonT("Common.read-more")} <ExternalLinkIcon />
                       </Link>
                     </Button>
                   </div>
                   <div
                     className={cn(
-                      "flex [&>svg]:size-4 items-center gap-1.5 mb-4",
-                    )}
-                  >
+                      "flex [&>svg]:size-4 items-center gap-1.5 mb-4"
+                    )}>
                     {
                       ConditionIcons[
                         course.condition[locale] as keyof typeof ConditionIcons

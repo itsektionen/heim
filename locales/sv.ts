@@ -106,6 +106,14 @@ export default {
       "Behöver kontakta någon annan eller en specifik nämnd? Du hittar du alla förtroendevalda och ansvariga medlemmar samt deras kontaktuppgifter på {trusteeLink}.",
     "trustees-page": "Förtroendevalda sidan",
   },
+  CoursesPage: {
+    title: "Kurskatalog",
+    description:
+      "Bläddra igenom programmen och kurserna som studenterna inom IT-Sektionen studerar.",
+    "select-programme": "Välj ett program",
+    "select-year": "Välj ett studieår",
+    year: "Årskurs",
+  },
   EducationPage: {
     title: "Utbildning",
     "hero-image-alt":

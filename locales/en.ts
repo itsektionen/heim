@@ -107,6 +107,14 @@ export default {
       "If you need to contact someone else or a specific committee, you can find all the trustee elected and responsible members along with their contact information on the {trusteeLink}.",
     "trustees-page": "Trustees Page",
   },
+  CoursesPage: {
+    title: "Course Browser",
+    description:
+      "Browse through the programmes and courses that students at the IT Chapter study.",
+    "select-programme": "Select a programme",
+    "select-year": "Select a study year",
+    year: "Year",
+  },
   EducationPage: {
     title: "Education",
     "hero-image-alt":

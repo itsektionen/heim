@@ -8,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useScopedI18n } from "@/locales/client";
 import {
   KoppsProgramme,
   KoppsProgrammeSpecialization,
@@ -39,7 +40,7 @@ interface ProgrammeSelectorContext {
   setValues: (
     newValues:
       | ProgrammeSelectorValues
-      | ((prev: ProgrammeSelectorValues) => ProgrammeSelectorValues),
+      | ((prev: ProgrammeSelectorValues) => ProgrammeSelectorValues)
   ) => void;
   onValuesChange: (values: ProgrammeSelectorValues) => void;
   programme?: Programme;
@@ -54,7 +55,7 @@ const useProgrammeSelector = () => {
   const context = useContext(programmeSelectorContext);
   if (!context) {
     throw new Error(
-      "useProgrammeSelector must be used within a ProgrammeSelectorContext",
+      "useProgrammeSelector must be used within a ProgrammeSelectorContext"
     );
   }
 
@@ -111,15 +112,16 @@ export const ProgrammeSelector = ({
     }));
   }, [programme, studyYear]);
 
+  const t = useScopedI18n("CoursesPage");
+
   return (
     <div className="flex items-center gap-2">
       <Select
         onValueChange={setProgramme}
         value={programme}
-        defaultValue={programme}
-      >
+        defaultValue={programme}>
         <SelectTrigger>
-          <SelectValue placeholder="Select a programme" />
+          <SelectValue placeholder={t("select-programme")} />
         </SelectTrigger>
         <SelectContent>
           {programmes.map((programme) => (
@@ -133,19 +135,18 @@ export const ProgrammeSelector = ({
       <Select
         onValueChange={(value) => setStudyYear(Number(value) as KoppsStudyYear)}
         value={studyYear.toString()}
-        defaultValue={studyYear.toString()}
-      >
+        defaultValue={studyYear.toString()}>
         <SelectTrigger>
-          <SelectValue placeholder="Select a study year" />
+          <SelectValue placeholder={t("select-year")} />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="1">Year 1</SelectItem>
-          <SelectItem value="2">Year 2</SelectItem>
-          <SelectItem value="3">Year 3</SelectItem>
+          <SelectItem value="1">{t("year") + " 1"}</SelectItem>
+          <SelectItem value="2">{t("year") + " 2"}</SelectItem>
+          <SelectItem value="3">{t("year") + " 3"}</SelectItem>
           {programme === "CINTE" && (
             <>
-              <SelectItem value="4">Year 4</SelectItem>
-              <SelectItem value="5">Year 5</SelectItem>
+              <SelectItem value="4">{t("year") + " 4"}</SelectItem>
+              <SelectItem value="5">{t("year") + " 5"}</SelectItem>
             </>
           )}
         </SelectContent>
@@ -168,7 +169,7 @@ const ProgrammeBrowser = ({
       programme: "",
       studyYear: 1,
       admissionYear: new Date().getFullYear(),
-    },
+    }
   );
   const [programme, setProgramme] = useState<Programme>();
 
@@ -195,8 +196,7 @@ const ProgrammeBrowser = ({
         onValuesChange: () => {
           onValuesChange?.(values);
         },
-      }}
-    >
+      }}>
       {children}
     </programmeSelectorContext.Provider>
   );

@@ -55,7 +55,10 @@ const TrusteesPage = async ({
             {t("NavBar.Chapter.Trustees.description")}
           </p>
         </HeroContent>
-        <HeroImage src="/assets/img/kistan-galler.avif" alt="Header Image" />
+        <HeroImage
+          src="/assets/img/kistan-galler.avif"
+          alt="Blue lights behind metal plates with holes in it."
+        />
       </Hero>
       <h3 className="text-lg font-medium">{t("Trustees.Board")}</h3>
       <p className="text-muted-foreground max-w-prose mb-8 text-sm">
