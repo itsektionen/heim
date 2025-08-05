@@ -33,7 +33,7 @@ export default {
       reception: "reception",
       "education-page": "education page",
       content: [
-        "We are the Chapter for Information Technology, one of the largest chapters under the {thsLink} at {kthLink} in Stockholm, Sweden.",
+        "We are the Chapter for Information Technology, founded in 2000 and one of the largest chapters under the {thsLink} at {kthLink} in Stockholm, Sweden.",
         "As a non-profit organization registered with the Swedish Tax Agency, we work to benefit our members. We engage in a variety of activities ranging from core responsibilities such as educational monitoring to study-related social events that promote strong social involvement and community within the chapter.",
         "Additionally, we cultivate industry contacts that provide our members with opportunities to establish themselves in the business world.",
         "The committees of the chapter organize a range of events for our students and for students in Stockholm. This includes, among other things, the three week long {receptionLink} for new students, the job fair Kista ArbetsMarknadsdag as well as regular pubs and parties.",

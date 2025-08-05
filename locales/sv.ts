@@ -32,7 +32,7 @@ export default {
       reception: "mottagningen",
       "education-page": "våra utbildningar",
       content: [
-        "Vi är Sektionen för Informationsteknik, en av de största sektionerna under {thsLink} (THS) vid {kthLink} (KTH) i Stockholm.",
+        "Vi är Sektionen för Informationsteknik, grundad år 2000 och en av de största sektionerna under {thsLink} (THS) vid {kthLink} (KTH) i Stockholm.",
         "Som en allmännyttig ideell förening och registrerad arbetsgivare hos Skatteverket, arbetar vi för att gynna våra medlemmar och göra deras tid på KTH till den bästa möjliga. Vi engagerar oss i en mängd olika aktiviteter som sträcker sig från kärnverksamheten med studiebevakning till studiesociala evenemang som främjar starkt socialt engagemang och gemenskap inom sektionen.",
         "Dessutom främjar vi näringslivskontakter som ger våra medlemmar möjligheter att etablera sig i näringslivet.",
         "Sektionens nämnder arrangerar en rad evenemang för våra studenter och för student Stockholm. Det inkluderar bland annat den tre veckor långa  {receptionLink} för nya studenter, arbetsmarknadsmässan Kista ArbetsMarknadsdag samt regelbundna pubar och fester.",
