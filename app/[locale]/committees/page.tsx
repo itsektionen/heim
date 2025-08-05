@@ -17,7 +17,6 @@ import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
 import Link from "next/link";
-import ChapterPage from "../chapter/page";
 
 const CommitteeCard = async ({ committee }: { committee: Committee }) => {
   const t = await getI18n();
