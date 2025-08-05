@@ -96,6 +96,17 @@ export default {
       website: "Website",
     },
   },
+  ContactPage: {
+    title: "Contact",
+    "hero-image-alt": "Red couches on a balcony infront of big windows.",
+    president: "President",
+    brc: "Business Relations",
+    komma: "Communications",
+    "council-of-safety": "Council of Safety",
+    "other-note":
+      "If you need to contact someone else or a specific committee, you can find all the trustee elected and responsible members along with their contact information on the {trusteeLink}.",
+    "trustees-page": "Trustees Page",
+  },
   EducationPage: {
     title: "Education",
     "hero-image-alt":

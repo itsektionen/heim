@@ -95,6 +95,17 @@ export default {
       website: "Hemsida",
     },
   },
+  ContactPage: {
+    title: "Kontakt",
+    "hero-image-alt": "Röda soffor på ett överhäng framför stora fönster.",
+    president: "Ordförande",
+    brc: "Näringslivskontakt",
+    komma: "Kommunikation",
+    "council-of-safety": "Trygghetsråd",
+    "other-note":
+      "Behöver kontakta någon annan eller en specifik nämnd? Du hittar du alla förtroendevalda och ansvariga medlemmar samt deras kontaktuppgifter på {trusteeLink}.",
+    "trustees-page": "Förtroendevalda sidan",
+  },
   EducationPage: {
     title: "Utbildning",
     "hero-image-alt":
