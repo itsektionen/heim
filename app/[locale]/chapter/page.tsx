@@ -1,9 +1,9 @@
+import ELink from "@/components/ui/elink";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getScopedI18n, getStaticParams } from "@/locales/server";
 import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
-import Link from "next/link";
 
 export default async function ChapterPage({
   params,
@@ -17,50 +17,48 @@ export default async function ChapterPage({
   const commonT = await getScopedI18n("Common");
 
   const thsLink = (
-    <EnhancedLink href="https://thskth.se" external>
+    <ELink href="https://thskth.se" external>
       {commonT("ths")}
-    </EnhancedLink>
+    </ELink>
   );
   const thsMemberLink = (
-    <EnhancedLink href={t("member.link")} external>
+    <ELink href={t("member.link")} external>
       {commonT("ths")}
-    </EnhancedLink>
+    </ELink>
   );
   const kthLink = (
-    <EnhancedLink href="https://kth.se" external>
+    <ELink href="https://kth.se" external>
       {commonT("kth")}
-    </EnhancedLink>
+    </ELink>
   );
   const receptionLink = (
-    <EnhancedLink href="https://mottagningen.se" external>
+    <ELink href="https://mottagningen.se" external>
       {t("intro.reception")}
-    </EnhancedLink>
+    </ELink>
   );
   const songbookLink = (
-    <EnhancedLink href="https://sangbok.kth.it" external>
+    <ELink href="https://sangbok.kth.it" external>
       sangbok.kth.it
-    </EnhancedLink>
+    </ELink>
   );
   const songlistRepoLink = (
-    <EnhancedLink href="https://github.com/itsektionen/songlist" external>
+    <ELink href="https://github.com/itsektionen/songlist" external>
       songlist repository
-    </EnhancedLink>
+    </ELink>
   );
   const songbookRepoLink = (
-    <EnhancedLink href="https://github.com/itsektionen/songbook-2.0" external>
+    <ELink href="https://github.com/itsektionen/songbook-2.0" external>
       songbook-2.0 repository
-    </EnhancedLink>
+    </ELink>
   );
   const educationLink = (
-    <EnhancedLink href="/education">{t("intro.education-page")}</EnhancedLink>
+    <ELink href="/education">{t("intro.education-page")}</ELink>
   );
   const committeesLink = (
-    <EnhancedLink href="/committees">
-      {t("structure.committees-page")}
-    </EnhancedLink>
+    <ELink href="/committees">{t("structure.committees-page")}</ELink>
   );
   const trusteesLink = (
-    <EnhancedLink href="/trustees">{t("structure.trustees-page")}</EnhancedLink>
+    <ELink href="/trustees">{t("structure.trustees-page")}</ELink>
   );
 
   return (
@@ -117,32 +115,6 @@ export default async function ChapterPage({
         </section>
       </article>
     </>
-  );
-}
-
-function EnhancedLink({
-  href,
-  children,
-  external = false,
-  primary = true,
-}: {
-  href: string;
-  children: React.ReactNode;
-  external?: boolean;
-  primary?: boolean;
-}) {
-  return (
-    <Link
-      className={
-        primary
-          ? "text-primary"
-          : undefined + " hover:underline underline-offset-4"
-      }
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener" : undefined}>
-      {children}
-    </Link>
   );
 }
 
