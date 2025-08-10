@@ -155,6 +155,78 @@ export default {
       },
     },
   },
+  PrivacyPage: {
+    title: "Integritetspolicy",
+    "hero-image-alt":
+      "Inuti Electrum på andra våningen med utsikt mot hissarna i mitten och träd på båda sidor om trappan ner.",
+    contact:
+      "Du kan kontakta oss via {privacyEmailLink} om du har några frågor.",
+    collect: {
+      title: "Information som vi samlar in",
+      content: [
+        "När du anmäler dig till ett evenemang, deltar i ett möte, svarar på en enkät eller är aktiv som medlem i någon av våra nämnder, kan vi samla in personuppgifter såsom ditt namn, din epostadress, ålder, telefonnummer, vilket program du studerar och vilket årskull du tillhör, samt uppgifter om din närvaro.",
+        "Denna information samlas in direkt från dig via formulär, närvarolistor eller våra onlinetjänster.",
+        "När du deltar i våra evenemang kan vi även spela in eller fotografera. Detta innebär att du kan förekomma i ljud- och/eller videoinspelningar eller foton som vi behandlar, lagrar och ibland publicerar. Vi meddelar i förväg om inspelning eller fotografering kommer att ske.",
+        "Vi samlar inte medvetet in personuppgifter från personer under 16 års ålder utan korrekt samtycke.",
+      ],
+    },
+    use: {
+      title: "Användinig av din information",
+      content: [
+        "Uppgifter vid evenemangsregistrering används för att ge dig information om evenemanget, hantera praktiska arrangemang samt administrera betalningar.",
+        "Närvarolistor hjälper oss att hålla reda på deltagandet vid möten eller evenemang.",
+        "Enkätsvar kan användas för statistiska ändamål eller för att utveckla och förbättra våra aktiviteter och produkter, men samlas endast in med ditt samtycke.",
+        "Dina kontaktuppgifter som nämdmedlem används för att underlätta kommunikation och samordning inom vår organisation.",
+        "Vi kan ibland skicka e-post till dig med information om sektionsmöten, samarbeten eller rekrytering till olika studentaktiviteter.",
+      ],
+    },
+    retention: {
+      title: "Lagringstid",
+      content: [
+        "Vi sparar dina personuppgifter endast så länge som det är nödvändigt för de ändamål de samlades in för.",
+        "Uppgifter kopplade till evenemang sparas tills evenemanget är avslutat och ytterligare en månad från evenemangsdagen för att säkerställa att alla betalningar är slutförda. Därefter kan personuppgifter som samlats in via formulär anonymiseras och sparas för statistiska eller analytiska ändamål. När uppgifterna anonymiseras tas all information bort som direkt identifierar en person, så att de inte längre kan kopplas tillbaka till dig.",
+        "Enkätsvar raderas när resultaten har sammanställts och analyserats, normalt inom ett år, om de inte anonymiseras för vidare analys.",
+        "Närvarodata betraktas som en del av våra officiella handlingar och kopplas till våra mötesprotokoll. Närvarolistor ingår därför i undertecknade protokoll och lagras på obestämd tid som en del av våra historiska arkiv.",
+        "Uppgifter om nämndmedlemskap sparas under tiden du är aktiv och raderas när du begär utträde eller att lämna.",
+        "När annan personinformation inte längre behövs, raderas den på ett säkert sätt ur våra system regelbundet.",
+      ],
+    },
+    storage: {
+      title: "Lagring och säkerhet",
+      content: [
+        "Alla personuppgifter lagras säkert. Vi använder tjänster som Google Workspace för vår organisations lagring och e-post, GitHub för kod- och projektlagring samt andra tekniska plattformar inklusive våra egna servrar",
+        "I vissa fall kan dina uppgifter behandlas av tredje part som hjälper oss med lagring eller hosting, men alltid enligt personuppgiftsbiträdesavtal och aldrig för deras egna ändamål.",
+        "Vi säljer eller lämnar aldrig ut personuppgifter till tredje part.",
+      ],
+    },
+    cookies: {
+      title: "Cookies",
+      content:
+        "Vår webbplats använder inte tredjepartscookies. Vi använder endast lokala, funktionella cookies som sparas på din egen enhet för att komma ihåg ditt valda språk och tema. Dessa cookies skickas aldrig till oss och används inte för spårning. Genom att använda dessa funktioner godkänner du att dessa cookies sparas på din enhet.",
+    },
+    "third-parties": {
+      title: "Tredje parter",
+      kth: "Hanterar studentuppgifter självständigt. Läs mer på {kthLink}.",
+      "kth-link":
+        "https://intra.kth.se/campus/sakerhet/informationssakerhet/dataskyddsombud",
+      google:
+        "Google - Leverantör av lagringstjänster. Läs mer på {googleLink}.",
+      github:
+        "Github - Leverantör av hostingtjänster. Läs mer på {githubLink}.",
+      ths: "Hanterar medlemsregister självständigt. Vid frågor kontakta {thsEmailLink}.",
+    },
+    rights: {
+      title: "Dina rättigheter",
+      content:
+        "Du har rätt att när som helst kontakta oss för att begära tillgång till de personuppgifter vi har om dig, rätta felaktiga uppgifter eller begära radering när uppgifterna inte längre är nödvändiga. Du kan även begära begränsning av behandlingen, invända mot behandling som grundas på vårt berättigade intresse, eller återkalla ditt samtycke när behandlingen baseras på samtycke.",
+    },
+    update: {
+      title: "Uppdateringar",
+      notice:
+        "Vi kan komma att uppdatera denna integritetspolicy från tid till annan för att återspegla ändringar i våra rutiner eller i gällande lagstiftning.",
+      last: "Senast uppdaterad",
+    },
+  },
   Statutes: {
     title: "Stadgar",
     subtitle: "Detta är sektionens stadgar. De är våra styrdokument.",
@@ -202,6 +274,7 @@ export default {
   },
   Footer: {
     "follow-us": "Följ oss",
+    "privacy-policy": "Integritetspolicy",
   },
   LocaleSwitcher: {
     en: "English",

@@ -21,8 +21,7 @@ const Footer = async () => {
                 <MailIcon />
                 <Link
                   className="hover:underline underline-offset-4"
-                  href="mailto:board@kth.it"
-                >
+                  href="mailto:board@kth.it">
                   board@kth.it
                 </Link>
               </li>
@@ -31,8 +30,7 @@ const Footer = async () => {
                 <Link
                   className="hover:underline underline-offset-4"
                   href="https://maps.app.goo.gl/fHfRpEEeaTpBJy1f8"
-                  target="_blank"
-                >
+                  target="_blank">
                   Electrum, Kistagången 16, 164 40 Kista
                 </Link>
               </li>
@@ -41,8 +39,7 @@ const Footer = async () => {
               </li>
               <Link
                 className="text-muted-foreground hover:underline underline-offset-4"
-                href="/contact"
-              >
+                href="/contact">
                 ...more
               </Link>
             </ul>
@@ -56,8 +53,7 @@ const Footer = async () => {
                 <li key={`footer.doc.${index}`}>
                   <Link
                     className="hover:underline underline-offset-4"
-                    href={item.href}
-                  >
+                    href={item.href}>
                     {navbarT(item.title)}
                   </Link>
                 </li>
@@ -72,40 +68,35 @@ const Footer = async () => {
               <li>
                 <Link
                   className="hover:underline underline-offset-4"
-                  href="https://www.instagram.com/itsektionenkth"
-                >
+                  href="https://www.instagram.com/itsektionenkth">
                   Instagram
                 </Link>
               </li>
               <li>
                 <Link
                   className="hover:underline underline-offset-4"
-                  href="https://www.facebook.com/itsektionenkth"
-                >
+                  href="https://www.facebook.com/itsektionenkth">
                   Facebook
                 </Link>
               </li>
               <li>
                 <Link
                   className="hover:underline underline-offset-4"
-                  href="https://www.linkedin.com/company/itsektionen"
-                >
+                  href="https://www.linkedin.com/company/itsektionen">
                   LinkedIn
                 </Link>
               </li>
               <li>
                 <Link
                   className="hover:underline underline-offset-4"
-                  href="https://www.discord.gg/TcddkaByD8"
-                >
+                  href="https://www.discord.gg/TcddkaByD8">
                   Discord
                 </Link>
               </li>
               <li>
                 <Link
                   className="hover:underline underline-offset-4"
-                  href="https://www.github.com/itsektionen"
-                >
+                  href="https://www.github.com/itsektionen">
                   GitHub
                 </Link>
               </li>
@@ -119,9 +110,8 @@ const Footer = async () => {
           </p>
           <Link
             href="/privacy"
-            className="text-muted-foreground text-xs hover:underline underline-offset-4"
-          >
-            Privacy Policy
+            className="text-muted-foreground text-xs hover:underline underline-offset-4">
+            {t("privacy-policy")}
           </Link>
         </div>
       </div>

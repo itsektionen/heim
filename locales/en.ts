@@ -157,6 +157,78 @@ export default {
       },
     },
   },
+  PrivacyPage: {
+    title: "Privacy Policy",
+    "hero-image-alt":
+      "Inside of the Electrum building, on the second floor looking towards the elevators in the middle and trees on both sides of the stairs down.",
+    contact:
+      "You can contact us via {privacyEmailLink} if you have any questions.",
+    collect: {
+      title: "Information we collect",
+      content: [
+        "When you register for an event, participate in a meeting, respond to a survey, or are involved as a member in one of our committees, we may collect personal information such as your name, email address, age, phone number, your programme of study and year group, and records of your attendance.",
+        "This information is collected directly from you through forms, sign-in sheets, or our online services.",
+        "When participating in our events, we may make recordings or take photographs. This means that you may appear in audio and/or video recordings or photographs that we process, stores, and sometimes publish. We will notify you in advance if such recording or photography will take place.",
+        "We do not knowingly collect personal data from individuals under the age of 16 without appropriate consent.",
+      ],
+    },
+    use: {
+      title: "Use of your information",
+      content: [
+        "Event registration details are used to provide you with information about the event, to manage practical arrangements, and to handle payments.",
+        "Attendance lists help us keep track of participation at meetings or events.",
+        "Survey information may be used for statistical purposes or to improve our activities and products, but is only collected with your consent.",
+        "Your contact details as a committee member are used to facilitate communication and coordination within our organisation.",
+        "We may occasionally email you information about our chapter meetings, business relations and recruitment for various student activities.",
+      ],
+    },
+    retention: {
+      title: "Data retention",
+      content: [
+        "We retain your personal data only for as long as necessary for the purposes it was collected.",
+        "Data related to events is kept until the event is completed and for an additional month from the event date to ensure that all payments are finalised. At that point, personal data collected through forms may be anonymised and retained for statistical or analytical purposes, meaning all information that directly identifies individuals is removed and cannot be linked back to you.",
+        "Survey data is deleted once the results have been compiled and analysed, normally within a year, unless anonymized for further analysis.",
+        "Attendance data is considered part of our official records and is linked with our meeting protocols. Therefore, attendance lists are included in the signed protocols and stored indefinitely as part of our historical records.",
+        "Committee membership information is retained for the duration of your active participation and deleted when you ask to withdraw or leave.",
+        "When other personal information is no longer required, it is securely erased from our systems on a regular basis.",
+      ],
+    },
+    storage: {
+      title: "Data storage and security",
+      content: [
+        "All personal data is stored securely. We use services such as Google Workspace for our organisation drive and email, GitHub for hosting and collaborating on projects, and other technical platforms including our own servers.",
+        "In certain cases, your information may be processed by third parties who assist us with storage or hosting, but always under data processing agreements and never for their own purposes.",
+        "We never sell nor disclose personal data to third parties.",
+      ],
+    },
+    cookies: {
+      title: "Cookies",
+      content:
+        "Our website does not use third-party cookies. We only use local, functional cookies stored on your own device to remember your language and theme preferences. These cookies are never sent to us or used for tracking. By using these features you agree to storing these cookies.",
+    },
+    "third-parties": {
+      title: "Third parties",
+      kth: "Manages student data independently. Read more at {kthLink}.",
+      "kth-link":
+        "https://intra.kth.se/en/campus/sakerhet/informationssakerhet/dataskyddsombud",
+      google:
+        "Google - Service provider for storage. Read more at {googleLink}.",
+      github:
+        "Github - Service provider for hosting. Read more at {githubLink}.",
+      ths: "Manages member registry independently. If you have any questions about your personal data, you can ask {thsEmailLink}.",
+    },
+    rights: {
+      title: "Your rights",
+      content:
+        "You have the right to contact us at any time to request access to the personal data we hold about you, to correct any inaccuracies, or to request deletion where the data is no longer necessary. You may also restrict our processing of your data, object to processing based on our legitimate interest, or withdraw your consent where processing is based on that consent.",
+    },
+    update: {
+      title: "Updates",
+      notice:
+        "We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements.",
+      last: "Last updated",
+    },
+  },
   Statutes: {
     title: "Statutes",
     subtitle:
@@ -205,6 +277,7 @@ export default {
   },
   Footer: {
     "follow-us": "Follow us",
+    "privacy-policy": "Privacy Policy",
   },
   LocaleSwitcher: {
     en: "English",
