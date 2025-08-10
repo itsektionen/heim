@@ -6,7 +6,7 @@ export default function ELink({
   external = false,
   primary = true,
 }: {
-  href: string;
+  href?: string;
   children: React.ReactNode;
   external?: boolean;
   primary?: boolean;
@@ -18,7 +18,7 @@ export default function ELink({
           ? "text-primary"
           : undefined + " hover:underline underline-offset-4"
       }
-      href={href}
+      href={href ?? (typeof children === "string" ? children : "#")}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener" : undefined}>
       {children}
