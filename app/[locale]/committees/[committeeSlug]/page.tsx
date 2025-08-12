@@ -46,16 +46,14 @@ const CommitteePage = async ({
                 ? committee.color + "66"
                 : committee.color,
             color: committee.textColor,
-          }}
-        >
+          }}>
           <Button
             className="absolute top-2 left-1 opacity-50"
             style={{
               color: getContrastingColor(committee.color!),
             }}
             asChild
-            variant="link"
-          >
+            variant="link">
             <Link href="/committees">
               <ArrowLeftIcon /> Go back
             </Link>
@@ -72,7 +70,7 @@ const CommitteePage = async ({
           )}
         </HeroContent>
       </Hero>
-      <section className="flex gap-12 mx-">
+      <section className="flex flex-col lg:flex-row gap-12 mx-auto">
         <div className="w-full space-y-3">
           <p className="text-muted-foreground text-sm font-medium">About</p>
           <p>{committee.description}</p>
@@ -115,8 +113,7 @@ const CommitteePage = async ({
               <Link
                 className="text-sm text-primary hover:underline underline-offset-4 flex [&>svg]:size-4 gap-2"
                 href={committee.website}
-                target="_blank"
-              >
+                target="_blank">
                 {committee.website}
                 <ExternalLinkIcon />
               </Link>
