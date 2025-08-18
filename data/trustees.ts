@@ -36,7 +36,7 @@ export const boardTrustees: Trustee[] = [
     committeeIds: ["board"],
   },
   {
-    name: "Alexander Larsson",
+    name: "Alexander Lapin Pashchenko",
     role: "President of the Business Relations Committee",
     mail: "naringsliv@kth.it",
     committeeIds: ["board", "brc"],
@@ -162,7 +162,7 @@ export const committeeTrustees: Trustee[] = [
     committeeIds: ["qmisk"],
   },
   {
-    name: "Alexander Larsson",
+    name: "Alexander Lapin Pashchenko",
     role: "vQM",
     mail: "vqm@qmisk.com",
     committeeIds: ["qmisk"],

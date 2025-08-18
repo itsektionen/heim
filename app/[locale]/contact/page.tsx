@@ -114,7 +114,7 @@ const ContactPage = async ({
             <CardContent className="text-sm -mt-3">
               <div className="flex gap-2 items-center">
                 <UserIcon className="size-4 text-muted-foreground" />
-                <p>Alexander Larsson</p>
+                <p>Alexander Lapin Pashchenko</p>
               </div>
               <div className="flex gap-2 items-center">
                 <MailIcon className="size-4 text-muted-foreground" />
