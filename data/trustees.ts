@@ -292,7 +292,7 @@ export const committeeTrustees: Trustee[] = [
     mail: "kf@kth.it",
   },
   {
-    name: "Vakant / Vacant",
+    name: "Vakant",
     role: "Union Council Substitute",
     mail: "kf@kth.it",
   },
