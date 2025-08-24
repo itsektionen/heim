@@ -8,6 +8,7 @@ export const env = createEnv({
     DRIVE_CREDENTIALS_BASE64: z.string().base64().min(1),
     STATUTES_URL_EN: z.string().url().min(1),
     STATUTES_URL_SV: z.string().url().min(1),
+    RECEPTION_BASE_URL: z.string().url().min(1),
   },
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
   runtimeEnv: {
@@ -16,6 +17,7 @@ export const env = createEnv({
     DRIVE_CREDENTIALS_BASE64: process.env.DRIVE_CREDENTIALS_BASE64,
     STATUTES_URL_EN: process.env.STATUTES_URL_EN,
     STATUTES_URL_SV: process.env.STATUTES_URL_SV,
+    RECEPTION_BASE_URL: process.env.RECEPTION_BASE_URL,
   },
   // For Next.js >= 13.4.4, you only need to destructure client variables:
   // experimental__runtimeEnv: {

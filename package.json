@@ -32,6 +32,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
+    "embla-carousel-react": "^8.6.0",
     "facebook-event-scraper": "^0.1.3",
     "googleapis": "^148.0.0",
     "international-types": "^0.8.1",

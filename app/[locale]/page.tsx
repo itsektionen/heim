@@ -1,4 +1,4 @@
-// import { EventCard } from "@/components/event-card";
+import { EventCard } from "@/components/event-card";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,9 +8,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Hero, HeroContent, HeroImage } from "@/components/ui/hero";
+import { getCarouselReceptionEvents } from "@/lib/events/reception";
 import { getScopedI18n, getStaticParams } from "@/locales/server";
-// import { FacebookScraper } from "@/lib/scrapers/facebook";
 import {
   ArrowRightIcon,
   ExternalLinkIcon,
@@ -37,10 +44,10 @@ export default async function Home({
 }) {
   const { locale } = await params;
   setStaticParamsLocale(locale);
-  // const scraper = new FacebookScraper();
-  // const chapterEvents = await scraper.listEvents("itsektionenkth");
   const t = await getScopedI18n("HomePage");
   const commonT = await getScopedI18n("Common");
+
+  const events = await getCarouselReceptionEvents();
 
   return (
     <>
@@ -68,7 +75,8 @@ export default async function Home({
                 link: (
                   <Link
                     className="text-primary hover:underline underline-offset-4"
-                    href="https://mottagningen.se">
+                    href="https://mottagningen.se"
+                  >
                     mottagningen.se
                   </Link>
                 ),
@@ -124,17 +132,41 @@ export default async function Home({
       </section>
 
       <section>
-        <h2 className="text-2xl font-medium mb-4 flex items-center gap-3">
-          <PartyPopperIcon className="text-primary size-6" /> {t("News.title")}
-        </h2>
-        <div className="bg-card p-8 flex h-[300px] items-center justify-center text-center border rounded-md">
-          <p className="text-muted-foreground">{t("News.no-news")}</p>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-2xl font-medium flex items-center gap-3">
+            <PartyPopperIcon className="text-primary size-6" />{" "}
+            {t("News.title")}
+          </h2>
+          <Button asChild variant={"ghost"}>
+            <Link href="/events">View all</Link>
+          </Button>
         </div>
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {chapterEvents.map((event) => (
-            <EventCard key={event.id} event={event} />
-          ))}
-        </div> */}
+        {events.length > 0 ? (
+          <Carousel
+            opts={{
+              align: "start",
+            }}
+          >
+            <CarouselContent>
+              {events.map((event) => (
+                <CarouselItem
+                  className="md:basis-1/2 lg:basis-1/4"
+                  key={event.id}
+                >
+                  <EventCard event={event} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="space-x-3 mt-4">
+              <CarouselPrevious className="static translate-0" />
+              <CarouselNext className="static translate-0" />
+            </div>
+          </Carousel>
+        ) : (
+          <div className="bg-card p-8 flex h-[300px] items-center justify-center text-center border rounded-md">
+            <p className="text-muted-foreground">{t("News.no-news")}</p>
+          </div>
+        )}
       </section>
     </>
   );

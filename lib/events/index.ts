@@ -7,10 +7,10 @@ export interface EventScraper {
 export type CalendarEvent = {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   start: Date;
   end?: Date;
-  location: string;
+  location?: string;
   imageUrl?: string;
-  url: string;
+  url?: string;
 };
