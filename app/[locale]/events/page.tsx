@@ -1,11 +1,22 @@
 import { EventCard } from "@/components/event-card";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import { listReceptionEvents } from "@/lib/events/reception";
-import { getI18n } from "@/locales/server";
+import { getI18n, getStaticParams } from "@/locales/server";
+import { setStaticParamsLocale } from "next-international/server";
+import { type Metadata } from "next";
+import { getOgImageUrl } from "@/lib/og";
 
-const EventsPage = async () => {
+const EventsPage = async ({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) => {
+  const { locale } = await params;
+  setStaticParamsLocale(locale);
+
   const events = await listReceptionEvents();
   const t = await getI18n();
+
   return (
     <>
       <Hero>
@@ -29,6 +40,28 @@ const EventsPage = async () => {
       </div>
     </>
   );
+};
+
+export function generateStaticParams() {
+  return getStaticParams();
+}
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getI18n();
+  const title = t("Common.chapter");
+  const subtitle = t("NavBar.Chapter.Events");
+  const description = t("NavBar.Chapter.Events.description");
+
+  return {
+    title: `${subtitle} – ${title}`,
+    description,
+    openGraph: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+    twitter: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+  };
 };
 
 export default EventsPage;

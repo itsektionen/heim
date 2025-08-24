@@ -1,13 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Hero, HeroContent, HeroImage } from "@/components/ui/hero";
-import { getReceptionEvent } from "@/lib/events/reception";
-import { getI18n } from "@/locales/server";
-import {
-  ArrowLeftIcon,
-  CalendarClockIcon,
-  ClockIcon,
-  MapPinIcon,
-} from "lucide-react";
+import { Hero, HeroImage } from "@/components/ui/hero";
+import { getReceptionEvent, listReceptionEvents } from "@/lib/events/reception";
+import { getOgImageUrl } from "@/lib/og";
+import { getI18n, getStaticParams } from "@/locales/server";
+import { ArrowLeftIcon, CalendarClockIcon, MapPinIcon } from "lucide-react";
+import { type Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -75,6 +72,49 @@ const EventPage = async ({
       </div>
     </>
   );
+};
+
+export async function generateStaticParams() {
+  const receptionEvents = await listReceptionEvents();
+  return getStaticParams().map((locale) => {
+    return receptionEvents.map((event) => ({
+      locale: locale,
+      eventId: event.id,
+    }));
+  });
+}
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ eventId: string }>;
+}): Promise<Metadata> => {
+  const t = await getI18n();
+
+  const { eventId } = await params;
+
+  const event = await getReceptionEvent(eventId);
+
+  const title = t("Common.chapter");
+  const subtitle = event ? event.title : t("NavBar.Chapter.Events");
+
+  // TODO: Change this ternary mess to something more readable
+  const description = event
+    ? event.description
+      ? event.description
+      : t("NavBar.Chapter.Events.description")
+    : t("NavBar.Chapter.Events.description");
+
+  return {
+    title: `${subtitle} – ${title}`,
+    description,
+    openGraph: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+    twitter: {
+      images: [getOgImageUrl(title, subtitle)],
+    },
+  };
 };
 
 export default EventPage;

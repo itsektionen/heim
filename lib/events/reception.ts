@@ -37,8 +37,8 @@ export const getReceptionEvent = async (
     const data: ReceptionEvent = await res.json();
 
     return mapReceptionEvent(data);
-  } catch (err) {
-    console.error(`Error fetching event (${eventId})`, err);
+  } catch (error) {
+    console.error(`Error fetching event (${eventId})`, error);
     return undefined;
   }
 };
@@ -49,8 +49,8 @@ export const listReceptionEvents = async (): Promise<CalendarEvent[]> => {
     const data: ReceptionEventsResponse = await res.json();
 
     return data.map((receptionEvent) => mapReceptionEvent(receptionEvent));
-  } catch (err) {
-    console.error(`Error listing events`, err);
+  } catch (error) {
+    console.error(`Error listing events`, error);
     return [];
   }
 };
