@@ -17,6 +17,41 @@ const nextConfig: NextConfig = {
       destination: "/privacy",
       permanent: true,
     },
+    {
+      source: "/:lang(en)?/sektionen",
+      destination: "/chapter",
+      permanent: true,
+    },
+    {
+      source: "/:lang(en)?/sektionsorgan",
+      destination: "/committees",
+      permanent: true,
+    },
+    {
+      source: "/:lang(en)?/f%C3%B6rtroendevalda",
+      destination: "/trustees",
+      permanent: true,
+    },
+    {
+      source: "/:lang(en)?/dokument",
+      destination: "/documents/protocols",
+      permanent: true,
+    },
+    {
+      source: "/:lang(en)?/aktuellt",
+      destination: "/events",
+      permanent: true,
+    },
+    {
+      source: "/:lang(en)?/utbildning",
+      destination: "/education",
+      permanent: true,
+    },
+    {
+      source: "/:lang(en)?/kontakt",
+      destination: "/contact",
+      permanent: true,
+    },
   ],
   pageExtensions: ["mdx", "md", "tsx", "ts", "jsx", "js"],
 };
