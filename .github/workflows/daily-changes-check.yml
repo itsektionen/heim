@@ -1,0 +1,28 @@
+name: Daily check
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+
+jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Check for changes
+        run: |
+          git fetch --prune
+          if [ "$(git log --since='25 hours ago' --oneline)" ]; then
+            echo "changes=true" >> $GITHUB_ENV
+          else
+            echo "changes=false" >> $GITHUB_ENV
+          fi
+      - name: Push automatic commit
+        if: env.changes == 'true'
+        run: |
+          git config --global user.name 'Heim Bot'
+          git config --global user.email 'itsektionen-webmaster@users.noreply.github.com'
+          DATE=$(date +"%Y-%m-%d")
+          git commit --allow-empty -m "Automatic commit ${DATE}"
+          git push
