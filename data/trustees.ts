@@ -157,7 +157,7 @@ export const committeeTrustees: Trustee[] = [
     mail: "kam@kth.it",
   },
   {
-    name: "Denise Hedström",
+    name: "Denise Hommik",
     role: "QM",
     mail: "qm@qmisk.com",
     committeeIds: ["qmisk"],
