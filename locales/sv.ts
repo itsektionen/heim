@@ -87,12 +87,14 @@ export default {
     title: "Sektionsorgan",
     "hero-image-alt":
       "Baren i Kistan 2.0 med många flaskor och kylar i bakgrunden.",
+    protocols: "Här hittar du {committeName}s protokoll.",
     single: {
       back: "Gå tillbaka",
       about: "Om",
       trustees: "Förtroendevalda",
       "no-trustees": "Inga förtroendevalda hittades",
       website: "Hemsida",
+      protocols: "Protokoll",
     },
   },
   ContactPage: {

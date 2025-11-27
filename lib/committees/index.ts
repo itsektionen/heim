@@ -1,6 +1,6 @@
 import committees, { Committee, CommitteeSlug } from "@/data/committees";
 import { boardTrustees, committeeTrustees, Trustee } from "@/data/trustees";
-import { getContrastingColor } from "./utils";
+import { getContrastingColor } from "../utils";
 
 export const defaultCommitteeColor = "#cc99ff";
 

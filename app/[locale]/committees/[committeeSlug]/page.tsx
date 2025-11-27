@@ -1,23 +1,18 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Hero, HeroContent } from "@/components/ui/hero";
-import {
-  defaultCommitteeColor,
-  getCommittee,
-  listCommittees,
-} from "@/lib/committees";
+import { CommitteeSlug } from "@/data/committees";
+import { getCommittee, listCommittees } from "@/lib/committees";
+import { listProtocols } from "@/lib/committees/protocols";
 import { getOgImageUrl } from "@/lib/og";
-import { getContrastingColor } from "@/lib/utils";
 import { getI18n, getScopedI18n, getStaticParams } from "@/locales/server";
 import {
-  ArrowLeftIcon,
   CircleAlertIcon,
   ExternalLinkIcon,
+  FileTextIcon,
   MailIcon,
 } from "lucide-react";
 import { Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -37,46 +32,24 @@ const CommitteePage = async ({
   const { committee, trustees } = response.data;
   const t = await getScopedI18n("CommitteesPage");
 
+  const protocols = await listProtocols(committee.slug as CommitteeSlug);
+
   return (
     <>
-      <Hero>
-        <HeroContent
-          style={{
-            backgroundColor:
-              committee.img && committee.color === defaultCommitteeColor
-                ? committee.color + "66"
-                : committee.color,
-            color: committee.textColor,
-          }}>
-          <Button
-            className="absolute top-2 left-1 opacity-50"
-            style={{
-              color: getContrastingColor(committee.color!),
-            }}
-            asChild
-            variant="link">
-            <Link href="/committees">
-              <ArrowLeftIcon /> {t("single.back")}
-            </Link>
-          </Button>
-          {committee.img ? (
-            <Image
-              src={committee.img}
-              height={300}
-              width={300}
-              alt={committee.name}
-            />
-          ) : (
-            <h2 className="text-6xl font-medium">{committee.name}</h2>
-          )}
-        </HeroContent>
-      </Hero>
       <section className="flex flex-col lg:flex-row gap-12 mx-auto">
         <div className="w-full space-y-3">
           <p className="text-muted-foreground text-sm font-medium">
             {t("single.about")}
           </p>
           <p>{committee.description}</p>
+          {protocols && (
+            <Button className="mt-4" variant="secondary" asChild>
+              <Link href={`/committees/${committee.slug}/protocols`}>
+                <FileTextIcon />
+                {t("single.protocols")}
+              </Link>
+            </Button>
+          )}
         </div>
         <div className="space-y-3 shrink-0 min-w-[300px]">
           <p className="text-muted-foreground text-sm font-medium">
@@ -122,7 +95,8 @@ const CommitteePage = async ({
               <Link
                 className="text-sm text-primary hover:underline underline-offset-4 flex [&>svg]:size-4 gap-2"
                 href={committee.website}
-                target="_blank">
+                target="_blank"
+              >
                 {committee.website}
                 <ExternalLinkIcon />
               </Link>
