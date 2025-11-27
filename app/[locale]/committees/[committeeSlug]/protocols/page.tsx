@@ -2,7 +2,6 @@ import { CommitteeSlug } from "@/data/committees";
 import { getCommittee } from "@/lib/committees";
 import { listProtocols } from "@/lib/committees/protocols";
 import { getScopedI18n } from "@/locales/server";
-import { Protocol } from "@/types/committee";
 import { FileTextIcon } from "lucide-react";
 
 import Link from "next/link";
