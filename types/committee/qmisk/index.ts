@@ -34,6 +34,6 @@ export const mapQmiskEvent = (qmiskEvent: QmiskEvent): CalendarEvent => ({
   end: new Date(qmiskEvent.end),
   description: qmiskEvent.info,
   location: "Kistan 2.0",
-  imageUrl: qmiskEvent.image,
+  imageUrl: qmiskEvent.image == "" ? undefined : qmiskEvent.image,
   committeeSlug: "qmisk",
 });
