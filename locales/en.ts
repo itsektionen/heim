@@ -23,6 +23,8 @@ export default {
     News: {
       title: "Latest news",
       "no-news": "There are no news.",
+      "no-news-description":
+        "Unfortunately, there are no news or events here at the moment. Either nothing is happening, or they are missing. Please visit our social media or check back later.",
     },
   },
   ChapterPage: {

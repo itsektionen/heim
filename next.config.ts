@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "lh3.googleusercontent.com",
       },
+      {
+        hostname: "minio.qmisk.com",
+      },
     ],
   },
   redirects: async () => [

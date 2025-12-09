@@ -1,9 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Hero, HeroImage } from "@/components/ui/hero";
-import { getReceptionEvent, listReceptionEvents } from "@/lib/events/reception";
+import { getCommittee } from "@/lib/committees";
+import {
+  getCommitteeEvent,
+  listAllCommitteeEvents,
+} from "@/lib/committees/events";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getStaticParams } from "@/locales/server";
-import { ArrowLeftIcon, CalendarClockIcon, MapPinIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  CalendarClockIcon,
+  MapPinIcon,
+  UsersIcon,
+} from "lucide-react";
 import { type Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import Link from "next/link";
@@ -19,7 +28,7 @@ const EventPage = async ({
 
   const t = await getI18n();
 
-  const event = await getReceptionEvent(eventId);
+  const event = await getCommitteeEvent(eventId);
 
   if (!event) {
     return notFound();
@@ -34,6 +43,8 @@ const EventPage = async ({
     hour: "2-digit",
     minute: "2-digit",
   });
+
+  const committeeData = getCommittee(event.committeeSlug!);
 
   return (
     <>
@@ -52,22 +63,33 @@ const EventPage = async ({
           </Link>
         </Button>
       </Hero>
-      <div className="flex gap-8 justify-between">
+      <div className="flex flex-col-reverse lg:flex-row gap-8 justify-between">
         <div>
           <h2 className="text-3xl font-medium mb-2">{event.title}</h2>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground whitespace-pre-line">
             {event.description || "No description provided."}
           </p>
         </div>
-        <div className="bg-muted py-4 px-5 space-y-4 rounded-md border shrink-0">
-          <div className="flex items-center gap-2">
-            <CalendarClockIcon className="text-muted-foreground size-5" />
+        <div className="bg-muted py-4 px-5 space-y-4 rounded-md border shrink-0 h-fit lg:sticky lg:top-[calc(64px+var(--spacing)*6)]">
+          <div className="flex items-center gap-4">
+            <CalendarClockIcon className="text-muted-foreground size-4" />
             {`${startTimeString} ${endTimeString && "- " + endTimeString}`}
           </div>
-          <div className="flex items-center gap-2">
-            <MapPinIcon className="text-muted-foreground size-5" />
+          <div className="flex items-center gap-4">
+            <MapPinIcon className="text-muted-foreground size-4" />
             {event.location}
           </div>
+          {committeeData && (
+            <div className="flex items-center gap-4">
+              <UsersIcon className="text-muted-foreground size-4" />
+              <Link
+                className="hover:underline underline-offset-4 text-primary"
+                href={`/committees/${committeeData.data.committee.slug}`}
+              >
+                {committeeData.data.committee.name}
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </>
@@ -75,9 +97,9 @@ const EventPage = async ({
 };
 
 export async function generateStaticParams() {
-  const receptionEvents = await listReceptionEvents();
+  const events = await listAllCommitteeEvents();
   return getStaticParams().map((locale) => {
-    return receptionEvents.map((event) => ({
+    return events.map((event) => ({
       locale: locale,
       eventId: event.id,
     }));
@@ -93,7 +115,7 @@ export const generateMetadata = async ({
 
   const { eventId } = await params;
 
-  const event = await getReceptionEvent(eventId);
+  const event = await getCommitteeEvent(eventId);
 
   const title = t("Common.chapter");
   const subtitle = event ? event.title : t("NavBar.Chapter.Events");

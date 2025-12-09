@@ -15,8 +15,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
+} from "@/components/ui/empty";
 import { Hero, HeroContent, HeroImage } from "@/components/ui/hero";
-import { getCarouselReceptionEvents } from "@/lib/events/reception";
+import { listAllCommitteeEvents } from "@/lib/committees/events";
+import { CalendarEvent } from "@/lib/events";
 import { getScopedI18n, getStaticParams } from "@/locales/server";
 import {
   ArrowRightIcon,
@@ -47,7 +55,7 @@ export default async function Home({
   const t = await getScopedI18n("HomePage");
   const commonT = await getScopedI18n("Common");
 
-  const events = await getCarouselReceptionEvents();
+  const events: CalendarEvent[] = await listAllCommitteeEvents();
 
   return (
     <>
@@ -163,9 +171,45 @@ export default async function Home({
             </div>
           </Carousel>
         ) : (
-          <div className="bg-card p-8 flex h-[300px] items-center justify-center text-center border rounded-md">
-            <p className="text-muted-foreground">{t("News.no-news")}</p>
-          </div>
+          <Empty>
+            <EmptyHeader>
+              <EmptyTitle>{t("News.no-news")}</EmptyTitle>
+              <EmptyDescription>
+                {t("News.no-news-description")}
+              </EmptyDescription>
+            </EmptyHeader>
+            <EmptyContent>
+              <div className="flex gap-2">
+                <Button asChild variant="secondary">
+                  <Link
+                    href="https://www.instagram.com/itsektionenkth"
+                    target="_blank"
+                  >
+                    <ExternalLinkIcon />
+                    Instagram
+                  </Link>
+                </Button>
+                <Button asChild variant="secondary">
+                  <Link
+                    href="https://www.facebook.com/itsektionenkth"
+                    target="_blank"
+                  >
+                    <ExternalLinkIcon />
+                    Facebook
+                  </Link>
+                </Button>
+                <Button asChild variant="secondary">
+                  <Link
+                    href="https://www.discord.gg/TcddkaByD8"
+                    target="_blank"
+                  >
+                    <ExternalLinkIcon />
+                    Discord
+                  </Link>
+                </Button>
+              </div>
+            </EmptyContent>
+          </Empty>
         )}
       </section>
     </>

@@ -1,10 +1,10 @@
 import { EventCard } from "@/components/event-card";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
-import { listReceptionEvents } from "@/lib/events/reception";
-import { getI18n, getStaticParams } from "@/locales/server";
-import { setStaticParamsLocale } from "next-international/server";
-import { type Metadata } from "next";
+import { listAllCommitteeEvents } from "@/lib/committees/events";
 import { getOgImageUrl } from "@/lib/og";
+import { getI18n, getStaticParams } from "@/locales/server";
+import { type Metadata } from "next";
+import { setStaticParamsLocale } from "next-international/server";
 
 const EventsPage = async ({
   params,
@@ -14,7 +14,7 @@ const EventsPage = async ({
   const { locale } = await params;
   setStaticParamsLocale(locale);
 
-  const events = await listReceptionEvents();
+  const events = await listAllCommitteeEvents();
   const t = await getI18n();
 
   return (
@@ -31,7 +31,7 @@ const EventsPage = async ({
           alt={t("NavBar.Chapter.Events")}
         />
       </Hero>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {events
           .sort((a, b) => b.start.getDate() - a.start.getDate())
           .map((event) => (

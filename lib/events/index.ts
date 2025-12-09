@@ -1,3 +1,5 @@
+import { CommitteeSlug } from "@/data/committees";
+
 export interface EventScraper {
   listEvents(
     ...args: (string | number | boolean | object)[]
@@ -13,4 +15,5 @@ export type CalendarEvent = {
   location?: string;
   imageUrl?: string;
   url?: string;
+  committeeSlug?: CommitteeSlug;
 };

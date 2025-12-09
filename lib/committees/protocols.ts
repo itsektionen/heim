@@ -1,27 +1,21 @@
 import { CommitteeSlug } from "@/data/committees";
 import { env } from "@/env";
 import { Protocol } from "@/types/committee";
-import { QmiskProtocol } from "@/types/committee/qmisk/protocol";
+import { mapQmiskProtocol, QmiskProtocol } from "@/types/committee/qmisk";
 
 const listQmiskProtocols = async (): Promise<Protocol[]> => {
-  const res = await fetch(env.QMISK_PROTOCOLS_URL);
+  const res = await fetch(`${env.QMISK_BASE_URL}/protocol/view`);
   const data: QmiskProtocol[] = await res.json();
 
   return data
-    .map((qmiskProtocol) => ({
-      id: qmiskProtocol.id,
-      name: qmiskProtocol.name,
-      date: new Date(qmiskProtocol.upload_date),
-      url: qmiskProtocol.actions.view_pdf,
-    }))
-
+    .map(mapQmiskProtocol)
     .sort(
       (a, b) =>
         b.date.getTime() - a.date.getTime() || b.name.localeCompare(a.name),
     );
 };
 
-export const listProtocols = async (
+export const listCommitteeProtocols = async (
   slug: CommitteeSlug,
 ): Promise<Protocol[] | null> => {
   switch (slug) {

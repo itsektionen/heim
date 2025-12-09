@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { CommitteeSlug } from "@/data/committees";
 import { getCommittee, listCommittees } from "@/lib/committees";
-import { listProtocols } from "@/lib/committees/protocols";
+import { listCommitteeProtocols } from "@/lib/committees/protocols";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getScopedI18n, getStaticParams } from "@/locales/server";
 import {
@@ -32,7 +32,9 @@ const CommitteePage = async ({
   const { committee, trustees } = response.data;
   const t = await getScopedI18n("CommitteesPage");
 
-  const protocols = await listProtocols(committee.slug as CommitteeSlug);
+  const protocols = await listCommitteeProtocols(
+    committee.slug as CommitteeSlug,
+  );
 
   return (
     <>

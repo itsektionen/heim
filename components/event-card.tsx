@@ -12,11 +12,15 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { ClockIcon, MapPinIcon } from "lucide-react";
+import { ClockIcon, MapPinIcon, UsersIcon } from "lucide-react";
 import { useI18n } from "@/locales/client";
+import { getCommittee } from "@/lib/committees";
 
 const EventCard = ({ event }: { event: CalendarEvent }) => {
   const t = useI18n();
+
+  const committeeData = getCommittee(event.committeeSlug!);
+
   return (
     <Card className="pt-0 px-0 overflow-hidden h-full">
       <CardHeader className="px-0">
@@ -45,6 +49,17 @@ const EventCard = ({ event }: { event: CalendarEvent }) => {
               minute: "2-digit",
             })}
           </li>
+          {committeeData && (
+            <li className="flex items-center gap-2 truncate">
+              <UsersIcon className="size-4 text-muted-foreground shrink-0" />
+              <Link
+                className="text-primary hover:underline underline-offset-4"
+                href={`/committees/${committeeData.data.committee.slug}`}
+              >
+                {committeeData.data.committee.name}
+              </Link>
+            </li>
+          )}
         </ul>
       </CardContent>
       <CardFooter className="mt-auto">
