@@ -10,6 +10,7 @@ export const env = createEnv({
     STATUTES_URL_SV: z.string().url().min(1),
     RECEPTION_BASE_URL: z.string().url().min(1),
     QMISK_BASE_URL: z.string().url().min(1),
+    ITK_BASE_URL: z.string().url().min(1),
   },
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
   runtimeEnv: {
@@ -20,6 +21,7 @@ export const env = createEnv({
     STATUTES_URL_SV: process.env.STATUTES_URL_SV,
     RECEPTION_BASE_URL: process.env.RECEPTION_BASE_URL,
     QMISK_BASE_URL: process.env.QMISK_BASE_URL,
+    ITK_BASE_URL: process.env.ITK_BASE_URL,
   },
   // For Next.js >= 13.4.4, you only need to destructure client variables:
   // experimental__runtimeEnv: {
