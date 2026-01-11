@@ -33,7 +33,7 @@ const EventsPage = async ({
       </Hero>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {events
-          .sort((a, b) => b.start.getDate() - a.start.getDate())
+          .sort((a, b) => a.start.getTime() - b.start.getTime())
           .map((event) => (
             <EventCard event={event} key={event.id} />
           ))}

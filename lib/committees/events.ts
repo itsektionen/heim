@@ -12,7 +12,7 @@ const listQmiskEvents = async (): Promise<CalendarEvent[]> => {
     .map(mapQmiskEvent)
     .sort(
       (a, b) =>
-        b.start.getTime() - a.start.getTime() || b.title.localeCompare(a.title)
+        a.start.getTime() - b.start.getTime() || a.title.localeCompare(b.title)
     );
 };
 
@@ -33,7 +33,7 @@ const listItkEvents = async (): Promise<CalendarEvent[]> => {
     .map(mapItkEvent)
     .sort(
       (a, b) =>
-        b.start.getTime() - a.start.getTime() || b.title.localeCompare(a.title)
+        a.start.getTime() - b.start.getTime() || a.title.localeCompare(b.title)
     );
 };
 
@@ -91,6 +91,6 @@ export const listAllCommitteeEvents = async (): Promise<CalendarEvent[]> => {
     .flat()
     .sort(
       (a, b) =>
-        b.start.getTime() - a.start.getTime() || b.title.localeCompare(a.title)
+        a.start.getTime() - b.start.getTime() || a.title.localeCompare(b.title)
     );
 };
