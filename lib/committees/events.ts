@@ -48,7 +48,7 @@ const getItkEvent = async (id: string): Promise<CalendarEvent | null> => {
 };
 
 const listTmeitEvents = async (): Promise<CalendarEvent[]> => {
-  const res = await fetch(`${env.ITK_BASE_URL}/events/tmeit/json`);
+  const res = await fetch(`${env.TMEIT_BASE_URL}/events/tmeit/json`);
   const data: TmeitEvent[] = await res.json();
 
   return data
@@ -60,7 +60,7 @@ const listTmeitEvents = async (): Promise<CalendarEvent[]> => {
 };
 
 const getTmeitEvent = async (id: string): Promise<CalendarEvent | null> => {
-  const res = await fetch(`${env.ITK_BASE_URL}/events/tmeit/json`);
+  const res = await fetch(`${env.TMEIT_BASE_URL}/events/tmeit/json`);
   const data: TmeitEvent[] = await res.json();
 
   const event = data.find((event) => event.id === id);
