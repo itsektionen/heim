@@ -7,14 +7,14 @@ export type ItkEvent = {
   imageUrl: string;
   start: string;
   end: string;
-  info: string;
+  description: string;
   location?: string;
 };
 
 export const mapItkEvent = (itkEvent: ItkEvent): CalendarEvent => ({
   id: `itk-${itkEvent.id}`,
   title: itkEvent.title,
-  description: itkEvent.info || undefined,
+  description: itkEvent.description || undefined,
   start: new Date(itkEvent.start),
   end: new Date(itkEvent.end),
   location: itkEvent.location,

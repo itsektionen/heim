@@ -2,6 +2,7 @@ import committees, { CommitteeSlug } from "@/data/committees";
 import { env } from "@/env";
 import { ItkEvent, mapItkEvent } from "@/types/committee/itk";
 import { mapQmiskEvent, QmiskEvent } from "@/types/committee/qmisk";
+import { mapTmeitEvent, TmeitEvent } from "@/types/committee/tmeit";
 import { CalendarEvent } from "../events";
 
 const listQmiskEvents = async (): Promise<CalendarEvent[]> => {
@@ -46,6 +47,27 @@ const getItkEvent = async (id: string): Promise<CalendarEvent | null> => {
   return event ? mapItkEvent(event) : null;
 };
 
+const listTmeitEvents = async (): Promise<CalendarEvent[]> => {
+  const res = await fetch(`${env.ITK_BASE_URL}/events/tmeit/json`);
+  const data: TmeitEvent[] = await res.json();
+
+  return data
+    .map(mapTmeitEvent)
+    .sort(
+      (a, b) =>
+        a.start.getTime() - b.start.getTime() || a.title.localeCompare(b.title)
+    );
+};
+
+const getTmeitEvent = async (id: string): Promise<CalendarEvent | null> => {
+  const res = await fetch(`${env.ITK_BASE_URL}/events/tmeit/json`);
+  const data: TmeitEvent[] = await res.json();
+
+  const event = data.find((event) => event.id === id);
+
+  return event ? mapTmeitEvent(event) : null;
+};
+
 export const getCommitteeEvent = async (
   id: string
 ): Promise<CalendarEvent | null> => {
@@ -58,6 +80,10 @@ export const getCommitteeEvent = async (
     case "itk":
       const itkId = id.split("-")[1];
       return getItkEvent(itkId);
+
+    case "tmeit":
+      const tmeitId = id.split("-")[1];
+      return getTmeitEvent(tmeitId);
 
     default:
       return null;
@@ -73,6 +99,9 @@ export const listCommitteeEvents = async (
 
     case "itk":
       return listItkEvents();
+
+    case "tmeit":
+      return listTmeitEvents();
 
     default:
       return null;
