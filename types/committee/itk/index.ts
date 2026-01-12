@@ -18,6 +18,6 @@ export const mapItkEvent = (itkEvent: ItkEvent): CalendarEvent => ({
   start: new Date(itkEvent.start),
   end: new Date(itkEvent.end),
   location: itkEvent.location,
-  imageUrl: undefined,
+  imageUrl: "/assets/img/events/itk.webp",
   committeeSlug: "itk",
 });

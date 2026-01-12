@@ -18,6 +18,6 @@ export const mapTmeitEvent = (tmeitEvent: TmeitEvent): CalendarEvent => ({
   start: new Date(tmeitEvent.start),
   end: new Date(tmeitEvent.end),
   location: tmeitEvent.location,
-  imageUrl: undefined,
+  imageUrl: "/assets/img/events/tmeit.webp",
   committeeSlug: "tmeit",
 });
