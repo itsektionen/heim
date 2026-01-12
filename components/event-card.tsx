@@ -1,6 +1,9 @@
 "use client";
 
+import { getCommittee } from "@/lib/committees";
 import { CalendarEvent } from "@/lib/events";
+import { useI18n } from "@/locales/client";
+import { ClockIcon, MapPinIcon, UsersIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import {
@@ -12,9 +15,6 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { ClockIcon, MapPinIcon, UsersIcon } from "lucide-react";
-import { useI18n } from "@/locales/client";
-import { getCommittee } from "@/lib/committees";
 
 const EventCard = ({ event }: { event: CalendarEvent }) => {
   const t = useI18n();
@@ -25,7 +25,7 @@ const EventCard = ({ event }: { event: CalendarEvent }) => {
     <Card className="pt-0 px-0 overflow-hidden h-full">
       <CardHeader className="px-0">
         <img
-          className="border-b mb-6 bg-secondary"
+          className="border-b mb-6 bg-secondary h-48 w-full object-cover "
           src={event.imageUrl ?? "/assets/img/placeholder.png"}
           alt={event.title}
         />
