@@ -50,13 +50,13 @@ export const boardTrustees: Trustee[] = [
   },
   {
     name: "Maitreyi Muralidhar",
-    role: "President of the Communications Committee",
-    mail: "kommunikation@kth.it",
+    role: "KommA",
+    mail: "komma@kth.it",
     committeeIds: ["komma", "board"],
   },
   {
     name: "Madelaine Bunao",
-    role: "President of the Study Committee",
+    role: "SNO",
     mail: "sno@kth.it",
     committeeIds: ["board", "study"],
   },
@@ -119,8 +119,8 @@ export const committeeTrustees: Trustee[] = [
   },
   {
     name: "Elina Wang",
-    role: "vice President of the Communications Committee",
-    mail: "komma@kth.it",
+    role: "vKommA",
+    mail: "vkomma@kth.it",
     image: "/assets/img/trustees/elinaw.avif",
     committeeIds: ["komma"],
   },
@@ -175,8 +175,8 @@ export const committeeTrustees: Trustee[] = [
     committeeIds: ["qmisk"],
   },
   {
-    name: "Viktor Sandström",
-    role: "Fredrik Linderhed",
+    name: "Fredrik Linderhed",
+    role: "StURe",
     mail: "sture@kth.it",
     committeeIds: ["smn"],
   },
@@ -381,7 +381,7 @@ export const committeeTrustees: Trustee[] = [
   },
   {
     name: "Hannah Veit",
-    role: "Standard Bearer",
+    role: "Head Standard Bearer",
     image: "/assets/img/trustees/hannahv.avif",
   },
   {
