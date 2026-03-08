@@ -1,6 +1,6 @@
 const getOgImageUrl = (title: string, subtitle: string) => {
-  const basePath = "/api/og";
-  return `${basePath}?title=${title}&description=${subtitle}`;
+  const baseUrl = process.env.SITE_URL || "https://kth.it";
+  return `${baseUrl}/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(subtitle)}`;
 };
 
 export { getOgImageUrl };

@@ -1,18 +1,18 @@
 export default {
   HomePage: {
-    title: "The IT Chapter",
+    title: "IT-Chapter",
     tagline:
       "As one of the largest chapters within the Tekniska Högskolans Studentkår (THS Student Union) at KTH in Stockholm, we are thrilled to have you here!",
     Cards: {
       NewStudent: {
         title: "New student",
         content:
-          "Are you a newly admitted student? {link} has all the information you need to find your way around KTH and the IT Chapter.",
+          "Are you a newly admitted student? {link} has all the information you need to find your way around KTH and the IT-Chapter.",
       },
       Education: {
         title: "The Education",
         content:
-          "There are 3 programmes mapped to the IT Chapter: CINTE, TIDAB and TCOMK. The Chapter exists to ensure that our members get the best education possible.",
+          "There are 3 programmes mapped to the IT-Chapter: CINTE, TIDAB and TCOMK. The Chapter exists to ensure that our members get the best education possible.",
       },
       Chapter: {
         title: "The Chapter",
@@ -114,7 +114,7 @@ export default {
   CoursesPage: {
     title: "Course Browser",
     description:
-      "Browse through the programmes and courses that students at the IT Chapter study.",
+      "Browse through the programmes and courses that students at the IT-Chapter study.",
     "select-programme": "Select a programme",
     "select-year": "Select a study year",
     year: "Year",
@@ -242,7 +242,7 @@ export default {
   Trustees: {
     Board: "The Board",
     "Board.description":
-      "The board is responsible for overseeing the IT Chapter's operations. This includes budgeting, fundraising, the monitoring of studies and extracurricular activities.",
+      "The board is responsible for overseeing the IT-Chapter's operations. This includes budgeting, fundraising, the monitoring of studies and extracurricular activities.",
     Committees: "Committee Representatives",
     "Committees.description":
       "The committee representatives represent the committees of the chapter.",
@@ -288,7 +288,7 @@ export default {
     sv: "Svenska",
   },
   Common: {
-    chapter: "The IT Chapter",
+    chapter: "IT-Chapter",
     ths: "THS Student Union",
     kth: "KTH Royal Institute of Technology",
     "read-more": "Read more",

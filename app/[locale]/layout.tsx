@@ -4,10 +4,11 @@ import { Navbar } from "@/components/navbar";
 import { VimNavigation } from "@/components/vim-navigation";
 import type { Metadata } from "next";
 import { I18nProviderClient } from "../../locales/client";
+import { generatePageMetadata, siteConfig } from "@/lib/metadata";
+import { JsonLd, generatePageSchemas } from "@/lib/schema";
+import { headers } from "next/headers";
 
 import "@/app/globals.css";
-import { getOgImageUrl } from "@/lib/og";
-import { getI18n } from "@/locales/server";
 
 export default async function PublicLayout({
   params,
@@ -17,9 +18,11 @@ export default async function PublicLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
+  const schemas = generatePageSchemas({ locale });
 
   return (
     <I18nProviderClient locale={locale}>
+      <JsonLd data={schemas} />
       <Navbar />
       <main className="container mx-auto p-6 sm:border-x pb-42">
         {children}
@@ -31,19 +34,22 @@ export default async function PublicLayout({
   );
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getI18n();
-  const title = t("Common.chapter");
-  const subtitle = "Sektionen för alla";
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const config = siteConfig[locale] || siteConfig.sv;
 
-  return {
-    title,
-    description: subtitle,
-    openGraph: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-    twitter: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-  };
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") ?? `/${locale}`;
+  const path = pathname.replace(/^\/(en|sv)/, "") || "";
+
+  return generatePageMetadata({
+    title: config.name,
+    description: config.description,
+    locale,
+    url: path,
+  });
 }
