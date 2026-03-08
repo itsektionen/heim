@@ -44,6 +44,16 @@ const ConditionIcons = {
 
 // TODO: Add constraints for 3 year programmes.
 
+const getAdmissionYear = (): number => {
+  const d = new Date();
+
+  if (d.getMonth() < 9) {
+    return d.getFullYear() - 1;
+  }
+
+  return d.getFullYear();
+};
+
 const ProgrammeBrowserView = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -56,7 +66,7 @@ const ProgrammeBrowserView = () => {
   const a = searchParams.get("a");
   const y = searchParams.get("y");
   const studyYear: KoppsStudyYear = y ? (Number(y) as KoppsStudyYear) : 1;
-  const admissionYear = a ? Number(a) : new Date().getFullYear();
+  const admissionYear = a ? Number(a) : getAdmissionYear();
   const programme = p || "CINTE";
 
   const [programmeSelectorValues, setProgrammeSelectorValues] =
@@ -75,7 +85,7 @@ const ProgrammeBrowserView = () => {
 
       return params.toString();
     },
-    [searchParams]
+    [searchParams],
   );
 
   useEffect(() => {
@@ -106,7 +116,8 @@ const ProgrammeBrowserView = () => {
         onValuesChange={(values) => {
           setProgrammeSelectorValues(values);
         }}
-        defaultValues={programmeSelectorValues}>
+        defaultValues={programmeSelectorValues}
+      >
         <ProgrammeBrowserHeader>
           <div className="flex items-center mb-1 gap-2">
             <h1 className="text-lg font-medium">{t("title")}</h1>
@@ -158,16 +169,18 @@ const ProgrammeBrowserView = () => {
                     course.condition.en == "Recommended" &&
                       "before:bg-amber-400",
                     course.condition.en == "Conditionally Elective" &&
-                      "before:bg-green-400"
+                      "before:bg-green-400",
                   )}
-                  key={course.code}>
+                  key={course.code}
+                >
                   <div className="flex items-start gap-8">
                     <p>{course.name[locale]}</p>
                     <Button
                       className="!pr-0 !mr-0 ml-auto"
                       size="sm"
                       asChild
-                      variant="link">
+                      variant="link"
+                    >
                       <Link href={course.url[locale]}>
                         {commonT("Common.read-more")} <ExternalLinkIcon />
                       </Link>
@@ -175,8 +188,9 @@ const ProgrammeBrowserView = () => {
                   </div>
                   <div
                     className={cn(
-                      "flex [&>svg]:size-4 items-center gap-1.5 mb-4"
-                    )}>
+                      "flex [&>svg]:size-4 items-center gap-1.5 mb-4",
+                    )}
+                  >
                     {
                       ConditionIcons[
                         course.condition[locale] as keyof typeof ConditionIcons
