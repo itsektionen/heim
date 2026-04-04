@@ -40,7 +40,7 @@ interface ProgrammeSelectorContext {
   setValues: (
     newValues:
       | ProgrammeSelectorValues
-      | ((prev: ProgrammeSelectorValues) => ProgrammeSelectorValues)
+      | ((prev: ProgrammeSelectorValues) => ProgrammeSelectorValues),
   ) => void;
   onValuesChange: (values: ProgrammeSelectorValues) => void;
   programme?: Programme;
@@ -55,7 +55,7 @@ const useProgrammeSelector = () => {
   const context = useContext(programmeSelectorContext);
   if (!context) {
     throw new Error(
-      "useProgrammeSelector must be used within a ProgrammeSelectorContext"
+      "useProgrammeSelector must be used within a ProgrammeSelectorContext",
     );
   }
 
@@ -110,7 +110,7 @@ export const ProgrammeSelector = ({
       programme,
       studyYear,
     }));
-  }, [programme, studyYear]);
+  }, [programme, studyYear, setValues]);
 
   const t = useScopedI18n("CoursesPage");
 
@@ -169,13 +169,13 @@ const ProgrammeBrowser = ({
       programme: "",
       studyYear: 1,
       admissionYear: new Date().getFullYear(),
-    }
+    },
   );
   const [programme, setProgramme] = useState<Programme>();
 
   useEffect(() => {
     onValuesChange?.(values);
-  }, [values]);
+  }, [values, onValuesChange]);
 
   return (
     <programmeSelectorContext.Provider

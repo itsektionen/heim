@@ -1,10 +1,4 @@
-import type {
-  Organization,
-  WebSite,
-  WithContext,
-  Article,
-  BreadcrumbList,
-} from "schema-dts";
+import type { Organization, WebSite, WithContext, Article } from "schema-dts";
 
 export function generateOrganizationSchema(
   locale: string = "sv",
@@ -114,7 +108,9 @@ export function generateArticleSchema({
 export function JsonLd({
   data,
 }: {
-  data: WithContext<any> | WithContext<any>[];
+  data:
+    | WithContext<Organization | WebSite | Article>
+    | WithContext<Organization | WebSite | Article>[];
 }) {
   return (
     <script
@@ -128,12 +124,10 @@ export function JsonLd({
 
 export function generatePageSchemas({
   locale = "en",
-  breadcrumbs,
 }: {
   locale?: string;
-  breadcrumbs?: { name: string; url: string }[];
-}): WithContext<any>[] {
-  const schemas: WithContext<any>[] = [
+}): (WithContext<Organization> | WithContext<WebSite>)[] {
+  const schemas: (WithContext<Organization> | WithContext<WebSite>)[] = [
     generateOrganizationSchema(locale),
     generateWebsiteSchema(locale),
   ];

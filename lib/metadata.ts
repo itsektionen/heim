@@ -119,7 +119,7 @@ export function generatePageMetadata({
       siteName: config.name,
       locale: config.locale,
       alternateLocale: config.alternateLocale,
-      type: type as any,
+      type: type as "website" | "article" | "profile",
       images: [
         {
           url: fullImageUrl,

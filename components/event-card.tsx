@@ -4,6 +4,7 @@ import { getCommittee } from "@/lib/committees";
 import { CalendarEvent } from "@/lib/events";
 import { useI18n } from "@/locales/client";
 import { ClockIcon, MapPinIcon, UsersIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import {
@@ -24,7 +25,7 @@ const EventCard = ({ event }: { event: CalendarEvent }) => {
   return (
     <Card className="pt-0 px-0 overflow-hidden h-full">
       <CardHeader className="px-0">
-        <img
+        <Image
           className="border-b mb-6 bg-secondary h-48 w-full object-cover "
           src={event.imageUrl ?? "/assets/img/placeholder.png"}
           alt={event.title}
@@ -54,8 +55,7 @@ const EventCard = ({ event }: { event: CalendarEvent }) => {
               <UsersIcon className="size-4 text-muted-foreground shrink-0" />
               <Link
                 className="text-primary hover:underline underline-offset-4"
-                href={`/committees/${committeeData.data.committee.slug}`}
-              >
+                href={`/committees/${committeeData.data.committee.slug}`}>
                 {committeeData.data.committee.name}
               </Link>
             </li>
