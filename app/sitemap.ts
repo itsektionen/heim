@@ -5,6 +5,9 @@ import type { MetadataRoute } from "next";
 import { readdir } from "node:fs/promises";
 import path from "node:path";
 
+export const dynamic = "force-static";
+export const revalidate = 86400;
+
 const siteUrl = (process.env.SITE_URL ?? "https://kth.it").replace(/\/$/, "");
 
 const discoverStaticRoutes = async (): Promise<string[]> => {
