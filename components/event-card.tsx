@@ -25,11 +25,14 @@ const EventCard = ({ event }: { event: CalendarEvent }) => {
   return (
     <Card className="pt-0 px-0 overflow-hidden h-full">
       <CardHeader className="px-0">
-        <Image
-          className="border-b mb-6 bg-secondary h-48 w-full object-cover "
-          src={event.imageUrl ?? "/assets/img/placeholder.png"}
-          alt={event.title}
-        />
+        <div className="relative h-48 w-full border-b mb-6 bg-secondary">
+          <Image
+            className="object-cover"
+            src={event.imageUrl ?? "/assets/img/placeholder.png"}
+            alt={event.title}
+            fill
+          />
+        </div>
         <div className="px-6">
           <CardTitle className="mb-1.5 line-clamp-2">{event.title}</CardTitle>
           <CardDescription className="line-clamp-2 max-w-full break-all">
