@@ -52,7 +52,7 @@ export const boardTrustees: Trustee[] = [
     name: "Maitreyi Muralidhar",
     role: "KommA",
     mail: "komma@kth.it",
-    committeeIds: ["komma", "board"],
+    committeeIds: ["kommn", "board"],
   },
   {
     name: "Madelaine Bunao",
@@ -122,13 +122,13 @@ export const committeeTrustees: Trustee[] = [
     role: "vKommA",
     mail: "vkomma@kth.it",
     image: "/assets/img/trustees/elinaw.avif",
-    committeeIds: ["komma"],
+    committeeIds: ["kommn"],
   },
   {
     name: "Hugo Bachér",
     role: "History Responsible",
     mail: "historia@kth.it",
-    committeeIds: ["komma"],
+    committeeIds: ["kommn"],
     image: "/assets/img/trustees/hugob.avif",
   },
   {

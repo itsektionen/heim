@@ -98,7 +98,7 @@ const committees = [
   },
   {
     name: "Communications Committee",
-    slug: "komma",
+    slug: "kommn",
     description:
       "The Communications Committee (KommN) handles the Chapter's internal and external communication. It's exactly as broad as it sounds and includes a variety of tasks within web design, social media, and graphic design. We work closely with the other committees to distribute information as effectively as possible to all members of the chapter, making use of the Chapter's Discord, Instagram, Facebook and LinkedIn. Informing students about the various events happening in Kistan 2.0. They also build, maintain and update this website. The committee's work in graphic design is focused on producing various marketing materials such as posters, images, logos, patches and sometimes merch like the overalls. While the rest of the Chapter's work is continuous, the committee's graphic design work is primarily done on request from other committees. Some of these assignments included creating new logos for committees that previously did not have a logo.",
     img: "/assets/img/committees/komma.svg",
