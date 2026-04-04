@@ -15,14 +15,19 @@ const listQmiskProtocols = async (): Promise<Protocol[]> => {
     );
 };
 
+const protocolFetchers: Partial<
+  Record<CommitteeSlug, () => Promise<Protocol[]>>
+> = {
+  qmisk: listQmiskProtocols,
+};
+
+export const protocolCommitteeSlugs = Object.keys(
+  protocolFetchers,
+) as CommitteeSlug[];
+
 export const listCommitteeProtocols = async (
   slug: CommitteeSlug,
 ): Promise<Protocol[] | null> => {
-  switch (slug) {
-    case "qmisk":
-      return listQmiskProtocols();
-
-    default:
-      return null;
-  }
+  const fetcher = protocolFetchers[slug];
+  return fetcher ? fetcher() : null;
 };
