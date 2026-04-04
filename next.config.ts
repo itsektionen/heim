@@ -31,6 +31,11 @@ const nextConfig: NextConfig = {
       permanent: true,
     },
     {
+      source: "/:lang(en)?/fortroendevalda",
+      destination: "/trustees",
+      permanent: true,
+    },
+    {
       source: "/:lang(en)?/f%C3%B6rtroendevalda",
       destination: "/trustees",
       permanent: true,

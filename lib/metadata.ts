@@ -73,7 +73,6 @@ export function generatePageMetadata({
 }: PageMetadata): Metadata {
   const config = siteConfig[locale] || siteConfig.sv;
   const fullTitle = title === config.name ? title : `${title} | ${config.name}`;
-  const pageUrl = url || "";
   const ogImage = image || getOgImageUrl(title, description);
   const fullImageUrl = ogImage.startsWith("http")
     ? ogImage
@@ -93,6 +92,9 @@ export function generatePageMetadata({
     "Stockholm",
   ];
 
+  const canonicalUrl =
+    canonical || `${config.url}/${locale}${pathWithoutLocale}`;
+
   const metadata: Metadata = {
     title: fullTitle,
     description,
@@ -104,16 +106,16 @@ export function generatePageMetadata({
     publisher: config.name,
     metadataBase: new URL(config.url),
     alternates: {
-      canonical: canonical || pageUrl,
+      canonical: canonicalUrl,
       languages: {
-        "en-US": `/en${pathWithoutLocale}`,
-        "sv-SE": `/sv${pathWithoutLocale}`,
+        "en-US": `${config.url}/en${pathWithoutLocale}`,
+        "sv-SE": `${config.url}/sv${pathWithoutLocale}`,
       },
     },
     openGraph: {
       title: fullTitle,
       description,
-      url: pageUrl,
+      url: canonicalUrl,
       siteName: config.name,
       locale: config.locale,
       alternateLocale: config.alternateLocale,
