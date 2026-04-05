@@ -79,7 +79,6 @@ export function generatePageMetadata({
     : `${config.url}${ogImage}`;
   const imageDescription = imageAlt || `${title} - ${config.name}`;
 
-  const pathWithoutLocale = url ? url.replace(/^\/(en|sv)/, "") : "";
   const defaultKeywords = [
     "Kongliga Sektionen för Informationsteknik",
     "Sektionen för Informationsteknik",
@@ -92,8 +91,7 @@ export function generatePageMetadata({
     "Stockholm",
   ];
 
-  const canonicalUrl =
-    canonical || `${config.url}/${locale}${pathWithoutLocale}`;
+  const canonicalUrl = canonical || `${config.url}/${locale}${url}`;
 
   const metadata: Metadata = {
     title: fullTitle,
@@ -108,8 +106,8 @@ export function generatePageMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        "en-US": `${config.url}/en${pathWithoutLocale}`,
-        "sv-SE": `${config.url}/sv${pathWithoutLocale}`,
+        "en-US": `${config.url}/en${url}`,
+        "sv-SE": `${config.url}/sv${url}`,
       },
     },
     openGraph: {
