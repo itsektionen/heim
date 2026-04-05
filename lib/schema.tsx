@@ -3,7 +3,7 @@ import type { Organization, WebSite, WithContext, Article } from "schema-dts";
 export function generateOrganizationSchema(
   locale: string = "sv",
 ): WithContext<Organization> {
-  const baseUrl = process.env.URL;
+  const baseUrl = process.env.URL!;
 
   return {
     "@context": "https://schema.org",
@@ -77,7 +77,7 @@ export function generateArticleSchema({
   authorName?: string;
   locale?: string;
 }): WithContext<Article> {
-  const baseUrl = process.env.URL;
+  const baseUrl = process.env.URL!;
   const fullUrl = url.startsWith("http") ? url : `${baseUrl}${url}`;
   const imageUrl = image?.startsWith("http") ? image : `${baseUrl}${image}`;
 

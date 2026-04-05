@@ -8,7 +8,7 @@ import path from "node:path";
 export const dynamic = "force-static";
 export const revalidate = 86400;
 
-const siteUrl = process.env.URL.replace(/\/$/, "");
+const siteUrl = process.env.URL!.replace(/\/$/, "");
 
 const discoverStaticRoutes = async (): Promise<string[]> => {
   const localeRoot = path.join(process.cwd(), "app", "[locale]");

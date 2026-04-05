@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${process.env.URL.replace(/\/$/, "")}/sitemap.xml`,
+    sitemap: `${process.env.URL!.replace(/\/$/, "")}/sitemap.xml`,
   };
 }
