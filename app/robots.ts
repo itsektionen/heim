@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://kth.it/sitemap.xml",
+    sitemap: `${process.env.URL.replace(/\/$/, "")}/sitemap.xml`,
   };
 }

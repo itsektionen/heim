@@ -35,7 +35,7 @@ export const siteConfig: Record<string, SiteConfig> = {
     description:
       "The Chapter for Information Technology at KTH - One of the largest chapters within the Tekniska Högskolans Studentkår (THS Student Union) in Stockholm.",
     shortDescription: "The Chapter for Information Technology at KTH",
-    url: process.env.SITE_URL || "https://kth.it",
+    url: process.env.URL,
     ogImage:
       "/api/og?title=IT-Chapter&description=The Chapter for Information Technology",
     locale: "en_US",
@@ -46,7 +46,7 @@ export const siteConfig: Record<string, SiteConfig> = {
     description:
       "Kongliga Sektionen för Informationsteknik på KTH - En av de största sektionerna inom Tekniska Högskolans Studentkår (THS) i Stockholm.",
     shortDescription: "Kongliga Sektionen för Informationsteknik på KTH",
-    url: process.env.SITE_URL || "https://kth.it",
+    url: process.env.URL,
     ogImage:
       "/api/og?title=IT-Sektionen&description=Kongliga Sektionen för Informationsteknik",
     locale: "sv_SE",
