@@ -78,6 +78,12 @@ export const boardTrustees: Trustee[] = [
     mail: "ledamot@kth.it",
     committeeIds: ["board"],
   },
+  {
+    name: "Ellen Grönholm",
+    role: "vice Treasurer",
+    mail: "kassor@kth.it",
+    committeeIds: ["board"],
+  },
 ];
 
 export const committeeTrustees: Trustee[] = [
@@ -334,11 +340,6 @@ export const committeeTrustees: Trustee[] = [
     committeeIds: ["val"],
   },
   {
-    name: "Ellen Grönholm",
-    role: "vice Treasurer",
-    mail: "kassor@kth.it",
-  },
-  {
     name: "Simon Hedström",
     role: "Bootloader",
     mail: "bootloader@kth.it",
@@ -364,7 +365,7 @@ export const committeeTrustees: Trustee[] = [
     name: "Albin Durfors",
     role: "Move Coordinator",
     mail: "flytt@kth.it",
-    image: "/assets/img/trustees/albin.avif",
+    image: "/assets/img/trustees/albind.avif",
   },
   {
     name: "Dante Julio Cosentino",
@@ -387,7 +388,7 @@ export const committeeTrustees: Trustee[] = [
   {
     name: "Hannah Veit",
     role: "Head Standard Bearer",
-    image: "/assets/img/trustees/hannahv.avif",
+    image: "/assets/img/trustees/hannahv.jpg",
   },
   {
     name: "Dylan Horn Kreiner",
