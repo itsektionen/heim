@@ -5,6 +5,7 @@ import {
   committeeTrustees,
   type Trustee,
 } from "@/data/trustees";
+import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getStaticParams } from "@/locales/server";
 import { Metadata } from "next";
@@ -28,8 +29,7 @@ const TrusteeCard = ({ trustee }: { trustee: Trustee }) => {
       {trustee.mail && (
         <Link
           className="hover:underline underline-offset-4 text-muted-foreground text-sm"
-          href={`mailto:${trustee.mail}`}
-          >
+          href={`mailto:${trustee.mail}`}>
           {`${trustee.mail}`}
         </Link>
       )}
@@ -86,22 +86,26 @@ export function generateStaticParams() {
   return getStaticParams();
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  setStaticParamsLocale(locale);
+
   const t = await getI18n();
   const title = t("Common.chapter");
   const subtitle = t("NavBar.Chapter.Trustees");
   const description = t("NavBar.Chapter.Trustees.description");
 
-  return {
-    title: `${subtitle} – ${title}`,
+  return generatePageMetadata({
+    title: subtitle,
     description,
-    openGraph: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-    twitter: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-  };
+    locale,
+    url: "/trustees",
+    image: getOgImageUrl(title, subtitle),
+  });
 }
 
 export default TrusteesPage;

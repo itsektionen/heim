@@ -6,7 +6,6 @@ import type { Metadata } from "next";
 import { I18nProviderClient } from "../../locales/client";
 import { generatePageMetadata, siteConfig } from "@/lib/metadata";
 import { JsonLd, generatePageSchemas } from "@/lib/schema";
-import { headers } from "next/headers";
 
 import "@/app/globals.css";
 
@@ -42,14 +41,10 @@ export async function generateMetadata({
   const { locale } = await params;
   const config = siteConfig[locale] || siteConfig.sv;
 
-  const headersList = await headers();
-  const pathname = headersList.get("x-pathname") ?? `/${locale}`;
-  const path = pathname.replace(/^\/(en|sv)/, "") || "";
-
   return generatePageMetadata({
     title: config.name,
     description: config.description,
     locale,
-    url: path,
+    url: "",
   });
 }

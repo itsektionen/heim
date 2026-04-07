@@ -6,6 +6,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { listAllMeetings } from "@/lib/drive";
+import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getScopedI18n, getStaticParams } from "@/locales/server";
 import {
@@ -45,7 +46,7 @@ const ProtocolsPage = async ({
   const allMeetings = await listAllMeetings();
   const earliestMeeting = allMeetings.find(
     (m) =>
-      Number(m.year!) === Math.min(...allMeetings.map((m) => Number(m.year!)))
+      Number(m.year!) === Math.min(...allMeetings.map((m) => Number(m.year!))),
   );
   const year = earliestMeeting?.year;
 
@@ -118,22 +119,26 @@ export function generateStaticParams() {
   return getStaticParams();
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  setStaticParamsLocale(locale);
+
   const t = await getI18n();
   const title = t("Common.chapter");
   const subtitle = t("DocumentsPage.protocols.title");
   const description = t("NavBar.Documents.Protocols.description");
 
-  return {
-    title: `${subtitle} – ${title}`,
+  return generatePageMetadata({
+    title: subtitle,
     description,
-    openGraph: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-    twitter: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-  };
+    locale,
+    url: "/documents/protocols",
+    image: getOgImageUrl(title, subtitle),
+  });
 }
 
 export default ProtocolsPage;

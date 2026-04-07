@@ -1,6 +1,7 @@
 import { EventCard } from "@/components/event-card";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import { listAllCommitteeEvents } from "@/lib/committees/events";
+import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getStaticParams } from "@/locales/server";
 import { type Metadata } from "next";
@@ -46,22 +47,26 @@ export function generateStaticParams() {
   return getStaticParams();
 }
 
-export const generateMetadata = async (): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> => {
+  const { locale } = await params;
+  setStaticParamsLocale(locale);
+
   const t = await getI18n();
   const title = t("Common.chapter");
   const subtitle = t("NavBar.Chapter.Events");
   const description = t("NavBar.Chapter.Events.description");
 
-  return {
-    title: `${subtitle} – ${title}`,
+  return generatePageMetadata({
+    title: subtitle,
     description,
-    openGraph: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-    twitter: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-  };
+    locale,
+    url: "/events",
+    image: getOgImageUrl(title, subtitle),
+  });
 };
 
 export default EventsPage;

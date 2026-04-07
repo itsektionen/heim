@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Hero, HeroContent } from "@/components/ui/hero";
 import { defaultCommitteeColor, getCommittee } from "@/lib/committees";
+import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { getContrastingColor } from "@/lib/utils";
 import { getI18n, getScopedI18n } from "@/locales/server";
@@ -40,16 +41,14 @@ const CommitteeLayout = async ({
                 ? committee.color + "66"
                 : committee.color,
             color: committee.textColor,
-          }}
-        >
+          }}>
           <Button
             className="absolute top-2 left-1 opacity-50"
             style={{
               color: getContrastingColor(committee.color!),
             }}
             asChild
-            variant="link"
-          >
+            variant="link">
             <Link href="/committees">
               <ArrowLeftIcon /> {t("single.back")}
             </Link>
@@ -76,10 +75,12 @@ export default CommitteeLayout;
 export const generateMetadata = async ({
   params,
 }: {
-  params: Promise<{ committeeSlug: string }>;
+  params: Promise<{ committeeSlug: string; locale: string }>;
 }): Promise<Metadata> => {
+  const { committeeSlug, locale } = await params;
+  setStaticParamsLocale(locale);
+
   const t = await getI18n();
-  const { committeeSlug } = await params;
   const {
     data: { committee },
   } = getCommittee(committeeSlug)!;
@@ -88,14 +89,11 @@ export const generateMetadata = async ({
   const subtitle = committee.name;
   const description = committee.description;
 
-  return {
-    title: `${subtitle} – ${title}`,
+  return generatePageMetadata({
+    title: subtitle,
     description,
-    openGraph: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-    twitter: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-  };
+    locale,
+    url: `/committees/${committeeSlug}`,
+    image: getOgImageUrl(title, subtitle),
+  });
 };

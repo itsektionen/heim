@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
+import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getScopedI18n, getStaticParams } from "@/locales/server";
 import { MailIcon, MapPin, PiggyBankIcon, UserIcon } from "lucide-react";
@@ -203,22 +204,26 @@ export function generateStaticParams() {
   return getStaticParams();
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  setStaticParamsLocale(locale);
+
   const t = await getI18n();
   const title = t("Common.chapter");
   const subtitle = t("NavBar.Contact");
   const description = t("NavBar.Contact");
 
-  return {
-    title: `${subtitle} – ${title}`,
+  return generatePageMetadata({
+    title: subtitle,
     description,
-    openGraph: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-    twitter: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-  };
+    locale,
+    url: "/contact",
+    image: getOgImageUrl(title, subtitle),
+  });
 }
 
 export default ContactPage;

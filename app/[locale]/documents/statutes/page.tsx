@@ -1,4 +1,5 @@
 import { Markdown } from "@/lib/md";
+import { generatePageMetadata } from "@/lib/metadata";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import MdWrapper from "./md-wrapper";
 
@@ -48,20 +49,24 @@ export function generateStaticParams() {
   return getStaticParams();
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  setStaticParamsLocale(locale);
+
   const t = await getI18n();
   const title = t("Common.chapter");
   const subtitle = t("NavBar.Documents.StatutesBylaws");
   const description = t("NavBar.Documents.StatutesBylaws.description");
 
-  return {
-    title: `${subtitle} – ${title}`,
+  return generatePageMetadata({
+    title: subtitle,
     description,
-    openGraph: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-    twitter: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-  };
+    locale,
+    url: "/documents/statutes",
+    image: getOgImageUrl(title, subtitle),
+  });
 }

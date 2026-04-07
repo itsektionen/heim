@@ -39,12 +39,6 @@ import Link from "next/link";
 
 export const revalidate = 86400;
 
-export const metadata = {
-  openGraph: {
-    images: [],
-  },
-};
-
 export default async function Home({
   params,
 }: {

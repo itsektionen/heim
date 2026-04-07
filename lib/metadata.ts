@@ -77,7 +77,7 @@ export function generatePageMetadata({
   const fullImageUrl = ogImage.startsWith("http")
     ? ogImage
     : `${config.url}${ogImage}`;
-  const imageDescription = imageAlt || `${title} - ${config.name}`;
+  const imageDescription = imageAlt || `${title} | ${config.name}`;
 
   const defaultKeywords = [
     "Kongliga Sektionen för Informationsteknik",

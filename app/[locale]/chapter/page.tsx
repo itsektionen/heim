@@ -1,5 +1,6 @@
 import ELink from "@/components/ui/elink";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
+import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getScopedI18n, getStaticParams } from "@/locales/server";
 import { Metadata } from "next";
@@ -122,20 +123,24 @@ export function generateStaticParams() {
   return getStaticParams();
 }
 
-export const generateMetadata = async (): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> => {
+  const { locale } = await params;
+  setStaticParamsLocale(locale);
+
   const t = await getI18n();
   const title = t("Common.chapter");
   const subtitle = t("NavBar.Chapter.About");
   const description = t("NavBar.Chapter.About.description");
 
-  return {
-    title: `${subtitle} – ${title}`,
+  return generatePageMetadata({
+    title: subtitle,
     description,
-    openGraph: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-    twitter: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-  };
+    locale,
+    url: "/chapter",
+    image: getOgImageUrl(title, subtitle),
+  });
 };

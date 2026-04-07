@@ -5,6 +5,7 @@ import {
   getCommitteeEvent,
   listAllCommitteeEvents,
 } from "@/lib/committees/events";
+import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getStaticParams } from "@/locales/server";
 import {
@@ -56,8 +57,7 @@ const EventPage = async ({
         <Button
           className="absolute top-2 left-1 opacity-50 text-foreground"
           asChild
-          variant="link"
-        >
+          variant="link">
           <Link href="/events">
             <ArrowLeftIcon /> {t("CommitteesPage.single.back")}
           </Link>
@@ -84,8 +84,7 @@ const EventPage = async ({
               <UsersIcon className="text-muted-foreground size-4" />
               <Link
                 className="hover:underline underline-offset-4 text-primary"
-                href={`/committees/${committeeData.data.committee.slug}`}
-              >
+                href={`/committees/${committeeData.data.committee.slug}`}>
                 {committeeData.data.committee.name}
               </Link>
             </div>
@@ -109,11 +108,12 @@ export async function generateStaticParams() {
 export const generateMetadata = async ({
   params,
 }: {
-  params: Promise<{ eventId: string }>;
+  params: Promise<{ eventId: string; locale: string }>;
 }): Promise<Metadata> => {
-  const t = await getI18n();
+  const { eventId, locale } = await params;
+  setStaticParamsLocale(locale);
 
-  const { eventId } = await params;
+  const t = await getI18n();
 
   const event = await getCommitteeEvent(eventId);
 
@@ -127,16 +127,13 @@ export const generateMetadata = async ({
       : t("NavBar.Chapter.Events.description")
     : t("NavBar.Chapter.Events.description");
 
-  return {
-    title: `${subtitle} – ${title}`,
+  return generatePageMetadata({
+    title: subtitle,
     description,
-    openGraph: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-    twitter: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-  };
+    locale,
+    url: `/events/${eventId}`,
+    image: getOgImageUrl(title, subtitle),
+  });
 };
 
 export default EventPage;

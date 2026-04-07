@@ -9,12 +9,11 @@ const I18nMiddleware = createI18nMiddleware({
 
 export function middleware(request: NextRequest) {
   const response = I18nMiddleware(request);
-  response.headers.set("x-pathname", request.nextUrl.pathname);
   return response;
 }
 
 export const config = {
   matcher: [
-    "/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt|sitemap.xml).*)",
+    "/((?!api|static|assets|.*\\..*|_next|favicon.ico|robots.txt|sitemap.xml).*)",
   ],
 };

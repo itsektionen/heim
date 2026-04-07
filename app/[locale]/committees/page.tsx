@@ -10,6 +10,7 @@ import {
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import { type Committee } from "@/data/committees";
 import { backgroundColor, listCommittees } from "@/lib/committees";
+import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { cn } from "@/lib/utils";
 import { getI18n, getScopedI18n, getStaticParams } from "@/locales/server";
@@ -31,7 +32,7 @@ const CommitteeCard = async ({ committee }: { committee: Committee }) => {
           "overflow-hidden h-[180px] flex",
           committee.img
             ? "items-center justify-center"
-            : "items-center justify-start -ml-2"
+            : "items-center justify-start -ml-2",
         )}>
         {committee.img ? (
           <Image
@@ -109,22 +110,26 @@ export function generateStaticParams() {
   return getStaticParams();
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  setStaticParamsLocale(locale);
+
   const t = await getI18n();
   const title = t("Common.chapter");
   const subtitle = t("NavBar.Chapter.Committees");
   const description = t("NavBar.Chapter.Committees.description");
 
-  return {
-    title: `${subtitle} – ${title}`,
+  return generatePageMetadata({
+    title: subtitle,
     description,
-    openGraph: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-    twitter: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-  };
+    locale,
+    url: "/committees",
+    image: getOgImageUrl(title, subtitle),
+  });
 }
 
 export default CommitteesPage;

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { CommitteeSlug } from "@/data/committees";
 import { getCommittee, listCommittees } from "@/lib/committees";
 import { listCommitteeProtocols } from "@/lib/committees/protocols";
+import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getScopedI18n, getStaticParams } from "@/locales/server";
 import {
@@ -97,8 +98,7 @@ const CommitteePage = async ({
               <Link
                 className="text-sm text-primary hover:underline underline-offset-4 flex [&>svg]:size-4 gap-2"
                 href={committee.website}
-                target="_blank"
-              >
+                target="_blank">
                 {committee.website}
                 <ExternalLinkIcon />
               </Link>
@@ -122,10 +122,12 @@ export function generateStaticParams() {
 export const generateMetadata = async ({
   params,
 }: {
-  params: Promise<{ committeeSlug: string }>;
+  params: Promise<{ committeeSlug: string; locale: string }>;
 }): Promise<Metadata> => {
+  const { committeeSlug, locale } = await params;
+  setStaticParamsLocale(locale);
+
   const t = await getI18n();
-  const { committeeSlug } = await params;
   const {
     data: { committee },
   } = getCommittee(committeeSlug)!;
@@ -134,16 +136,13 @@ export const generateMetadata = async ({
   const subtitle = committee.name;
   const description = committee.description;
 
-  return {
-    title: `${subtitle} – ${title}`,
+  return generatePageMetadata({
+    title: subtitle,
     description,
-    openGraph: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-    twitter: {
-      images: [getOgImageUrl(title, subtitle)],
-    },
-  };
+    locale,
+    url: `/committees/${committeeSlug}`,
+    image: getOgImageUrl(title, subtitle),
+  });
 };
 
 export default CommitteePage;
