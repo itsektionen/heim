@@ -76,6 +76,9 @@ const CommitteePage = async ({
                   <p className="text-sm text-muted-foreground">
                     {trustee.role}
                   </p>
+                  <p className="text-xs text-muted-foreground">
+                    {trustee.mail}
+                  </p>
                 </div>
                 <Button className="ml-auto" variant="ghost" size="icon" asChild>
                   <Link target="_blank" href={`mailto:${trustee.mail}`}>
