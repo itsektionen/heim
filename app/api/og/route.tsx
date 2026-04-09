@@ -28,114 +28,103 @@ export async function GET(request: NextRequest) {
   const textColor = "#29294B";
   const themeColor = "#cc99ff";
 
-  return new ImageResponse(
-    (
-      // CONTAINER
+  const response = new ImageResponse(
+    // CONTAINER
+    <div
+      style={{
+        fontSize: 80,
+        background: bgColor,
+        color: textColor,
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+        flexDirection: "column",
+      }}>
+      {/* TOP SECTION */}
       <div
         style={{
-          fontSize: 80,
-          background: bgColor,
-          color: textColor,
+          height: 50,
           width: "100%",
-          height: "100%",
+          borderBottom: borderColor,
           display: "flex",
-          justifyContent: "flex-start",
-          alignItems: "flex-start",
-          flexDirection: "column",
-        }}
-      >
-        {/* TOP SECTION */}
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
         <div
           style={{
-            height: 50,
-            width: "100%",
-            borderBottom: borderColor,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            height: "100%",
+            width: "90%",
+            borderLeft: borderColor,
+            borderRight: borderColor,
           }}
-        >
-          <div
-            style={{
-              height: "100%",
-              width: "90%",
-              borderLeft: borderColor,
-              borderRight: borderColor,
-            }}
-          />
-        </div>
+        />
+      </div>
+      <div
+        style={{
+          flexGrow: 1,
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+        {/* INSIDE */}
         <div
           style={{
-            flexGrow: 1,
+            height: "100%",
+            width: "90%",
+            borderLeft: borderColor,
+            borderRight: borderColor,
             display: "flex",
-            width: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {/* INSIDE */}
+            alignItems: "flex-end",
+            justifyContent: "space-between",
+            padding: 30,
+          }}>
           <div
             style={{
-              height: "100%",
-              width: "90%",
-              borderLeft: borderColor,
-              borderRight: borderColor,
               display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "space-between",
-              padding: 30,
-            }}
-          >
-            <div
+              flexDirection: "column",
+              lineHeight: 0,
+              gap: 100,
+            }}>
+            <p
               style={{
-                display: "flex",
-                flexDirection: "column",
-                lineHeight: 0,
-                gap: 100,
-              }}
-            >
-              <p
-                style={{
-                  color: themeColor,
-                  margin: 0,
-                  padding: 0,
-                  fontFamily: "Poppins Bold",
-                }}
-              >
-                {title}
-              </p>
-              <p
-                style={{ margin: 0, padding: 0, fontFamily: "Poppins Regular" }}
-              >
-                {description}
-              </p>
-            </div>
-            <ItChip primary="#cc99ff" size={175} />
+                color: themeColor,
+                margin: 0,
+                padding: 0,
+                fontFamily: "Poppins Bold",
+              }}>
+              {title}
+            </p>
+            <p style={{ margin: 0, padding: 0, fontFamily: "Poppins Regular" }}>
+              {description}
+            </p>
           </div>
-        </div>
-
-        <div
-          style={{
-            height: 50,
-            width: "100%",
-            borderTop: borderColor,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              height: "100%",
-              width: "90%",
-              borderLeft: borderColor,
-              borderRight: borderColor,
-              display: "flex",
-            }}
-          />
+          <ItChip primary="#cc99ff" size={175} />
         </div>
       </div>
-    ),
+
+      <div
+        style={{
+          height: 50,
+          width: "100%",
+          borderTop: borderColor,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+        <div
+          style={{
+            height: "100%",
+            width: "90%",
+            borderLeft: borderColor,
+            borderRight: borderColor,
+            display: "flex",
+          }}
+        />
+      </div>
+    </div>,
     {
       ...size,
       fonts: [
@@ -154,4 +143,10 @@ export async function GET(request: NextRequest) {
       ],
     },
   );
+
+  response.headers.set("Cache-Control", "no-cache, no-store, must-revalidate");
+  response.headers.set("Pragma", "no-cache");
+  response.headers.set("Expires", "0");
+
+  return response;
 }
