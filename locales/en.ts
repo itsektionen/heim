@@ -93,7 +93,7 @@ export default {
     protocols: "Here you can find the protocols of {committeName}.",
     single: {
       back: "Go back",
-      about: "About",
+      about: "About us",
       trustees: "Trustees",
       "no-trustees": "No trustees found",
       website: "Website",

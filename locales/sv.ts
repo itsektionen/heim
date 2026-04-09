@@ -254,7 +254,7 @@ export default {
     "Education.Courses.description":
       "Är du nyfiken på vilka kurser du kommer att läsa? Använd kurskatalogen för att ta reda på det!",
     Chapter: "Sektionen",
-    "Chapter.About": "Om",
+    "Chapter.About": "Om oss",
     "Chapter.About.description":
       "Vi är en av de största sektionerna under THS Studentkår vid KTH.",
     "Chapter.Committees": "Sektionsorgan",

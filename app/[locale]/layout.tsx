@@ -42,7 +42,7 @@ export async function generateMetadata({
   const config = siteConfig[locale] || siteConfig.sv;
 
   return generatePageMetadata({
-    title: config.name,
+    title: "",
     description: config.description,
     locale,
     url: "",

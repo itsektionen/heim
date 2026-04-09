@@ -41,7 +41,7 @@ export const siteConfig: Record<string, SiteConfig> = {
     alternateLocale: "sv_SE",
   },
   sv: {
-    name: "IT-Sektionen",
+    name: "Kongliga IT-Sektionen",
     description:
       "Kongliga Sektionen för Informationsteknik på KTH - En av de största sektionerna inom Tekniska Högskolans Studentkår (THS) i Stockholm.",
     shortDescription: "Kongliga Sektionen för Informationsteknik på KTH",
@@ -70,12 +70,17 @@ export function generatePageMetadata({
   canonical,
 }: PageMetadata): Metadata {
   const config = siteConfig[locale] || siteConfig.sv;
-  const fullTitle = title === config.name ? title : `${title} | ${config.name}`;
+  const fullTitle =
+    title === ""
+      ? config.name
+      : title === config.name
+        ? title
+        : `${title} | ${config.name}`;
   const ogImage = image || getOgImageUrl(config.name, title);
   const fullImageUrl = ogImage.startsWith("http")
     ? ogImage
     : `${config.url}${ogImage}`;
-  const imageDescription = imageAlt || `${title} | ${config.name}`;
+  const imageDescription = imageAlt || fullTitle;
 
   const defaultKeywords = [
     "Kongliga Sektionen för Informationsteknik",

@@ -29,99 +29,57 @@ export async function GET(request: NextRequest) {
   const themeColor = "#cc99ff";
 
   const response = new ImageResponse(
-    // CONTAINER
     <div
       style={{
-        fontSize: 80,
         background: bgColor,
         color: textColor,
         width: "100%",
         height: "100%",
         display: "flex",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
-        flexDirection: "column",
+        alignItems: "flex-end",
+        position: "relative",
       }}>
-      {/* TOP SECTION */}
       <div
         style={{
-          height: 50,
-          width: "100%",
-          borderBottom: borderColor,
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          flexDirection: "column",
+          width: "90%",
+          padding: 30,
         }}>
-        <div
+        <p
           style={{
-            height: "100%",
-            width: "90%",
-            borderLeft: borderColor,
-            borderRight: borderColor,
-          }}
-        />
-      </div>
-      <div
-        style={{
-          flexGrow: 1,
-          display: "flex",
-          width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-        }}>
-        {/* INSIDE */}
-        <div
-          style={{
-            height: "100%",
-            width: "90%",
-            borderLeft: borderColor,
-            borderRight: borderColor,
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-            padding: 30,
+            color: themeColor,
+            margin: 0,
+            padding: 0,
+            fontFamily: "Poppins Bold",
+            fontSize: 80,
           }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              lineHeight: 0,
-              gap: 100,
-            }}>
-            <p
-              style={{
-                color: themeColor,
-                margin: 0,
-                padding: 0,
-                fontFamily: "Poppins Bold",
-              }}>
-              {title}
-            </p>
-            <p style={{ margin: 0, padding: 0, fontFamily: "Poppins Regular" }}>
-              {description}
-            </p>
-          </div>
-          <ItChip primary="#cc99ff" size={175} />
-        </div>
+          {title}
+        </p>
+        <p
+          style={{
+            margin: 0,
+            padding: 0,
+            fontFamily: "Poppins Regular",
+            fontSize: 60,
+          }}>
+          {description}
+        </p>
       </div>
-
       <div
         style={{
-          height: 50,
-          width: "100%",
-          borderTop: borderColor,
+          position: "absolute",
+          left: 0,
+          bottom: 0,
+          transform: "translate(-25%, 25%)",
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          opacity: 0.15,
         }}>
-        <div
-          style={{
-            height: "100%",
-            width: "90%",
-            borderLeft: borderColor,
-            borderRight: borderColor,
-            display: "flex",
-          }}
+        <ItChip
+          primary="#cc99ff"
+          secondary="#cc99ff"
+          tertiary="#cc99ff"
+          size={1000}
         />
       </div>
     </div>,
