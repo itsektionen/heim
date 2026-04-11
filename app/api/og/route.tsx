@@ -23,16 +23,10 @@ export async function GET(request: NextRequest) {
     join(process.cwd(), "public/assets/fonts/Poppins-Regular.ttf"),
   );
 
-  const bgColor = "#F4F4FC";
-  const borderColor = "1px solid #E0E0EE";
-  const textColor = "#29294B";
-  const themeColor = "#cc99ff";
-
   const response = new ImageResponse(
     <div
       style={{
-        background: bgColor,
-        color: textColor,
+        background: "#F4F4FC",
         width: "100%",
         height: "100%",
         display: "flex",
@@ -48,9 +42,9 @@ export async function GET(request: NextRequest) {
         }}>
         <p
           style={{
-            color: themeColor,
             margin: 0,
             padding: 0,
+            color: "#cc99ff",
             fontFamily: "Poppins Bold",
             fontSize: 80,
           }}>
@@ -60,6 +54,7 @@ export async function GET(request: NextRequest) {
           style={{
             margin: 0,
             padding: 0,
+            color: "#29294B",
             fontFamily: "Poppins Regular",
             fontSize: 60,
           }}>
