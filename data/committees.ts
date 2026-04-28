@@ -111,6 +111,16 @@ const committees = [
     website: "https://mottagningen.se",
     img: "/assets/img/committees/reception.svg",
   },
+  {
+    name: "init",
+    slug: "init",
+    description:
+      "We are init, the systems development group at the IT Chapter @ KTH. We develop and maintain a number of systems that make life easier for the IT Chapter.",
+    website: "https://init.kth.it",
+    img: "/assets/img/committees/init.svg",
+    color: "#000",
+    textColor: "#fff",
+  },
 ] as const;
 
 export type CommitteeSlug = (typeof committees)[number]["slug"];

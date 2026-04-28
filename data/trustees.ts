@@ -344,11 +344,13 @@ export const committeeTrustees: Trustee[] = [
     role: "Bootloader",
     mail: "bootloader@kth.it",
     image: "/assets/img/trustees/simonh.avif",
+    committeeIds: ["init"],
   },
   {
     name: "Mattias Mats Mathew Matte Orahem",
     role: "Kernel",
     mail: "kernel@kth.it",
+    committeeIds: ["init"],
   },
   {
     name: "Hugo Bachér",
