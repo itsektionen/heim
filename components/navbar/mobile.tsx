@@ -70,6 +70,9 @@ const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
                 </ul>
               </div>
             ))}
+            <Link href={"/companies"} className="font-medium mb-4 block w-fit">
+              {t("CompaniesPage")}
+            </Link>
             <Link href={"/contact"} className="font-medium mb-4 block w-fit">
               {t("Contact")}
             </Link>
