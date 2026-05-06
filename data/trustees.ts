@@ -73,7 +73,7 @@ export const boardTrustees: Trustee[] = [
   {
     name: "Alexandra Andersson",
     role: "Purchase Coordinator",
-    mail: "ledamot@kth.it",
+    mail: "inkop@kth.it",
     image: "/assets/img/trustees/AlexandraAndersson.webp",
     committeeIds: ["board"],
   },
