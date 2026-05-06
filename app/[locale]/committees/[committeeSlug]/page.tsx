@@ -9,7 +9,9 @@ import { getI18n, getScopedI18n, getStaticParams } from "@/locales/server";
 import {
   CircleAlertIcon,
   ExternalLinkIcon,
+  FacebookIcon,
   FileTextIcon,
+  InstagramIcon,
   MailIcon,
 } from "lucide-react";
 import { Metadata } from "next";
@@ -105,6 +107,46 @@ const CommitteePage = async ({
                 {committee.website}
                 <ExternalLinkIcon />
               </Link>
+            </>
+          )}
+          {(committee.instagram || committee.facebook) && (
+            <>
+              <p className="text-muted-foreground text-sm font-medium mt-8">
+                {t("single.social-media")}
+              </p>
+              <div className="flex gap-2">
+                {committee.instagram && (
+                  <Button variant="outline" size="icon" asChild>
+                    <Link href={committee.instagram} target="_blank">
+                      <InstagramIcon />
+                    </Link>
+                  </Button>
+                )}
+                {committee.facebook && (
+                  <Button variant="outline" size="icon" asChild>
+                    <Link href={committee.facebook} target="_blank">
+                      <FacebookIcon />
+                    </Link>
+                  </Button>
+                )}
+              </div>
+            </>
+          )}
+          {committee.links && (
+            <>
+              <p className="text-muted-foreground text-sm font-medium mt-8">
+                {t("single.links")}
+              </p>
+              {Object.entries(committee.links).map(([label, url]) => (
+                <Link
+                  key={url}
+                  className="text-sm text-primary hover:underline underline-offset-4 flex [&>svg]:size-4 gap-2"
+                  href={url}
+                  target="_blank">
+                  {label}
+                  <ExternalLinkIcon />
+                </Link>
+              ))}
             </>
           )}
         </div>

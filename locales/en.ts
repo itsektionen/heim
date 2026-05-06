@@ -102,6 +102,8 @@ export default {
       trustees: "Trustees",
       "no-trustees": "No trustees found",
       website: "Website",
+      "social-media": "Social Media",
+      links: "Links",
       protocols: "Protocols",
     },
   },

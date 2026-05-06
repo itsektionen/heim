@@ -4,8 +4,11 @@ export type Committee = {
   color?: string;
   textColor?: string;
   description: string;
-  website?: string;
   img?: string;
+  website?: string;
+  instagram?: string;
+  facebook?: string;
+  links?: Record<string, string>;
 };
 
 const committees = [
@@ -34,6 +37,9 @@ const committees = [
     description:
       "The Study Environment Committee are responsible for the physical study environment in both the Chapter's premises and the entire KTH Kista. In practice, this means addressing issues and deficiencies or ensuring that the school is made aware of them.",
     img: "/assets/img/committees/smn.svg",
+    links: {
+      "Kistan Docs": "https://docs.kth.it",
+    },
   },
   {
     name: "Business Relations Committee",
@@ -47,6 +53,11 @@ const committees = [
     slug: "sso",
     description:
       "The Council of Safety are here for everyone in the Chapter and ensure their well-being. All Safety Officiers are bound by confidentiality. Reports to the Council of Safety can be made via the shared email, through the members personal email addresses or anonymously via their report form.",
+    links: {
+      "Report person to SSO": "https://forms.gle/niRG4pi7LwywTsGq5",
+      "Report deficiency in study enviroment":
+        "https://forms.gle/C77RMAX1FX68hg8p6",
+    },
   },
   {
     name: "Election Committee",
@@ -61,6 +72,8 @@ const committees = [
     description:
       "Qlubbmästeriet IT-Sektionen Kista (QMISK) is one of the Chapter's masteries, with its roots in the old Ingenjörsektionen Kista (IsK) from the 1990s, a long-standing institution. QMISK organizes pub nights in Kistan every Thursday and hosts gasques, the most famous being the annual Midvinterblot during the late winter.",
     website: "https://qmisk.com",
+    instagram: "https://www.instagram.com/qmisk/",
+    facebook: "https://www.facebook.com/qmisk/",
     img: "/assets/img/committees/qmisk.png",
   },
   {
@@ -70,6 +83,8 @@ const committees = [
     description:
       "ITerativa Klubben (ITK) is the hobby committee of the chapter. They organize activities for everything unrelated to alcohol. Their members are encourage to bring their own hobbies and interest. They are invested around all forms of gaming as well as activities related to computers, programming, cooking, arts, music and movies. They host ITK Mys every Wednesday with a variety of activities, including board games, fika etc., as well as large LAN events after each exam period with big tournaments and themed events.",
     website: "https://itk.gg",
+    instagram: "https://www.instagram.com/iterativaklubben/",
+    facebook: "https://www.facebook.com/ITerativaKlubben",
     img: "/assets/img/committees/itk.png",
     textColor: "#ADFF5C",
   },
@@ -80,6 +95,8 @@ const committees = [
     description:
       "TraditionsMEsterIT (TMEIT) is one of the Chapter's masteries, with roots in the IT and ME Chapters from the early 2000s. TMEIT hosts Friday pubs in Kistan as well as Exam Gasques in connection with each exam period.",
     website: "https://tmeit.se",
+    instagram: "https://www.instagram.com/traditionsmesterit/",
+    facebook: "https://www.facebook.com/TMEIT",
     img: "/assets/img/committees/tmeit.svg",
   },
   {
@@ -87,6 +104,7 @@ const committees = [
     slug: "sports",
     description:
       "The Sports Committee organizes opportunities for Chapter members to get active. The most popular activities are floorball and football, but other sports such as running, badminton, climbing, rounders, and volleyball are also offered. Would you like the committee to engage in another sport? They are always open to suggestions from Chapter members for other activities.",
+    instagram: "https://www.instagram.com/itsportscommittee/",
     img: "/assets/img/committees/sports.svg",
   },
   {
@@ -94,6 +112,7 @@ const committees = [
     slug: "jml",
     description:
       "JML stands for Equality, Diversity, and Equal Opportunities. JML is a group of dedicated students striving for a more equitable and diverse environment within the Chapter. They are also responsible for furthering the integration and engagement of international students and to run Internationally-linked work for chapter members.",
+    instagram: "https://www.instagram.com/jml_itsektionenkth/",
     img: "/assets/img/committees/jml.svg",
   },
   {
@@ -109,6 +128,7 @@ const committees = [
     description:
       "The Reception Committee are responsible for welcoming all newly admitted students each year during the three-week-long Reception. INGEN, NÅGON, MUX, and many Fadders plan numerous events to make the starting period at KTH as enjoyable as possible. So you can get familiar with everything related to KTH, the Chapter, as well as making new connections with other fellow students.",
     website: "https://mottagningen.se",
+    instagram: "https://www.instagram.com/mottagningenitsektionen/",
     img: "/assets/img/committees/reception.svg",
   },
 ] as const;

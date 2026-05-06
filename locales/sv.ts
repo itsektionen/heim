@@ -101,6 +101,8 @@ export default {
       trustees: "Förtroendevalda",
       "no-trustees": "Inga förtroendevalda hittades",
       website: "Hemsida",
+      "social-media": "Sociala medier",
+      links: "Länkar",
       protocols: "Protokoll",
     },
   },
