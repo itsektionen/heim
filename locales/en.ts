@@ -226,6 +226,8 @@ export default {
         "Google - Service provider for storage. Read more at {googleLink}.",
       github:
         "Github - Service provider for hosting. Read more at {githubLink}.",
+      netlify:
+        "Netlify - Service provider for hosting. Read more at {netlifyLink}.",
       ths: "Manages member registry independently. If you have any questions about your personal data, you can ask {thsEmailLink}.",
     },
     rights: {

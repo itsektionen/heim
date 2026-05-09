@@ -224,6 +224,8 @@ export default {
         "Google - Leverantör av lagringstjänster. Läs mer på {googleLink}.",
       github:
         "Github - Leverantör av hostingtjänster. Läs mer på {githubLink}.",
+      netlify:
+        "Netlify - Leverantör av hostingtjänster. Läs mer på {netlifyLink}.",
       ths: "Hanterar medlemsregister självständigt. Vid frågor kontakta {thsEmailLink}.",
     },
     rights: {

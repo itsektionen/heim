@@ -29,6 +29,7 @@ export default async function PrivacyPage({
       https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement
     </ELink>
   );
+  const netlifyLink = <ELink external>https://www.netlify.com/privacy/</ELink>;
   const kthLink = <ELink external>{t("third-parties.kth-link")}</ELink>;
 
   return (
@@ -88,6 +89,7 @@ export default async function PrivacyPage({
           </p>
           <p className="mb-3">{t("third-parties.google", { googleLink })} </p>
           <p className="mb-3">{t("third-parties.github", { githubLink })} </p>
+          <p className="mb-3">{t("third-parties.netlify", { netlifyLink })} </p>
           <p className="mb-3">
             {commonT("ths") + " - "}
             {t("third-parties.ths", { thsEmailLink })}
