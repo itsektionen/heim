@@ -177,37 +177,38 @@ export default {
     collect: {
       title: "Information we collect",
       content: [
-        "When you register for an event, participate in a meeting, respond to a survey, or are involved as a member in one of our committees, we may collect personal information such as your name, email address, age, phone number, your programme of study and year group, and records of your attendance.",
+        "When you register for an event, participate in a meeting, respond to a survey, or are involved as a member in one of our committees, we may collect personal information such as your full name, age, email address, phone number, your program of study, and year group, and records of your attendance (including arrival and departure agenda items), and logistical preferences (such as dietary needs or clothing sizes).",
         "This information is collected directly from you through forms, sign-in sheets, or our online services.",
-        "When participating in our events, we may make recordings or take photographs. This means that you may appear in audio and/or video recordings or photographs that we process, stores, and sometimes publish. We will notify you in advance if such recording or photography will take place.",
+        "When participating in our events, we may make recordings or take photographs. This means you may appear in audio and/or video recordings, or photographs that we process, store, and sometimes publish. We will notify you in advance if such recording or photography will take place.",
         "We do not knowingly collect personal data from individuals under the age of 16 without appropriate consent.",
       ],
     },
     use: {
       title: "Use of your information",
       content: [
-        "Event registration details are used to provide you with information about the event, to manage practical arrangements, and to handle payments.",
-        "Attendance lists help us keep track of participation at meetings or events.",
+        "We process your personal data based on your consent (e.g., for surveys), to fulfill our agreement with you (e.g., event registration), or based on our legitimate interest in managing and documenting our chapter's activities.",
+        "Event registration details are used to provide you with event information, manage practical arrangements, and handle payments.",
+        "Attendance lists help us track attendance at meetings to ensure the integrity of our democratic processes.",
         "Survey information may be used for statistical purposes or to improve our activities and products, but is only collected with your consent.",
-        "Your contact details as a committee member are used to facilitate communication and coordination within our organisation.",
-        "We may occasionally email you information about our chapter meetings, business relations and recruitment for various student activities.",
+        "Your contact details as a committee member are used to facilitate communication and coordination within our organization.",
+        "We may occasionally email you information about our chapter meetings, business relations, and recruitment for various student activities.",
       ],
     },
     retention: {
       title: "Data retention",
       content: [
         "We retain your personal data only for as long as necessary for the purposes it was collected.",
-        "Data related to events is kept until the event is completed and for an additional month from the event date to ensure that all payments are finalised. At that point, personal data collected through forms may be anonymised and retained for statistical or analytical purposes, meaning all information that directly identifies individuals is removed and cannot be linked back to you.",
-        "Survey data is deleted once the results have been compiled and analysed, normally within a year, unless anonymized for further analysis.",
-        "Attendance data is considered part of our official records and is linked with our meeting protocols. Therefore, attendance lists are included in the signed protocols and stored indefinitely as part of our historical records.",
+        "Data related to events is kept until the event is completed and for an additional month from the event date to ensure that all payments are finalized. At that point, personal data collected through forms may be anonymized and retained for statistical or analytical purposes, meaning all information that directly identifies individuals is removed and cannot be linked back to you.",
+        "Survey data is deleted once the results have been compiled and analyzed, normally within a year, unless it has been anonymized for further analysis.",
+        "Attendance data is considered part of our official records and is linked to our meeting protocols. Therefore, attendance lists are included in the signed protocols and stored indefinitely as part of our historical records.",
         "Committee membership information is retained for the duration of your active participation and deleted when you ask to withdraw or leave.",
-        "When other personal information is no longer required, it is securely erased from our systems on a regular basis.",
+        "When other personal information is no longer required, it is erased from our systems on a regular basis.",
       ],
     },
     storage: {
       title: "Data storage and security",
       content: [
-        "All personal data is stored securely. We use services such as Google Workspace for our organisation drive and email, GitHub for hosting and collaborating on projects, and other technical platforms including our own servers.",
+        "All personal data is stored securely. We use services such as Google Workspace for our organization's drive and email, GitHub and Netlify for hosting and collaborating on projects, and other technical platforms, including our own servers.",
         "In certain cases, your information may be processed by third parties who assist us with storage or hosting, but always under data processing agreements and never for their own purposes.",
         "We never sell nor disclose personal data to third parties.",
       ],
@@ -215,7 +216,7 @@ export default {
     cookies: {
       title: "Cookies",
       content:
-        "Our website does not use third-party cookies. We only use local, functional cookies stored on your own device to remember your language and theme preferences. These cookies are never sent to us or used for tracking. By using these features you agree to storing these cookies.",
+        "Our website does not use third-party cookies. We only use local, functional cookies stored on your own device to remember your language and theme preferences. These cookies are never sent to us or used for tracking. By using these features, you agree to storing these cookies.",
     },
     "third-parties": {
       title: "Third parties",

@@ -59,6 +59,7 @@ export default async function PrivacyPage({
           <p className="mb-3">{t("use.content.2")}</p>
           <p className="mb-3">{t("use.content.3")}</p>
           <p className="mb-3">{t("use.content.4")}</p>
+          <p className="mb-3">{t("use.content.5")}</p>
         </section>
         <section className="mb-12">
           <h3 className="text-2xl font-medium mb-2">{t("retention.title")}</h3>
@@ -103,7 +104,7 @@ export default async function PrivacyPage({
         <section className="mb-12">
           <h3 className="text-2xl font-medium mb-2">{t("update.title")}</h3>
           <p className="mb-3">{t("update.notice")}</p>
-          <p className="mb-3">{t("update.last") + ": 2025-08-11"}</p>
+          <p className="mb-3">{t("update.last") + ": 2026-05-09"}</p>
         </section>
       </article>
     </>

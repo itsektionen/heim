@@ -175,15 +175,16 @@ export default {
     collect: {
       title: "Information som vi samlar in",
       content: [
-        "När du anmäler dig till ett evenemang, deltar i ett möte, svarar på en enkät eller är aktiv som medlem i någon av våra nämnder, kan vi samla in personuppgifter såsom ditt namn, din epostadress, ålder, telefonnummer, vilket program du studerar och vilket årskull du tillhör, samt uppgifter om din närvaro.",
+        "När du anmäler dig till ett evenemang, deltar i ett möte, svarar på en enkät eller är aktiv som medlem i någon av våra nämnder, kan vi samla in personuppgifter såsom ditt fullständiga namn, din ålder, din e-postadress, ditt telefonnummer, vilket program du studerar och vilken årskull du tillhör, uppgifter om din närvaro (inklusive dagordningspunkter du anlände till eller lämnade mötet) samt logistiska preferenser (såsom specialkost eller klädstorlekar).",
         "Denna information samlas in direkt från dig via formulär, närvarolistor eller våra onlinetjänster.",
         "När du deltar i våra evenemang kan vi även spela in eller fotografera. Detta innebär att du kan förekomma i ljud- och/eller videoinspelningar eller foton som vi behandlar, lagrar och ibland publicerar. Vi meddelar i förväg om inspelning eller fotografering kommer att ske.",
         "Vi samlar inte medvetet in personuppgifter från personer under 16 års ålder utan korrekt samtycke.",
       ],
     },
     use: {
-      title: "Användinig av din information",
+      title: "Användning av din information",
       content: [
+        "Vi behandlar dina personuppgifter baserat på ditt samtycke (t.ex. för enkäter), för att fullfölja vårt avtal med dig (t.ex. vid evenemangsregistrering) eller baserat på vårt berättigade intresse att administrera och dokumentera sektionens verksamhet.",
         "Uppgifter vid evenemangsregistrering används för att ge dig information om evenemanget, hantera praktiska arrangemang samt administrera betalningar.",
         "Närvarolistor hjälper oss att hålla reda på deltagandet vid möten eller evenemang.",
         "Enkätsvar kan användas för statistiska ändamål eller för att utveckla och förbättra våra aktiviteter och produkter, men samlas endast in med ditt samtycke.",
@@ -195,17 +196,17 @@ export default {
       title: "Lagringstid",
       content: [
         "Vi sparar dina personuppgifter endast så länge som det är nödvändigt för de ändamål de samlades in för.",
-        "Uppgifter kopplade till evenemang sparas tills evenemanget är avslutat och ytterligare en månad från evenemangsdagen för att säkerställa att alla betalningar är slutförda. Därefter kan personuppgifter som samlats in via formulär anonymiseras och sparas för statistiska eller analytiska ändamål. När uppgifterna anonymiseras tas all information bort som direkt identifierar en person, så att de inte längre kan kopplas tillbaka till dig.",
+        "Uppgifter kopplade till evenemang sparas tills evenemanget är avslutat och ytterligare en månad efter evenemangsdagen för att säkerställa att alla betalningar är slutförda. Därefter kan personuppgifter som samlats in via formulär anonymiseras och sparas för statistiska eller analytiska ändamål. När uppgifterna anonymiseras tas all information bort som direkt identifierar en person, så att de inte längre kan kopplas tillbaka till dig.",
         "Enkätsvar raderas när resultaten har sammanställts och analyserats, normalt inom ett år, om de inte anonymiseras för vidare analys.",
         "Närvarodata betraktas som en del av våra officiella handlingar och kopplas till våra mötesprotokoll. Närvarolistor ingår därför i undertecknade protokoll och lagras på obestämd tid som en del av våra historiska arkiv.",
-        "Uppgifter om nämndmedlemskap sparas under tiden du är aktiv och raderas när du begär utträde eller att lämna.",
-        "När annan personinformation inte längre behövs, raderas den på ett säkert sätt ur våra system regelbundet.",
+        "Uppgifter om nämndmedlemskap sparas under tiden du är aktiv och raderas när du begär utträde att lämna.",
+        "När annan personinformation inte längre behövs, raderas den regelbundet ur våra system.",
       ],
     },
     storage: {
       title: "Lagring och säkerhet",
       content: [
-        "Alla personuppgifter lagras säkert. Vi använder tjänster som Google Workspace för vår organisations lagring och e-post, GitHub för kod- och projektlagring samt andra tekniska plattformar inklusive våra egna servrar",
+        "Alla personuppgifter lagras säkert. Vi använder tjänster som Google Workspace för vår organisations lagring och e-post, GitHub och Netlify för kod- och projektlagring samt andra tekniska plattformar inklusive våra egna servrar.",
         "I vissa fall kan dina uppgifter behandlas av tredje part som hjälper oss med lagring eller hosting, men alltid enligt personuppgiftsbiträdesavtal och aldrig för deras egna ändamål.",
         "Vi säljer eller lämnar aldrig ut personuppgifter till tredje part.",
       ],
@@ -213,7 +214,7 @@ export default {
     cookies: {
       title: "Cookies",
       content:
-        "Vår webbplats använder inte tredjepartscookies. Vi använder endast lokala, funktionella cookies som sparas på din egen enhet för att komma ihåg ditt valda språk och tema. Dessa cookies skickas aldrig till oss och används inte för spårning. Genom att använda dessa funktioner godkänner du att dessa cookies sparas på din enhet.",
+        "Vår webbplats använder inte tredjepartscookies. Vi använder endast lokala funktionella cookies som sparas på din egen enhet för att komma ihåg ditt valda språk och tema. Dessa cookies skickas aldrig till oss och används inte för spårning. Genom att använda dessa funktioner godkänner du att dessa cookies sparas på din enhet.",
     },
     "third-parties": {
       title: "Tredje parter",
@@ -231,7 +232,7 @@ export default {
     rights: {
       title: "Dina rättigheter",
       content:
-        "Du har rätt att när som helst kontakta oss för att begära tillgång till de personuppgifter vi har om dig, rätta felaktiga uppgifter eller begära radering när uppgifterna inte längre är nödvändiga. Du kan även begära begränsning av behandlingen, invända mot behandling som grundas på vårt berättigade intresse, eller återkalla ditt samtycke när behandlingen baseras på samtycke.",
+        "Du har rätt att när som helst kontakta oss för att begära tillgång till de personuppgifter vi har om dig, rätta felaktiga uppgifter eller begära radering när uppgifterna inte längre är nödvändiga. Du kan även begära begränsning av behandlingen, invända mot behandling som grundas på vårt berättigade intresse eller återkalla ditt samtycke när behandlingen baseras på samtycke.",
     },
     update: {
       title: "Uppdateringar",
