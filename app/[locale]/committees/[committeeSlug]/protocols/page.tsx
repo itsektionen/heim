@@ -1,6 +1,6 @@
 import { CommitteeSlug } from "@/data/committees";
 import { getCommittee } from "@/lib/committees";
-import { listCommitteeProtocols } from "@/lib/committees/protocols";
+import { getCommitteeIntegration } from "@/lib/committees/integrations";
 import { getScopedI18n } from "@/locales/server";
 import { FileTextIcon } from "lucide-react";
 
@@ -16,9 +16,8 @@ const CommitteeProtocolsPage = async ({
 
   const response = getCommittee(committeeSlug);
 
-  const protocols = await listCommitteeProtocols(
-    committeeSlug as CommitteeSlug,
-  );
+  const ci = getCommitteeIntegration(committeeSlug as CommitteeSlug);
+  const protocols = await ci?.listProtocols?.();
 
   const t = await getScopedI18n("CommitteesPage");
 

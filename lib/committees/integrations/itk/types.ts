@@ -1,4 +1,4 @@
-import { CalendarEvent } from "@/lib/events";
+import { CalendarEvent } from "@/types";
 
 export type ItkEvent = {
   id: string;

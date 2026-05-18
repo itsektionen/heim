@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Hero, HeroImage } from "@/components/ui/hero";
+import { CommitteeSlug } from "@/data/committees";
 import { getCommittee } from "@/lib/committees";
-import {
-  getCommitteeEvent,
-  listAllCommitteeEvents,
-} from "@/lib/committees/events";
+import { getCommitteeIntegration } from "@/lib/committees/integrations";
+import { listEvents } from "@/lib/events";
 import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getStaticParams } from "@/locales/server";
@@ -27,9 +26,18 @@ const EventPage = async ({
   const { eventId, locale } = await params;
   setStaticParamsLocale(locale);
 
+  const committeeSlug = eventId.split("-")[0];
+  const committeeEventId = eventId.split("-")[1];
+
   const t = await getI18n();
 
-  const event = await getCommitteeEvent(eventId);
+  const ci = getCommitteeIntegration(committeeSlug as CommitteeSlug);
+
+  if (!ci) {
+    return notFound();
+  }
+
+  const event = await ci.getEvent(committeeEventId);
 
   if (!event) {
     return notFound();
@@ -57,7 +65,8 @@ const EventPage = async ({
         <Button
           className="absolute top-2 left-1 opacity-50 text-foreground"
           asChild
-          variant="link">
+          variant="link"
+        >
           <Link href="/events">
             <ArrowLeftIcon /> {t("CommitteesPage.single.back")}
           </Link>
@@ -84,7 +93,8 @@ const EventPage = async ({
               <UsersIcon className="text-muted-foreground size-4" />
               <Link
                 className="hover:underline underline-offset-4 text-primary"
-                href={`/committees/${committeeData.data.committee.slug}`}>
+                href={`/committees/${committeeData.data.committee.slug}`}
+              >
                 {committeeData.data.committee.name}
               </Link>
             </div>
@@ -96,7 +106,7 @@ const EventPage = async ({
 };
 
 export async function generateStaticParams() {
-  const events = await listAllCommitteeEvents();
+  const events = await listEvents();
   return getStaticParams().map((locale) => {
     return events.map((event) => ({
       locale: locale,
@@ -115,7 +125,8 @@ export const generateMetadata = async ({
 
   const t = await getI18n();
 
-  const event = await getCommitteeEvent(eventId);
+  const committeeIntegration = getCommitteeIntegration("qmisk");
+  const event = await committeeIntegration?.getEvent(eventId);
 
   const title = t("Common.chapter");
   const subtitle = event ? event.title : t("NavBar.Chapter.Events");

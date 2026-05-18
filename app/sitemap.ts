@@ -1,6 +1,7 @@
 import committees from "@/data/committees";
-import { listAllCommitteeEvents } from "@/lib/committees/events";
-import { protocolCommitteeSlugs } from "@/lib/committees/protocols";
+import { committeeIntegrationProtocolSlugs } from "@/lib/committees/integrations";
+
+import { listEvents } from "@/lib/events";
 import type { MetadataRoute } from "next";
 import { readdir } from "node:fs/promises";
 import path from "node:path";
@@ -84,7 +85,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  for (const slug of protocolCommitteeSlugs) {
+  for (const slug of committeeIntegrationProtocolSlugs) {
     entries.push({
       url: `${siteUrl}/committees/${slug}/protocols`,
       lastModified: now,
@@ -100,7 +101,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   try {
-    const events = await listAllCommitteeEvents();
+    const events = await listEvents();
     for (const event of events) {
       const eventDate = new Date(event.start).toISOString().split("T")[0];
       entries.push({

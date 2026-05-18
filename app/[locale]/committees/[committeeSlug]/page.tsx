@@ -2,7 +2,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { CommitteeSlug } from "@/data/committees";
 import { getCommittee, listCommittees } from "@/lib/committees";
-import { listCommitteeProtocols } from "@/lib/committees/protocols";
+import { getCommitteeIntegration } from "@/lib/committees/integrations";
+
 import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getScopedI18n, getStaticParams } from "@/locales/server";
@@ -35,9 +36,9 @@ const CommitteePage = async ({
   const { committee, trustees } = response.data;
   const t = await getScopedI18n("CommitteesPage");
 
-  const protocols = await listCommitteeProtocols(
-    committee.slug as CommitteeSlug,
-  );
+  const ci = getCommitteeIntegration(committeeSlug as CommitteeSlug);
+
+  const protocols = await ci?.listProtocols?.();
 
   return (
     <>
@@ -103,7 +104,8 @@ const CommitteePage = async ({
               <Link
                 className="text-sm text-primary hover:underline underline-offset-4 flex [&>svg]:size-4 gap-2"
                 href={committee.website}
-                target="_blank">
+                target="_blank"
+              >
                 {committee.website}
                 <ExternalLinkIcon />
               </Link>
@@ -142,7 +144,8 @@ const CommitteePage = async ({
                   key={url}
                   className="text-sm text-primary hover:underline underline-offset-4 flex [&>svg]:size-4 gap-2"
                   href={url}
-                  target="_blank">
+                  target="_blank"
+                >
                   {label}
                   <ExternalLinkIcon />
                 </Link>

@@ -1,19 +1,13 @@
-import { CommitteeSlug } from "@/data/committees";
+import { committeeIntegrations } from "../committees/integrations";
 
-export interface EventScraper {
-  listEvents(
-    ...args: (string | number | boolean | object)[]
-  ): Promise<CalendarEvent[]>;
-}
+export const listEvents = async (limit: number = 0) => {
+  const committeeEvents = await Promise.all(
+    Object.values(committeeIntegrations).map((i) => i.listEvents()),
+  );
 
-export type CalendarEvent = {
-  id: string;
-  title: string;
-  description?: string;
-  start: Date;
-  end?: Date;
-  location?: string;
-  imageUrl?: string;
-  url?: string;
-  committeeSlug?: CommitteeSlug;
+  const allEvents = [...committeeEvents.flat()];
+
+  return allEvents
+    .sort((a, b) => b.start.getTime() - a.start.getTime())
+    .slice(0, limit === 0 ? undefined : limit);
 };

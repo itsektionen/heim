@@ -23,17 +23,17 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import { Hero, HeroContent, HeroImage } from "@/components/ui/hero";
-import { listAllCommitteeEvents } from "@/lib/committees/events";
-import { CalendarEvent } from "@/lib/events";
+import { listEvents } from "@/lib/events";
 import { getScopedI18n, getStaticParams } from "@/locales/server";
+import { CalendarEvent } from "@/types";
 import {
   ArrowRightIcon,
   ExternalLinkIcon,
   GraduationCapIcon,
+  Handshake,
   PartyPopperIcon,
   SchoolIcon,
   ZapIcon,
-  Handshake,
 } from "lucide-react";
 import { setStaticParamsLocale } from "next-international/server";
 import Link from "next/link";
@@ -50,7 +50,7 @@ export default async function Home({
   const t = await getScopedI18n("HomePage");
   const commonT = await getScopedI18n("Common");
 
-  const events: CalendarEvent[] = await listAllCommitteeEvents();
+  const events: CalendarEvent[] = await listEvents();
 
   return (
     <>

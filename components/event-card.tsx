@@ -1,7 +1,7 @@
 "use client";
 
 import { getCommittee } from "@/lib/committees";
-import { CalendarEvent } from "@/lib/events";
+import { CalendarEvent } from "@/types";
 import { useI18n } from "@/locales/client";
 import { ClockIcon, MapPinIcon, UsersIcon } from "lucide-react";
 import Image from "next/image";
@@ -58,7 +58,8 @@ const EventCard = ({ event }: { event: CalendarEvent }) => {
               <UsersIcon className="size-4 text-muted-foreground shrink-0" />
               <Link
                 className="text-primary hover:underline underline-offset-4"
-                href={`/committees/${committeeData.data.committee.slug}`}>
+                href={`/committees/${committeeData.data.committee.slug}`}
+              >
                 {committeeData.data.committee.name}
               </Link>
             </li>

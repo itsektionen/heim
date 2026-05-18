@@ -1,6 +1,6 @@
 import { EventCard } from "@/components/event-card";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
-import { listAllCommitteeEvents } from "@/lib/committees/events";
+import { listEvents } from "@/lib/events";
 import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getStaticParams } from "@/locales/server";
@@ -15,7 +15,7 @@ const EventsPage = async ({
   const { locale } = await params;
   setStaticParamsLocale(locale);
 
-  const events = await listAllCommitteeEvents();
+  const events = await listEvents();
   const t = await getI18n();
 
   return (
@@ -34,7 +34,7 @@ const EventsPage = async ({
       </Hero>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {events
-          .sort((a, b) => a.start.getTime() - b.start.getTime())
+          .sort((a, b) => b.start.getTime() - a.start.getTime())
           .map((event) => (
             <EventCard event={event} key={event.id} />
           ))}
