@@ -66,7 +66,7 @@ const nextConfig: NextConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: ["remarkGfm"],
   },
 });
 

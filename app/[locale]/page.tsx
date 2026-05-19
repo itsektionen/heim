@@ -38,8 +38,6 @@ import {
 import { setStaticParamsLocale } from "next-international/server";
 import Link from "next/link";
 
-export const revalidate = 86400;
-
 export default async function Home({
   params,
 }: {

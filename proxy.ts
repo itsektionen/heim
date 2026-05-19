@@ -7,7 +7,7 @@ const I18nMiddleware = createI18nMiddleware({
   urlMappingStrategy: "rewrite",
 });
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const response = I18nMiddleware(request);
   return response;
 }
