@@ -70,7 +70,7 @@ const ContactPage = async ({
   const t = await getScopedI18n("ContactPage");
   const commonT = await getI18n();
 
-  const president = boardTrustees.find((t) => t.mail?.startsWith("ord"));
+  const president = boardTrustees.find((t) => t.mail?.startsWith("ordf"));
   const brc = boardTrustees.find((t) => t.mail?.startsWith("naringsliv"));
   const komma = boardTrustees.find((t) => t.mail?.startsWith("komma"));
 
