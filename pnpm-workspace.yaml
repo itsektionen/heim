@@ -1,5 +1,5 @@
+# set to false due to the sheer amount of recent supply chain attacks
 allowBuilds:
-  esbuild: set this to true or false
-  puppeteer: set this to true or false
-  sharp: set this to true or false
-  unrs-resolver: set this to true or false
+  esbuild: false
+  sharp: false
+  unrs-resolver: false
