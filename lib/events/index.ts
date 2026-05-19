@@ -8,6 +8,6 @@ export const listEvents = async (limit: number = 0) => {
   const allEvents = [...committeeEvents.flat()];
 
   return allEvents
-    .sort((a, b) => b.start.getTime() - a.start.getTime())
+    .sort((a, b) => a.start.getTime() - b.start.getTime())
     .slice(0, limit === 0 ? undefined : limit);
 };
