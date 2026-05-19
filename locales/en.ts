@@ -26,10 +26,10 @@ export default {
       },
     },
     News: {
-      title: "Latest news",
-      "no-news": "There are no news.",
+      title: "Upcoming events",
+      "no-news": "There are no upcoming events.",
       "no-news-description":
-        "Unfortunately, there are no news or events here at the moment. Either nothing is happening, or they are missing. Please visit our social media or check back later.",
+        "Unfortunately, there are no events here at the moment. Either nothing is happening, or they are missing. Please visit our social media or check back later.",
     },
   },
   ChapterPage: {

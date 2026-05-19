@@ -26,10 +26,10 @@ export default {
       },
     },
     News: {
-      title: "Senaste nytt",
-      "no-news": "Det finns inga nyheter.",
+      title: "Kommande evenemang",
+      "no-news": "Det finns inga kommande evenemang.",
       "no-news-description":
-        "Tyvärr finns det inga nyheter eller evenemang här för tillfället. Antingen händer ingenting just nu, eller så saknas de. Vänligen besök våra sociala medier eller kolla igen senare.",
+        "Tyvärr finns det inga evenemang här för tillfället. Antingen händer ingenting just nu, eller så saknas de. Vänligen besök våra sociala medier eller kolla igen senare.",
     },
   },
   ChapterPage: {
