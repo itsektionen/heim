@@ -31,6 +31,7 @@ const EventCard = ({ event }: { event: CalendarEvent }) => {
             src={event.imageUrl ?? "/assets/img/placeholder.png"}
             alt={event.title}
             fill
+            sizes="(max-width: 768px) 340px, 300px"
           />
         </div>
         <div className="px-6">
