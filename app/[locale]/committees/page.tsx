@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
 import { type Committee } from "@/data/committees";
-import { backgroundColor, listCommittees } from "@/lib/committees";
+import { getCommitteeBackgroundColor, listCommittees } from "@/lib/committees";
 import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { cn } from "@/lib/utils";
@@ -26,14 +26,15 @@ const CommitteeCard = async ({ committee }: { committee: Committee }) => {
     <Card className="flex flex-col overflow-hidden pt-0">
       <div
         style={{
-          backgroundColor: backgroundColor(committee),
+          backgroundColor: getCommitteeBackgroundColor(committee),
         }}
         className={cn(
           "overflow-hidden h-[180px] flex",
           committee.img
             ? "items-center justify-center"
             : "items-center justify-start -ml-2",
-        )}>
+        )}
+      >
         {committee.img ? (
           <Image
             alt={`${committee.name} logo`}
@@ -64,7 +65,8 @@ const CommitteeCard = async ({ committee }: { committee: Committee }) => {
           style={{
             backgroundColor: committee.color,
             color: committee.textColor,
-          }}>
+          }}
+        >
           <Link href={`/committees/${committee.slug}`}>
             {t("Common.read-more")}
           </Link>

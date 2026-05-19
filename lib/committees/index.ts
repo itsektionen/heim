@@ -4,7 +4,7 @@ import { getContrastingColor } from "../utils";
 
 export const defaultCommitteeColor = "#cc99ff";
 
-export const backgroundColor = (committee: Committee) => {
+export const getCommitteeBackgroundColor = (committee: Committee) => {
   if (committee.img) {
     if (committee.color == defaultCommitteeColor) {
       return committee.color + "66";
