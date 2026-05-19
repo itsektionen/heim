@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Hero, HeroContent, HeroImage, HeroTitle } from "@/components/ui/hero";
+import { boardTrustees } from "@/data/trustees";
 import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getScopedI18n, getStaticParams } from "@/locales/server";
@@ -69,6 +70,10 @@ const ContactPage = async ({
   const t = await getScopedI18n("ContactPage");
   const commonT = await getI18n();
 
+  const president = boardTrustees.find((t) => t.mail?.startsWith("ord"));
+  const brc = boardTrustees.find((t) => t.mail?.startsWith("naringsliv"));
+  const komma = boardTrustees.find((t) => t.mail?.startsWith("komma"));
+
   const trusteeLink = (
     <Link className="underline underline-offset-4" href="/trustees">
       {t("trustees-page")}
@@ -96,13 +101,14 @@ const ContactPage = async ({
             <CardContent className="text-sm -mt-3">
               <div className="flex gap-2 items-center">
                 <UserIcon className="size-4 text-muted-foreground" />
-                <p>Julle Juliusson Keuschnig</p>
+                <p>{president?.name}</p>
               </div>
               <div className="flex gap-2 items-center">
                 <MailIcon className="size-4 text-muted-foreground" />
                 <Link
                   className="hover:underline underline-offset-4 text-primary"
-                  href="mailto:ordf@kth.it">
+                  href="mailto:ordf@kth.it"
+                >
                   ordf@kth.it
                 </Link>
               </div>
@@ -115,13 +121,14 @@ const ContactPage = async ({
             <CardContent className="text-sm -mt-3">
               <div className="flex gap-2 items-center">
                 <UserIcon className="size-4 text-muted-foreground" />
-                <p>Kevin Gregard</p>
+                <p>{brc?.name}</p>
               </div>
               <div className="flex gap-2 items-center">
                 <MailIcon className="size-4 text-muted-foreground" />
                 <Link
                   className="hover:underline underline-offset-4 text-primary"
-                  href="mailto:naringsliv@kth.it">
+                  href="mailto:naringsliv@kth.it"
+                >
                   naringsliv@kth.it
                 </Link>
               </div>
@@ -134,13 +141,14 @@ const ContactPage = async ({
             <CardContent className="text-sm -mt-3">
               <div className="flex gap-2 items-center">
                 <UserIcon className="size-4 text-muted-foreground" />
-                <p>Maitreyi Muralidhar</p>
+                <p>{komma?.name}</p>
               </div>
               <div className="flex gap-2 items-center">
                 <MailIcon className="size-4 text-muted-foreground" />
                 <Link
                   className="hover:underline underline-offset-4 text-primary"
-                  href="mailto:komma@kth.it">
+                  href="mailto:komma@kth.it"
+                >
                   komma@kth.it
                 </Link>
               </div>
@@ -155,7 +163,8 @@ const ContactPage = async ({
                 <UserIcon className="size-4 text-muted-foreground" />
                 <Link
                   className="hover:underline underline-offset-4"
-                  href="/committees/sso">
+                  href="/committees/sso"
+                >
                   {commonT("Common.read-more")}
                 </Link>
               </div>
@@ -163,7 +172,8 @@ const ContactPage = async ({
                 <MailIcon className="size-4 text-muted-foreground" />
                 <Link
                   className="hover:underline underline-offset-4 text-primary"
-                  href="mailto:sso@kth.it">
+                  href="mailto:sso@kth.it"
+                >
                   sso@kth.it
                 </Link>
               </div>
