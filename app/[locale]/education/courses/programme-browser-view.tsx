@@ -147,11 +147,6 @@ const ProgrammeBrowserView = () => {
                 <Skeleton className="h-5.5 w-16" />
               </>
             )}
-            {!programmeDetailsIsLoading ? (
-              <Badge variant="secondary">{programmeDetails?.campus}</Badge>
-            ) : (
-              <Skeleton className="h-5.5 w-16" />
-            )}
           </div>
           {!programmeInfoIsLoading ? (
             <p className="text-muted-foreground mb-6">{programmeInfo?.title}</p>
@@ -167,9 +162,9 @@ const ProgrammeBrowserView = () => {
                     "before:content-[''] before:absolute before:top-2 before:bottom-2 before:left-2 before:w-1.5 before:bg-muted before:rounded-full",
                     course.condition.en == "Mandatory" && "before:bg-red-500",
                     course.condition.en == "Recommended" &&
-                      "before:bg-amber-400",
+                    "before:bg-amber-400",
                     course.condition.en == "Conditionally Elective" &&
-                      "before:bg-green-400",
+                    "before:bg-green-400",
                   )}
                   key={course.code}
                 >
@@ -193,7 +188,7 @@ const ProgrammeBrowserView = () => {
                   >
                     {
                       ConditionIcons[
-                        course.condition[locale] as keyof typeof ConditionIcons
+                      course.condition[locale] as keyof typeof ConditionIcons
                       ]
                     }
                     <p className="text-sm -mb-px text-muted-foreground">
