@@ -4,15 +4,18 @@ export type InitDocuments = {
   protocols: InitProtocol[];
 }
 
-export type InitProtocol = {
+interface InitProtocol {
   path: string;
   name: string;
   url: string;
-};
+  metadata: { date?: string; };
+}
 
-export const mapInitProtocol = (initProtocol: InitProtocol): Protocol => ({
+type MaybeDatedProtocol = Omit<Protocol, "date"> & { date: Date | undefined };
+
+export const mapInitProtocol = (initProtocol: InitProtocol): MaybeDatedProtocol => ({
   id: initProtocol.path,
   name: initProtocol.name,
-  date: new Date(), // FIXME: Real date once init/documents PR is made and merged
+  date: initProtocol.metadata.date ? new Date(initProtocol.metadata.date) : undefined,
   url: initProtocol.url,
 });
