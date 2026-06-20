@@ -268,13 +268,13 @@ export const committeeTrustees: Trustee[] = [
     image: "/assets/img/trustees/DouglasLyman.webp",
     committeeIds: ["tmeit"],
   },
-  {
-    name: "Frans Ekberg",
-    role: "Head Responsible Safety Officer",
-    mail: "fransekberg@kth.it",
-    image: "/assets/img/trustees/FransEkberg.webp",
-    committeeIds: ["sso"],
-  },
+  // {
+  //   name: "Frans Ekberg",
+  //   role: "Head Responsible Safety Officer",
+  //   mail: "fransekberg@kth.it",
+  //   image: "/assets/img/trustees/FransEkberg.webp",
+  //   committeeIds: ["sso"],
+  // },
   {
     name: "Agnes Lind",
     role: "Safety Officer",
