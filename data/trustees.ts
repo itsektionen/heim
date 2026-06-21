@@ -282,13 +282,13 @@ export const committeeTrustees: Trustee[] = [
     image: "/assets/img/trustees/AgnesLind.webp",
     committeeIds: ["sso"],
   },
-  {
-    name: "Manfred Erlandsson",
-    role: "Safety Officer",
-    mail: "manfrederlandsson@kth.it",
-    // image: "/assets/img/trustees/AlfredErlandsson.webp",
-    committeeIds: ["sso"],
-  },
+  // {
+  //   name: "Alfred Erlandsson",
+  //   role: "Safety Officer",
+  //   mail: "alfrederlandsson@kth.it",
+  //   image: "/assets/img/trustees/AlfredErlandsson.webp",
+  //   committeeIds: ["sso"],
+  // },
   {
     name: "Evelina Fridmane",
     role: "Safety Officer",
