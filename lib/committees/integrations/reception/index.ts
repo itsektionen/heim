@@ -16,11 +16,7 @@ export const receptionIntegration: CommitteeIntegration = {
   },
   getEvent: async (id: string) => {
     try {
-      const res = await fetch(
-        env.RECEPTION_BASE_URL +
-          "/api/v1/events/" +
-          id.split("reception-event-")[1],
-      );
+      const res = await fetch(env.RECEPTION_BASE_URL + "/api/v1/events/" + id);
       const data: ReceptionEvent = await res.json();
 
       return mapReceptionEvent(data);

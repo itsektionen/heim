@@ -13,7 +13,7 @@ export const mapReceptionEvent = (
   receptionEvent: ReceptionEvent,
 ): CalendarEvent => {
   return {
-    id: `reception-event-${receptionEvent.id}`,
+    id: `reception-${receptionEvent.id}`,
     title: receptionEvent.title,
     description: receptionEvent.description,
     start: new Date(receptionEvent.start),
