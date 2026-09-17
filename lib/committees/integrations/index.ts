@@ -18,7 +18,7 @@ export const committeeIntegrations: Partial<
   qmisk: qmiskIntegration,
   tmeit: tmeitIntegration,
   itk: itkIntegration,
-  reception: receptionIntegration,
+  //reception: receptionIntegration,
 };
 
 export const committeeIntegrationSlugs = Object.keys(
