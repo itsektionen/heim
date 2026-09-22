@@ -1,5 +1,6 @@
 # set to false due to the sheer amount of recent supply chain attacks
 allowBuilds:
   esbuild: false
+  pnpm: set this to true or false
   sharp: false
   unrs-resolver: false

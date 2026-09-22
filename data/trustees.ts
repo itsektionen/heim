@@ -78,10 +78,9 @@ export const boardTrustees: Trustee[] = [
     committeeIds: ["board"],
   },
   {
-    name: "Joel Lagerberg",
+    name: "Vakant",
     role: "Board Member",
     mail: "ledamot@kth.it",
-    image: "/assets/img/trustees/JoelLagerberg.webp",
     committeeIds: ["board"],
   },
   {
@@ -101,10 +100,9 @@ export const committeeTrustees: Trustee[] = [
     committeeIds: ["itk"],
   },
   {
-    name: "Benedek Boldizsár",
+    name: "Vakant",
     role: "Sudo",
     mail: "sudo@kth.it",
-    image: "/assets/img/trustees/BenedekBoldizsar.webp",
     committeeIds: ["itk"],
   },
   {
@@ -174,17 +172,17 @@ export const committeeTrustees: Trustee[] = [
     mail: "kam@kth.it",
   },
   {
-    name: "Denise Hommik",
+    name: "Viggo Tinge",
     role: "QM",
     mail: "qm@qmisk.com",
-    image: "/assets/img/trustees/DeniseHommik2.webp",
+    image: "/assets/img/trustees/ViggoTinge.webp",
     committeeIds: ["qmisk"],
   },
   {
-    name: "Alexander Lapin Pashchenko",
+    name: "Kevin Gregard",
     role: "vQM",
     mail: "vqm@qmisk.com",
-    image: "/assets/img/trustees/AlexanderLapinPashchenko.webp",
+    image: "/assets/img/trustees/KevinGregard.webp",
     committeeIds: ["qmisk"],
   },
   {
@@ -302,28 +300,28 @@ export const committeeTrustees: Trustee[] = [
     mail: "kf@kth.it",
   },
   {
-    name: "Dante Julio Cosentino",
-    role: "Union Council",
-    mail: "kf@kth.it",
-    image: "/assets/img/trustees/dantec.avif",
-  },
-  {
-    name: "Dylan Horn Kreiner",
-    role: "Union Council",
-    mail: "kf@kth.it",
-    image: "/assets/img/trustees/DylanHornKreiner2.webp",
-  },
-  {
-    name: "Julle Juliusson Keuschnig",
-    role: "Union Council Substitute",
-    mail: "kf@kth.it",
-    image: "/assets/img/trustees/JulleJuliussonKeuschnig.webp",
-  },
-  {
     name: "Douglas Lyman",
-    role: "Union Council Substitute",
+    role: "Union Council",
     mail: "kf@kth.it",
     image: "/assets/img/trustees/DouglasLyman.webp",
+  },
+  {
+    name: "Justus Kluge",
+    role: "Union Council",
+    mail: "kf@kth.it",
+    image: "/assets/img/trustees/JustusKlunge3.webp",
+  },
+  {
+    name: "Frans Ekberg",
+    role: "Union Council Substitute",
+    mail: "kf@kth.it",
+    image: "/assets/img/trustees/FransEkberg.webp",
+  },
+  {
+    name: "Viktor Sandström",
+    role: "Union Council Substitute",
+    mail: "kf@kth.it",
+    image: "/assets/img/trustees/ViktorSandstrom.webp",
   },
   {
     name: "Dante Julio Cosentino",
