@@ -8,95 +8,140 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import useClosestAnchor from "@/hooks/use-closest-anchor";
-import { getHeadings } from "@/lib/md";
+import type { Heading } from "@/lib/md";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/locales/client";
-import { ScrollIcon, TableOfContentsIcon } from "lucide-react";
+import { ChevronDownIcon, ScrollIcon, TableOfContentsIcon } from "lucide-react";
 import Link from "next/link";
+import { CollapseProvider, useCollapse } from "./collapse-context";
+
+export type TocDoc = { slug: string; title: string; headings: Heading[] };
+
+const HeadingLinks = ({
+  headings,
+  anchor,
+}: {
+  headings: Heading[];
+  anchor: string | null;
+}) => (
+  <ul>
+    {headings.map((heading) => (
+      <li
+        style={{ marginLeft: `${(heading.level + 1) * 1.2}rem` }}
+        key={heading.link}>
+        <Link
+          className={cn(
+            "font-poppins font-medium text-sm hover:opacity-80 transition-all",
+            anchor === heading.link.slice(1) && "text-primary",
+          )}
+          href={heading.link}>
+          {heading.text}
+        </Link>
+      </li>
+    ))}
+  </ul>
+);
+
+const DocEntry = ({ doc, anchor }: { doc: TocDoc; anchor: string | null }) => {
+  const { isOpen, setOpen, reveal } = useCollapse();
+  const open = isOpen(doc.slug);
+
+  return (
+    <li>
+      <button
+        onClick={() => (open ? setOpen(doc.slug, false) : reveal(doc.slug))}
+        className="flex w-full items-center justify-between gap-2 text-left font-poppins font-medium text-sm hover:opacity-80 transition-all">
+        <span className={cn(open && "text-primary")}>{doc.title}</span>
+        <ChevronDownIcon
+          className={cn(
+            "size-3.5 shrink-0 transition-transform",
+            open && "rotate-180",
+          )}
+        />
+      </button>
+      {open && doc.headings.length > 0 && (
+        <div className="mt-1 mb-2">
+          <HeadingLinks headings={doc.headings} anchor={anchor} />
+        </div>
+      )}
+    </li>
+  );
+};
+
+const TocBody = ({
+  statutes,
+  memos,
+}: {
+  statutes: TocDoc;
+  memos: TocDoc[];
+}) => {
+  const [anchor] = useClosestAnchor();
+
+  return (
+    <ul className="space-y-2">
+      <DocEntry doc={statutes} anchor={anchor} />
+      {memos.map((memo) => (
+        <DocEntry key={memo.slug} doc={memo} anchor={anchor} />
+      ))}
+    </ul>
+  );
+};
+
 const MdWrapper = ({
   children,
-  markdown,
+  statutes,
+  memos,
 }: {
   children: React.ReactNode;
-  markdown: string;
+  statutes: TocDoc;
+  memos: TocDoc[];
 }) => {
   const t = useI18n();
-  const [anchor] = useClosestAnchor();
-  const headings = getHeadings(markdown);
+
   return (
-    <div className="-mt-6 -ml-6 -mr-6 -mb-42">
-      <div className="border-b px-6 py-3 text-sm">
-        <div className="flex items-center gap-2 mb-1">
-          <ScrollIcon className="size-4 text-primary" />
-          <p className="font-medium">{t("NavBar.Documents.StatutesBylaws")}</p>
-        </div>
-        <p className="text-muted-foreground text-sm max-w-prose">
-          {t("NavBar.Documents.StatutesBylaws.description")}
-        </p>
-      </div>
-      <Sheet>
-        <SheetTrigger className="flex shadow-xs items-center justify-center lg:hidden fixed top-6 right-6 size-9 bg-background rounded-md border">
-          <TableOfContentsIcon className="size-4 text-primary" />
-        </SheetTrigger>
-        <SheetContent>
-          <SheetHeader className="mb-0">
-            <SheetTitle>{t("Statutes.toc")}</SheetTitle>
-          </SheetHeader>
-          <div className="px-6 overflow-y-auto -mt-6 pb-18">
-            <ul>
-              {headings?.slice(1).map((heading) => (
-                <li
-                  style={{ marginLeft: `${heading.level * 1.2}rem` }}
-                  key={heading.link}
-                >
-                  <Link
-                    className={cn(
-                      "font-poppins font-medium text-sm hover:opacity-80 transition-all",
-                      anchor === heading.link.slice(1) && "text-primary",
-                    )}
-                    href={heading.link}
-                  >
-                    {heading.text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+    <CollapseProvider defaultOpen={[statutes.slug]}>
+      <div className="-mt-6 -ml-6 -mr-6 -mb-42">
+        <div className="border-b px-6 py-3 text-sm">
+          <div className="flex items-center gap-2 mb-1">
+            <ScrollIcon className="size-4 text-primary" />
+            <p className="font-medium">
+              {t("NavBar.Documents.StatutesBylaws")}
+            </p>
           </div>
-        </SheetContent>
-      </Sheet>
-      <div className="flex">
-        <div>
-          <div className="hidden lg:block sticky top-[calc(4rem+1px)] w-[280px]">
-            <div className="relative h-[calc(100vh-4rem-1px)]">
-              <nav className="absolute top-0 bottom-0 p-6 border-r overflow-y-auto">
-                <p className="text-muted-foreground font-medium text-sm mb-2">
-                  {t("Statutes.toc")}
-                </p>
-                <ul>
-                  {headings?.slice(1).map((heading) => (
-                    <li
-                      style={{ marginLeft: `${heading.level * 1.2}rem` }}
-                      key={heading.link}
-                    >
-                      <Link
-                        className={cn(
-                          "font-poppins font-medium text-sm hover:opacity-80 transition-all",
-                          anchor === heading.link.slice(1) && "text-primary",
-                        )}
-                        href={heading.link}
-                      >
-                        {heading.text}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+          <p className="text-muted-foreground text-sm max-w-prose">
+            {t("NavBar.Documents.StatutesBylaws.description")}
+          </p>
+        </div>
+        <Sheet>
+          <SheetTrigger className="flex shadow-xs items-center justify-center lg:hidden fixed top-6 right-6 size-9 bg-background rounded-md border">
+            <TableOfContentsIcon className="size-4 text-primary" />
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader className="mb-0">
+              <SheetTitle>{t("Statutes.toc")}</SheetTitle>
+            </SheetHeader>
+            <div className="px-6 overflow-y-auto -mt-6 pb-18">
+              <TocBody statutes={statutes} memos={memos} />
+            </div>
+          </SheetContent>
+        </Sheet>
+        <div className="flex">
+          <div>
+            <div className="hidden lg:block sticky top-[calc(4rem+1px)] w-[280px]">
+              <div className="relative h-[calc(100vh-4rem-1px)]">
+                <nav className="absolute top-0 bottom-0 p-6 border-r overflow-y-auto">
+                  <p className="text-muted-foreground font-medium text-sm mb-2">
+                    {t("Statutes.toc")}
+                  </p>
+                  <TocBody statutes={statutes} memos={memos} />
+                </nav>
+              </div>
             </div>
           </div>
+          <div className="flex-1 p-6">{children}</div>
         </div>
-        <div className="p-6">{children}</div>
       </div>
-    </div>
+    </CollapseProvider>
   );
 };
 

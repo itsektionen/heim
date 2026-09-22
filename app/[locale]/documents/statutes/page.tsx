@@ -1,7 +1,8 @@
-import { Markdown } from "@/lib/md";
+import { fetchPmDocs, getHeadings, Markdown } from "@/lib/md";
 import { generatePageMetadata } from "@/lib/metadata";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import MdWrapper from "./md-wrapper";
+import DocSection from "./doc-section";
+import MdWrapper, { type TocDoc } from "./md-wrapper";
 
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
@@ -15,6 +16,20 @@ import "./style.css";
 
 export const revalidate = 2592000;
 
+const STATUTES_SLUG = "statutes";
+
+const mdxOptions = (prefix: string) => ({
+  mdxOptions: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      [rehypeSlug, { prefix }] as [typeof rehypeSlug, { prefix: string }],
+    ],
+  },
+});
+
+const stripTitle = (markdown: string) =>
+  markdown.replace(/^#\s+.*$/m, "").trimStart();
+
 export default async function StatutesPage({
   params,
 }: {
@@ -22,25 +37,49 @@ export default async function StatutesPage({
 }) {
   const { locale } = await params;
   setStaticParamsLocale(locale);
+
+  const t = await getI18n();
+
   const res = await fetch(
     locale === "sv" ? env.STATUTES_URL_SV : env.STATUTES_URL_EN,
   );
-  const markdown = await res.text();
-  const cleanedMarkdown = new Markdown(markdown).clean().getSource();
+  const cleanedStatutes = new Markdown(await res.text()).clean().getSource();
+  const statutesTitle =
+    cleanedStatutes.match(/^#\s+(.*)$/m)?.[1].trim() ?? t("Statutes.title");
+  const statutesBody = stripTitle(cleanedStatutes);
+
+  const memoSections = (await fetchPmDocs(locale)).map((doc) => ({
+    slug: doc.slug,
+    title: doc.title,
+    body: new Markdown(doc.markdown).clean().getSource(),
+  }));
+
+  const statutesDoc: TocDoc = {
+    slug: STATUTES_SLUG,
+    title: statutesTitle,
+    headings: getHeadings(statutesBody, `${STATUTES_SLUG}--`),
+  };
+
+  const memoDocs: TocDoc[] = memoSections.map((doc) => ({
+    slug: doc.slug,
+    title: doc.title,
+    headings: getHeadings(doc.body, `${doc.slug}--`),
+  }));
 
   return (
-    <MdWrapper markdown={markdown}>
-      <div className="md">
+    <MdWrapper statutes={statutesDoc} memos={memoDocs}>
+      <DocSection slug={STATUTES_SLUG} title={statutesTitle}>
         <MDXRemote
-          options={{
-            mdxOptions: {
-              remarkPlugins: [remarkGfm],
-              rehypePlugins: [rehypeSlug],
-            },
-          }}
-          source={cleanedMarkdown}
+          options={mdxOptions(`${STATUTES_SLUG}--`)}
+          source={statutesBody}
         />
-      </div>
+      </DocSection>
+
+      {memoSections.map((doc) => (
+        <DocSection key={doc.slug} slug={doc.slug} title={doc.title}>
+          <MDXRemote options={mdxOptions(`${doc.slug}--`)} source={doc.body} />
+        </DocSection>
+      ))}
     </MdWrapper>
   );
 }

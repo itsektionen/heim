@@ -21,4 +21,10 @@
     p {
         @apply mt-2;
     }
+
+    img {
+        @apply my-3;
+        max-height: 25vh;
+        width: auto;
+    }
 }
