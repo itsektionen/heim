@@ -105,7 +105,7 @@ export function generatePageMetadata({
       : [{ name: config.name }],
     creator: config.name,
     publisher: config.name,
-    //metadataBase: new URL(config.url),
+    metadataBase: new URL(config.url),
     alternates: {
       canonical: canonicalUrl,
       languages: {
