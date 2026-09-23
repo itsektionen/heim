@@ -13,6 +13,7 @@ export const env = createEnv({
     QMISK_BASE_URL: z.string().url().min(1),
     ITK_BASE_URL: z.string().url().min(1),
     TMEIT_BASE_URL: z.string().url().min(1),
+    INIT_BASE_URL: z.string().url().min(1),
   },
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
   runtimeEnv: {
@@ -26,6 +27,7 @@ export const env = createEnv({
     QMISK_BASE_URL: process.env.QMISK_BASE_URL,
     ITK_BASE_URL: process.env.ITK_BASE_URL,
     TMEIT_BASE_URL: process.env.TMEIT_BASE_URL,
+    INIT_BASE_URL: process.env.INIT_BASE_URL,
   },
   // For Next.js >= 13.4.4, you only need to destructure client variables:
   // experimental__runtimeEnv: {
