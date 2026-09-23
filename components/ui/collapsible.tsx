@@ -1,33 +1,32 @@
-"use client"
+import { cn } from "@/lib/utils";
 
-import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"
-
-function Collapsible({
-  ...props
-}: React.ComponentProps<typeof CollapsiblePrimitive.Root>) {
-  return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />
+function Collapsible({ ...props }: React.ComponentProps<"details">) {
+  return <details data-slot="collapsible" {...props} />;
 }
 
 function CollapsibleTrigger({
+  className,
   ...props
-}: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleTrigger>) {
+}: React.ComponentProps<"summary">) {
   return (
-    <CollapsiblePrimitive.CollapsibleTrigger
+    <summary
       data-slot="collapsible-trigger"
+      className={cn(
+        "flex cursor-pointer list-none items-center justify-between gap-2 [&::-webkit-details-marker]:hidden",
+        className,
+      )}
       {...props}
     />
-  )
+  );
 }
 
 function CollapsibleContent({
+  className,
   ...props
-}: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleContent>) {
+}: React.ComponentProps<"div">) {
   return (
-    <CollapsiblePrimitive.CollapsibleContent
-      data-slot="collapsible-content"
-      {...props}
-    />
-  )
+    <div data-slot="collapsible-content" className={cn(className)} {...props} />
+  );
 }
 
-export { Collapsible, CollapsibleTrigger, CollapsibleContent }
+export { Collapsible, CollapsibleTrigger, CollapsibleContent };

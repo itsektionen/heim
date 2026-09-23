@@ -101,17 +101,17 @@ const MdWrapper = ({
   return (
     <CollapseProvider defaultOpen={[statutes.slug]}>
       <div className="-mt-6 -ml-6 -mr-6 -mb-42">
-        <div className="border-b px-6 py-3 text-sm">
+        <section className="border-b px-6 py-3 text-sm">
           <div className="flex items-center gap-2 mb-1">
             <ScrollIcon className="size-4 text-primary" />
-            <p className="font-medium">
+            <h1 className="font-medium">
               {t("NavBar.Documents.StatutesBylaws")}
-            </p>
+            </h1>
           </div>
           <p className="text-muted-foreground text-sm max-w-prose">
             {t("NavBar.Documents.StatutesBylaws.description")}
           </p>
-        </div>
+        </section>
         <Sheet>
           <SheetTrigger className="flex shadow-xs items-center justify-center lg:hidden fixed top-6 right-6 size-9 bg-background rounded-md border">
             <TableOfContentsIcon className="size-4 text-primary" />
@@ -138,7 +138,7 @@ const MdWrapper = ({
               </div>
             </div>
           </div>
-          <div className="flex-1 p-6">{children}</div>
+          <div className="flex-1 min-w-0">{children}</div>
         </div>
       </div>
     </CollapseProvider>

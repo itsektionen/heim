@@ -25,20 +25,18 @@ const DocSection = ({
     <Collapsible
       id={slug}
       open={open}
-      onOpenChange={(next) => setOpen(slug, next)}
-      className="scroll-mt-20 border-b">
-      <CollapsibleTrigger className="flex w-full items-center justify-between gap-2 py-3 text-left font-medium text-primary hover:opacity-80 transition-all">
-        <span>{title}</span>
+      onToggle={(event) => setOpen(slug, event.currentTarget.open)}
+      className="scroll-mt-20">
+      <CollapsibleTrigger className="border-b sm:border-y bg-muted/90 hover:bg-accent transition-colors backdrop-blur z-0 sticky top-0 sm:top-16 px-6 py-3 font-medium text-primary">
+        <h1>{title}</h1>
         <ChevronDownIcon
           className={cn(
-            "size-4 shrink-0 transition-transform",
+            "size-4 shrink-0 text-muted-foreground transition-transform",
             open && "rotate-180",
           )}
         />
       </CollapsibleTrigger>
-      <CollapsibleContent>
-        <div className="md pb-6">{children}</div>
-      </CollapsibleContent>
+      <CollapsibleContent className="md p-6">{children}</CollapsibleContent>
     </Collapsible>
   );
 };
