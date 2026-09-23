@@ -3,6 +3,7 @@ import { z } from "zod";
 
 export const env = createEnv({
   server: {
+    URL: z.string().url().min(1),
     CHAPTER_MEETINGS_ID: z.string().min(1),
     BOARD_MEETINGS_ID: z.string().min(1),
     DRIVE_CREDENTIALS_BASE64: z.string().base64().min(1),
@@ -16,6 +17,7 @@ export const env = createEnv({
   },
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
   runtimeEnv: {
+    URL: process.env.URL,
     CHAPTER_MEETINGS_ID: process.env.CHAPTER_MEETINGS_ID,
     BOARD_MEETINGS_ID: process.env.BOARD_MEETINGS_ID,
     DRIVE_CREDENTIALS_BASE64: process.env.DRIVE_CREDENTIALS_BASE64,

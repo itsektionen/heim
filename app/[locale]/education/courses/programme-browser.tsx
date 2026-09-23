@@ -98,26 +98,26 @@ export const ProgrammeSelector = ({
 }) => {
   const [programme, setProgramme] = useState<string>(defaultProgramme ?? "");
   const [studyYear, setStudyYear] = useState<KoppsStudyYear>(defaultStudyYear);
-
   const { setValues } = useProgrammeSelector();
 
-  useEffect(() => {
-    if (programme !== "CINTE" && studyYear > 3) {
-      setStudyYear(3);
-    }
-    setValues((prev) => ({
-      ...prev,
-      programme,
-      studyYear,
-    }));
-  }, [programme, studyYear, setValues]);
+  const handleProgrammeChange = (value: string) => {
+    const clampedStudyYear = value !== "CINTE" && studyYear > 3 ? 3 : studyYear;
+    setProgramme(value);
+    setStudyYear(clampedStudyYear as KoppsStudyYear);
+    setValues((prev) => ({ ...prev, programme: value, studyYear: clampedStudyYear }));
+  };
+
+  const handleStudyYearChange = (value: string) => {
+    const newStudyYear = Number(value) as KoppsStudyYear;
+    setStudyYear(newStudyYear);
+    setValues((prev) => ({ ...prev, programme, studyYear: newStudyYear }));
+  };
 
   const t = useScopedI18n("CoursesPage");
-
   return (
     <div className="flex items-center gap-2">
       <Select
-        onValueChange={setProgramme}
+        onValueChange={handleProgrammeChange}
         value={programme}
         defaultValue={programme}>
         <SelectTrigger>
@@ -131,9 +131,8 @@ export const ProgrammeSelector = ({
           ))}
         </SelectContent>
       </Select>
-
       <Select
-        onValueChange={(value) => setStudyYear(Number(value) as KoppsStudyYear)}
+        onValueChange={handleStudyYearChange}
         value={studyYear.toString()}
         defaultValue={studyYear.toString()}>
         <SelectTrigger>

@@ -20,6 +20,7 @@ export const committeeIntegrations: Partial<
   tmeit: tmeitIntegration,
   itk: itkIntegration,
   init: initIntegration,
+  //reception: receptionIntegration,
 };
 
 export const committeeIntegrationSlugs = Object.keys(
