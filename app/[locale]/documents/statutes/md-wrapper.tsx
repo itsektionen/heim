@@ -130,7 +130,7 @@ const MdWrapper = ({
           </p>
         </section>
         <Sheet>
-          <SheetTrigger className="flex shadow-xs items-center justify-center lg:hidden fixed top-6 right-6 size-9 bg-background rounded-md border">
+          <SheetTrigger className="flex shadow-xs items-center justify-center lg:hidden fixed top-3 right-3 z-1 size-9 bg-background rounded-md border">
             <TableOfContentsIcon className="size-4 text-primary" />
           </SheetTrigger>
           <SheetContent>
