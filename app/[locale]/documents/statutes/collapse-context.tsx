@@ -1,11 +1,18 @@
 "use client";
 
-import { createContext, useCallback, useContext, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 type CollapseState = {
   isOpen: (slug: string) => boolean;
   setOpen: (slug: string, open: boolean) => void;
   reveal: (slug: string) => void;
+  navigate: (hash: string) => void;
 };
 
 const CollapseContext = createContext<CollapseState | null>(null);
@@ -35,20 +42,37 @@ export const CollapseProvider = ({
     });
   }, []);
 
+  const navigate = useCallback((hash: string) => {
+    window.location.hash = hash;
+    setTimeout(() => {
+      document
+        .getElementById(hash.slice(1))
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+  }, []);
+
   const reveal = useCallback(
     (slug: string) => {
       setOpen(slug, true);
-      setTimeout(() => {
-        document
-          .getElementById(slug)
-          ?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 0);
+      navigate(`#${slug}`);
     },
-    [setOpen],
+    [setOpen, navigate],
   );
 
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+
+    const slug = hash.split("--")[0];
+    setOpen(slug, true);
+
+    setTimeout(() => {
+      document.getElementById(hash)?.scrollIntoView({ block: "start" });
+    }, 0);
+  }, []);
+
   return (
-    <CollapseContext.Provider value={{ isOpen, setOpen, reveal }}>
+    <CollapseContext.Provider value={{ isOpen, setOpen, reveal, navigate }}>
       {children}
     </CollapseContext.Provider>
   );

@@ -1,10 +1,9 @@
-import { fetchPmDocs, getHeadings, Markdown } from "@/lib/md";
+import { fetchPmDocs, getHeadings, Markdown, rehypeHeadingIds } from "@/lib/md";
 import { generatePageMetadata } from "@/lib/metadata";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import DocSection from "./doc-section";
 import MdWrapper, { type TocDoc } from "./md-wrapper";
 
-import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
 import { env } from "@/env";
@@ -22,7 +21,7 @@ const mdxOptions = (prefix: string) => ({
   mdxOptions: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
-      [rehypeSlug, { prefix }] as [typeof rehypeSlug, { prefix: string }],
+      [rehypeHeadingIds, prefix] as [typeof rehypeHeadingIds, string],
     ],
   },
 });

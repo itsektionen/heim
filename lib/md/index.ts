@@ -47,6 +47,16 @@ export const fetchPmDocs = async (locale: string): Promise<PmDoc[]> => {
 
 export type Heading = { text: string; link: string; level: number };
 
+export const slugifyHeading = (text: string) => {
+  const numbered = text.match(/^§?\s*(\d+(?:\.\d+)*)/);
+  if (numbered) return numbered[1];
+
+  return text
+    .replace(/ /g, "-")
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9åäöÅÄÖ-]/g, "");
+};
+
 export const getHeadings = (source: string, prefix = ""): Heading[] => {
   const regex = /#+\s+(.*)/g;
   const matches = source.match(regex);
@@ -56,13 +66,7 @@ export const getHeadings = (source: string, prefix = ""): Heading[] => {
   return matches.map((heading) => {
     const headingText = heading.replace(/^#+\s*/, "").trim();
     const level = heading.match(/^#+/)?.[0].length || 2;
-    const link =
-      "#" +
-      prefix +
-      headingText
-        .replace(/ /g, "-")
-        .toLowerCase()
-        .replace(/[^a-zA-Z0-9åäöÅÄÖ-]/g, "");
+    const link = "#" + prefix + slugifyHeading(headingText);
 
     return {
       text: headingText,
@@ -70,6 +74,35 @@ export const getHeadings = (source: string, prefix = ""): Heading[] => {
       level: level - 2,
     };
   });
+};
+
+type HastNode = {
+  type: string;
+  tagName?: string;
+  properties?: Record<string, unknown>;
+  children?: HastNode[];
+  value?: string;
+};
+
+const textOf = (node: HastNode): string =>
+  node.type === "text"
+    ? (node.value ?? "")
+    : (node.children ?? []).map(textOf).join("");
+
+export const rehypeHeadingIds = (prefix: string) => (tree: HastNode) => {
+  const visit = (node: HastNode) => {
+    if (
+      node.type === "element" &&
+      node.tagName &&
+      /^h[1-6]$/.test(node.tagName) &&
+      node.properties &&
+      !node.properties.id
+    ) {
+      node.properties.id = prefix + slugifyHeading(textOf(node));
+    }
+    (node.children ?? []).forEach(visit);
+  };
+  visit(tree);
 };
 
 export class Markdown {

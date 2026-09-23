@@ -23,24 +23,33 @@ const HeadingLinks = ({
 }: {
   headings: Heading[];
   anchor: string | null;
-}) => (
-  <ul>
-    {headings.map((heading) => (
-      <li
-        style={{ marginLeft: `${(heading.level + 1) * 1.2}rem` }}
-        key={heading.link}>
-        <Link
-          className={cn(
-            "font-poppins font-medium text-sm hover:opacity-80 transition-all",
-            anchor === heading.link.slice(1) && "text-primary",
-          )}
-          href={heading.link}>
-          {heading.text}
-        </Link>
-      </li>
-    ))}
-  </ul>
-);
+}) => {
+  const { navigate } = useCollapse();
+
+  return (
+    <ul>
+      {headings.map((heading) => (
+        <li
+          style={{ marginLeft: `${heading.level * 0.5}rem` }}
+          className="min-w-0"
+          key={heading.link}>
+          <Link
+            className={cn(
+              "block break-words font-poppins font-normal text-sm hover:opacity-80 transition-all",
+              anchor === heading.link.slice(1) && "text-primary",
+            )}
+            href={heading.link}
+            onClick={(event) => {
+              event.preventDefault();
+              navigate(heading.link);
+            }}>
+            {heading.text}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 const DocEntry = ({ doc, anchor }: { doc: TocDoc; anchor: string | null }) => {
   const { isOpen, setOpen, reveal } = useCollapse();
@@ -48,8 +57,16 @@ const DocEntry = ({ doc, anchor }: { doc: TocDoc; anchor: string | null }) => {
 
   return (
     <li>
-      <button
-        onClick={() => (open ? setOpen(doc.slug, false) : reveal(doc.slug))}
+      <Link
+        href={`#${doc.slug}`}
+        onClick={(event) => {
+          event.preventDefault();
+          if (open) {
+            setOpen(doc.slug, false);
+          } else {
+            reveal(doc.slug);
+          }
+        }}
         className="flex w-full items-center justify-between gap-2 text-left font-poppins font-medium text-sm hover:opacity-80 transition-all">
         <span className={cn(open && "text-primary")}>{doc.title}</span>
         <ChevronDownIcon
@@ -58,7 +75,7 @@ const DocEntry = ({ doc, anchor }: { doc: TocDoc; anchor: string | null }) => {
             open && "rotate-180",
           )}
         />
-      </button>
+      </Link>
       {open && doc.headings.length > 0 && (
         <div className="mt-1 mb-2">
           <HeadingLinks headings={doc.headings} anchor={anchor} />
@@ -120,7 +137,7 @@ const MdWrapper = ({
             <SheetHeader className="mb-0">
               <SheetTitle>{t("Statutes.toc")}</SheetTitle>
             </SheetHeader>
-            <div className="px-6 overflow-y-auto -mt-6 pb-18">
+            <div className="pl-6 pr-2 overflow-y-auto -mt-6 pb-18 [scrollbar-gutter:stable]">
               <TocBody statutes={statutes} memos={memos} />
             </div>
           </SheetContent>
@@ -129,7 +146,7 @@ const MdWrapper = ({
           <div>
             <div className="hidden lg:block sticky top-[calc(4rem+1px)] w-[280px]">
               <div className="relative h-[calc(100vh-4rem-1px)]">
-                <nav className="absolute top-0 bottom-0 p-6 border-r overflow-y-auto">
+                <nav className="absolute top-0 bottom-0 pt-6 pb-6 pl-6 pr-2 border-r overflow-x-hidden overflow-y-auto [scrollbar-gutter:stable]">
                   <p className="text-muted-foreground font-medium text-sm mb-2">
                     {t("Statutes.toc")}
                   </p>
