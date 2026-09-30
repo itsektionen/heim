@@ -36,8 +36,8 @@ const DesktopNavbar = async () => {
           <ItChip primary="var(--primary)" />
         </Link>
         <NavigationMenu>
-            {/* TODO: there's prob a better solution than this */}
-            <NavigationMenuList className="gap-0 lg:gap-1 **:data-[slot=navigation-menu-trigger]:px-2 **:data-[slot=navigation-menu-trigger]:text-xs lg:**:data-[slot=navigation-menu-trigger]:px-4 lg:**:data-[slot=navigation-menu-trigger]:text-sm **:data-[slot=navigation-menu-link]:px-2 **:data-[slot=navigation-menu-link]:text-xs lg:**:data-[slot=navigation-menu-link]:px-4 lg:**:data-[slot=navigation-menu-link]:text-sm">            <NavigationMenuItem>
+          <NavigationMenuList>
+            <NavigationMenuItem>
               <NavigationMenuTrigger>{t("Education")}</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="w-[400px] flex flex-col gap-3 p-4">
