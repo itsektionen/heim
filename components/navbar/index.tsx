@@ -28,7 +28,7 @@ const DesktopNavbar = async () => {
 
   return (
     <header className="hidden sm:block sticky z-50 top-0 border-b bg-background/90 backdrop-blur">
-      <div className="container mx-auto px-6 h-16 border-x flex items-center gap-4">
+      <div className="container mx-auto px-3 lg:px-6 h-16 border-x flex items-center gap-2 lg:gap-4">
         <Link
           className="flex text-sm text-foreground items-center gap-2 font-medium mr-2"
           href="/"
@@ -36,8 +36,8 @@ const DesktopNavbar = async () => {
           <ItChip primary="var(--primary)" />
         </Link>
         <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem>
+            {/* TODO: there's prob a better solution than this */}
+            <NavigationMenuList className="gap-0 lg:gap-1 **:data-[slot=navigation-menu-trigger]:px-2 **:data-[slot=navigation-menu-trigger]:text-xs lg:**:data-[slot=navigation-menu-trigger]:px-4 lg:**:data-[slot=navigation-menu-trigger]:text-sm **:data-[slot=navigation-menu-link]:px-2 **:data-[slot=navigation-menu-link]:text-xs lg:**:data-[slot=navigation-menu-link]:px-4 lg:**:data-[slot=navigation-menu-link]:text-sm">            <NavigationMenuItem>
               <NavigationMenuTrigger>{t("Education")}</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="w-[400px] flex flex-col gap-3 p-4">

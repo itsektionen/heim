@@ -64,7 +64,7 @@ export default async function Home({
         <HeroImage src="/assets/img/header.avif" alt="Header Image" />
       </Hero>
 
-      <section className="flex flex-col md:flex-row gap-4 [&>div]:grow [&>div]:w-full -mt-11 mb-14 [&>div]:z-5">
+      <section className="flex flex-col md:flex-row gap-4 md:gap-2 lg:gap-4 md:[&>div>div]:px-4 lg:[&>div>div]:px-6 [&>div]:grow [&>div]:w-full -mt-11 mb-14 [&>div]:z-5">
         <Card>
           <CardHeader>
             <CardTitle>
