@@ -1,4 +1,5 @@
 import { CommitteeSlug } from "@/data/committees";
+import type { Key } from "react";
 
 export type CalendarEvent = {
   id: string;
@@ -13,7 +14,7 @@ export type CalendarEvent = {
 };
 
 export type Protocol = {
-  id: number;
+  id: Key;
   name: string;
   date: Date;
   url: string;
