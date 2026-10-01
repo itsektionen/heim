@@ -28,7 +28,7 @@ const DesktopNavbar = async () => {
 
   return (
     <header className="hidden sm:block sticky z-50 top-0 border-b bg-background/90 backdrop-blur">
-      <div className="container mx-auto px-6 h-16 border-x flex items-center gap-4">
+      <div className="container mx-auto px-3 lg:px-6 h-16 border-x flex items-center gap-2 lg:gap-4">
         <Link
           className="flex text-sm text-foreground items-center gap-2 font-medium mr-2"
           href="/"
