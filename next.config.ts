@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "minio.qmisk.com",
       },
+      {
+        hostname: 'crm.kth.it',
+      },
     ],
   },
   redirects: async () => [
