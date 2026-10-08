@@ -126,6 +126,14 @@ export default {
     "select-year": "Select a study year",
     year: "Year",
   },
+  BookshelfPage: {
+    title: "Bookshelf",
+    description:
+      "Course literature that you can borrow from the Study Committee.",
+    edition: "{edition} ed.",
+    author: "by {author}",
+    available: "{available}/{quantity} available",
+  },
   DocumentsPage: {
     protocols: {
       title: "Protocols",
@@ -334,6 +342,9 @@ export default {
     "Education.Courses": "Courses",
     "Education.Courses.description":
       "Are you curious about what courses you will study? Use the course browser to find out!",
+    "Education.Bookshelf": "Bookshelf",
+    "Education.Bookshelf.description":
+      "Check out the literature you can borrow from the Study Committee.",
     Chapter: "Chapter",
     "Chapter.About": "About",
     "Chapter.About.description":

@@ -125,6 +125,13 @@ export default {
     "select-year": "Välj ett studieår",
     year: "Årskurs",
   },
+  BookshelfPage: {
+    title: "Bokhylla",
+    description: "Kurslitteratur som du kan låna från Studienämnden.",
+    edition: "{edition} uppl.",
+    author: "av {author}",
+    available: "{available}/{quantity} tillgängliga",
+  },
   DocumentsPage: {
     protocols: {
       title: "Protokoll",
@@ -332,6 +339,9 @@ export default {
     "Education.Courses": "Kurser",
     "Education.Courses.description":
       "Är du nyfiken på vilka kurser du kommer att läsa? Använd kurskatalogen för att ta reda på det!",
+    "Education.Bookshelf": "Bokhylla",
+    "Education.Bookshelf.description":
+      "Kika på kurslitteraturen du kan låna från Studienämnden.",
     Chapter: "Sektionen",
     "Chapter.About": "Om oss",
     "Chapter.About.description":

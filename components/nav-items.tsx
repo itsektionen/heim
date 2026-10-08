@@ -1,5 +1,6 @@
 import { NavBarTranslationKey } from "@/locales/types";
 import {
+  BookIcon,
   CalendarIcon,
   FileTextIcon,
   GraduationCapIcon,
@@ -36,6 +37,12 @@ export const educationItems: NavigationItem[] = [
     href: "/education/courses",
     icon: <GraduationCapIcon className="w-4 h-4" />,
     description: "Education.Courses.description",
+  },
+  {
+    title: "Education.Bookshelf",
+    href: "/education/bookshelf",
+    icon: <BookIcon className="w-4 h-4" />,
+    description: "Education.Bookshelf.description",
   },
 ];
 
