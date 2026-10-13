@@ -1,9 +1,14 @@
+import "@/app/md.css";
 import { Button } from "@/components/ui/button";
 import { Hero, HeroImage } from "@/components/ui/hero";
 import { CommitteeSlug } from "@/data/committees";
 import { getCommittee } from "@/lib/committees";
 import { getCommitteeIntegration } from "@/lib/committees/integrations";
 import { listEvents } from "@/lib/events";
+import {
+  parseDiscordCustomEmojis,
+  parseDiscordMarkdown,
+} from "@/lib/md/discord";
 import { generatePageMetadata } from "@/lib/metadata";
 import { getOgImageUrl } from "@/lib/og";
 import { getI18n, getStaticParams } from "@/locales/server";
@@ -15,8 +20,34 @@ import {
 } from "lucide-react";
 import { type Metadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import remarkBreaks from "remark-breaks";
+import remarkGemoji from "remark-gemoji";
+
+const EventDescription = (props: { description?: string }) => {
+  if (!props.description) {
+    return <p className="text-muted-foreground">No description provided</p>;
+  }
+
+  const parsedDescription = parseDiscordMarkdown(
+    parseDiscordCustomEmojis(props.description),
+  );
+
+  return (
+    <div className="md">
+      <MDXRemote
+        source={parsedDescription}
+        options={{
+          mdxOptions: {
+            remarkPlugins: [remarkGemoji, remarkBreaks],
+          },
+        }}
+      />
+    </div>
+  );
+};
 
 const EventPage = async ({
   params,
@@ -75,9 +106,9 @@ const EventPage = async ({
       <div className="flex flex-col-reverse lg:flex-row gap-8 justify-between">
         <div>
           <h2 className="text-3xl font-medium mb-2">{event.title}</h2>
-          <p className="text-muted-foreground whitespace-pre-line">
-            {event.description || "No description provided."}
-          </p>
+          {event.description && (
+            <EventDescription description={event.description} />
+          )}
         </div>
         <div className="bg-muted py-4 px-5 space-y-4 rounded-md border shrink-0 h-fit lg:sticky lg:top-[calc(64px+var(--spacing)*6)]">
           <div className="flex items-center gap-4">

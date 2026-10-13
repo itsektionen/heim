@@ -44,6 +44,8 @@
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "react-hook-form": "^7.72.1",
+    "remark-breaks": "^4.0.0",
+    "remark-gemoji": "^8.0.0",
     "remark-gfm": "^4.0.1",
     "schema-dts": "^1.1.5",
     "superjson": "^2.2.6",

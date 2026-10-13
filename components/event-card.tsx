@@ -1,8 +1,9 @@
 "use client";
 
 import { getCommittee } from "@/lib/committees";
-import { CalendarEvent } from "@/types";
+import { cleanDiscordMarkdown } from "@/lib/md/discord";
 import { useI18n } from "@/locales/client";
+import { CalendarEvent } from "@/types";
 import { ClockIcon, MapPinIcon, UsersIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,7 +26,10 @@ const EventCard = ({ event }: { event: CalendarEvent }) => {
   return (
     <Card className="pt-0 px-0 overflow-hidden h-full">
       <CardHeader className="px-0">
-        <div className="relative h-48 w-full border-b mb-6 bg-secondary">
+        <Link
+          href={`/events/${event.id}`}
+          className="relative h-48 w-full border-b mb-6 bg-secondary"
+        >
           <Image
             className="object-cover"
             src={event.imageUrl ?? "/assets/img/placeholder.png"}
@@ -33,11 +37,11 @@ const EventCard = ({ event }: { event: CalendarEvent }) => {
             fill
             sizes="(max-width: 768px) 340px, 300px"
           />
-        </div>
+        </Link>
         <div className="px-6">
           <CardTitle className="mb-1.5 line-clamp-2">{event.title}</CardTitle>
           <CardDescription className="line-clamp-2 max-w-full break-all">
-            {event.description}
+            {event.description && cleanDiscordMarkdown(event.description)}
           </CardDescription>
         </div>
       </CardHeader>
