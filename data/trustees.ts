@@ -20,14 +20,14 @@ export const boardTrustees: Trustee[] = [
     name: "Justus Kluge",
     role: "vice President",
     mail: "vordf@kth.it",
-    image: "/assets/img/trustees/JustusKlunge3.webp",
+    image: "/assets/img/trustees/JustusKluge.webp",
     committeeIds: ["board"],
   },
   {
     name: "Dylan Horn Kreiner",
     role: "Treasurer",
     mail: "kassor@kth.it",
-    image: "/assets/img/trustees/DylanHornKreiner2.webp",
+    image: "/assets/img/trustees/DylanHornKreiner.webp",
     committeeIds: ["board"],
   },
   {
@@ -48,7 +48,7 @@ export const boardTrustees: Trustee[] = [
     name: "Marcus Söderlund",
     role: "President of the Study Social Committee",
     mail: "studiesocialt@kth.it",
-    image: "/assets/img/trustees/marcuss.avif",
+    image: "/assets/img/trustees/MarcusSoderlund.webp",
     committeeIds: ["board", "study-social"],
   },
   {
@@ -78,9 +78,10 @@ export const boardTrustees: Trustee[] = [
     committeeIds: ["board"],
   },
   {
-    name: "Vakant",
+    name: "Raffael Huwe",
     role: "Board Member",
     mail: "ledamot@kth.it",
+    image: "/assets/img/trustees/RaffaelHuwe.webp",
     committeeIds: ["board"],
   },
   {
@@ -100,9 +101,10 @@ export const committeeTrustees: Trustee[] = [
     committeeIds: ["itk"],
   },
   {
-    name: "Vakant",
+    name: "Agnes Lind",
     role: "Sudo",
     mail: "sudo@kth.it",
+    image: "/assets/img/trustees/AgnesLind.webp",
     committeeIds: ["itk"],
   },
   {
@@ -136,7 +138,7 @@ export const committeeTrustees: Trustee[] = [
     name: "Elina Wang",
     role: "vKommA",
     mail: "vkomma@kth.it",
-    image: "/assets/img/trustees/elinaw.avif",
+    image: "/assets/img/trustees/ElinaWang.webp",
     committeeIds: ["kommn"],
   },
   {
@@ -144,7 +146,7 @@ export const committeeTrustees: Trustee[] = [
     role: "History Responsible",
     mail: "historia@kth.it",
     committeeIds: ["kommn"],
-    image: "/assets/img/trustees/hugob.avif",
+    image: "/assets/img/trustees/HugoBacher.webp",
   },
   {
     name: "Viggo Tinge",
@@ -156,7 +158,7 @@ export const committeeTrustees: Trustee[] = [
     name: "Elina Wang",
     role: "NÅGON",
     mail: "nagon@kth.it",
-    image: "/assets/img/trustees/elinaw.avif",
+    image: "/assets/img/trustees/ElinaWang.webp",
     committeeIds: ["reception"],
   },
   {
@@ -175,7 +177,6 @@ export const committeeTrustees: Trustee[] = [
     name: "Viggo Tinge",
     role: "QM",
     mail: "qm@qmisk.com",
-    image: "/assets/img/trustees/ViggoTinge.webp",
     committeeIds: ["qmisk"],
   },
   {
@@ -186,7 +187,7 @@ export const committeeTrustees: Trustee[] = [
     committeeIds: ["qmisk"],
   },
   {
-    name: "Sanna Lindberg",
+    name: "Linus Bergh",
     role: "Treasurer QMISK",
     mail: "skm@qmisk.com",
     committeeIds: ["qmisk"],
@@ -210,7 +211,7 @@ export const committeeTrustees: Trustee[] = [
     committeeIds: ["study"],
   },
   {
-    name: "Vakant",
+    name: "Erik Cunningham",
     role: "PAS CINTE",
     mail: "cintepas@kth.it",
     committeeIds: ["study"],
@@ -222,7 +223,7 @@ export const committeeTrustees: Trustee[] = [
     committeeIds: ["study"],
   },
   {
-    name: "Vakant",
+    name: "Oscar Garayeli",
     role: "PAS TIEDB",
     mail: "tiedbpas@kth.it",
     committeeIds: ["study"],
@@ -297,6 +298,7 @@ export const committeeTrustees: Trustee[] = [
   {
     name: "Alexandra Andersson",
     role: "Union Council",
+    image: "/assets/img/trustees/AlexandraAndersson.webp",
     mail: "kf@kth.it",
   },
   {
@@ -309,7 +311,7 @@ export const committeeTrustees: Trustee[] = [
     name: "Justus Kluge",
     role: "Union Council",
     mail: "kf@kth.it",
-    image: "/assets/img/trustees/JustusKlunge3.webp",
+    image: "/assets/img/trustees/JustusKluge.webp",
   },
   {
     name: "Frans Ekberg",
@@ -327,7 +329,7 @@ export const committeeTrustees: Trustee[] = [
     name: "Dante Julio Cosentino",
     role: "Election Committee Convener",
     mail: "val@kth.it",
-    image: "/assets/img/trustees/dantec.avif",
+    image: "/assets/img/trustees/DanteJulioCosentino.webp",
     committeeIds: ["val"],
   },
   {
@@ -354,7 +356,7 @@ export const committeeTrustees: Trustee[] = [
     name: "Denise Hommik",
     role: "Election Committee",
     mail: "val@kth.it",
-    image: "/assets/img/trustees/DeniseHommik2.webp",
+    image: "/assets/img/trustees/DeniseHommik.webp",
     committeeIds: ["val"],
   },
   {
@@ -367,7 +369,7 @@ export const committeeTrustees: Trustee[] = [
     name: "Simon Hedström",
     role: "Bootloader",
     mail: "bootloader@kth.it",
-    image: "/assets/img/trustees/simonh.avif",
+    image: "/assets/img/trustees/SimonHedstrom.webp",
     committeeIds: ["init"],
   },
   {
@@ -380,7 +382,7 @@ export const committeeTrustees: Trustee[] = [
     name: "Hugo Bachér",
     role: "Bellman",
     mail: "strangteoretiquerna@kth.it",
-    image: "/assets/img/trustees/hugob.avif",
+    image: "/assets/img/trustees/HugoBacher.webp",
   },
   {
     name: "Julle Juliusson Keuschnig",
@@ -392,39 +394,39 @@ export const committeeTrustees: Trustee[] = [
     name: "Albin Durfors",
     role: "Move Coordinator",
     mail: "flytt@kth.it",
-    image: "/assets/img/trustees/albind.avif",
+    image: "/assets/img/trustees/AlbinDurfors.webp",
   },
   {
     name: "Dante Julio Cosentino",
     role: "vice Move Coordinator",
     mail: "flytt@kth.it",
-    image: "/assets/img/trustees/dantec.avif",
+    image: "/assets/img/trustees/DanteJulioCosentino.webp",
   },
   {
     name: "Dante Julio Cosentino",
     role: "Auditor",
     mail: "revisor@kth.it",
-    image: "/assets/img/trustees/dantec.avif",
+    image: "/assets/img/trustees/DanteJulioCosentino.webp",
   },
   {
     name: "Simon Hedström",
     role: "Auditor",
     mail: "revisor@kth.it",
-    image: "/assets/img/trustees/simonh.avif",
+    image: "/assets/img/trustees/SimonHedstrom.webp",
   },
   {
     name: "Hannah Veit",
     role: "Head Standard Bearer",
-    image: "/assets/img/trustees/hannahv.jpg",
+    image: "/assets/img/trustees/HannahVeit.webp",
   },
   {
     name: "Dylan Horn Kreiner",
     role: "Standard Bearer",
-    image: "/assets/img/trustees/DylanHornKreiner2.webp",
+    image: "/assets/img/trustees/DylanHornKreiner.webp",
   },
   {
     name: "Moa Fredriksson",
     role: "Power Outlet Coordinator",
-    image: "/assets/img/trustees/moaf.avif",
+    image: "/assets/img/trustees/MoaFredriksson.webp",
   },
 ];
