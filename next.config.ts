@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "minio.qmisk.com",
       },
+      {
+        hostname: "img.itk.gg",
+      },
     ],
   },
   redirects: async () => [
