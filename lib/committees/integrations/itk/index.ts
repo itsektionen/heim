@@ -2,11 +2,18 @@ import { env } from "@/env";
 import { CommitteeIntegration } from "..";
 import { ItkEvent, mapItkEvent } from "./types";
 
+const fetchItkEvents = async (): Promise<ItkEvent[]> => {
+  const res = await fetch(`${env.ITK_BASE_URL}/events/export/heim`);
+  if (!res.ok) {
+    throw new Error(`ITK responded with ${res.status}`);
+  }
+  return res.json();
+};
+
 export const itkIntegration: CommitteeIntegration = {
   listEvents: async () => {
     try {
-      const res = await fetch(`${env.ITK_BASE_URL}/events/json`);
-      const data: ItkEvent[] = await res.json();
+      const data = await fetchItkEvents();
 
       return data
         .map(mapItkEvent)
@@ -22,8 +29,7 @@ export const itkIntegration: CommitteeIntegration = {
   },
   getEvent: async (id: string) => {
     try {
-      const res = await fetch(`${env.ITK_BASE_URL}/events/json`);
-      const data: ItkEvent[] = await res.json();
+      const data = await fetchItkEvents();
 
       const event = data.find((event) => event.id === id);
 
